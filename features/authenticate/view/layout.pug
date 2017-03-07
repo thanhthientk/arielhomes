@@ -1,0 +1,36 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0')
+    title Authenticate - Hệ thống quản lý hóa đơn
+    link(rel='stylesheet', type='text/css', href='/assets/libs/semantic/dist/semantic.css')
+    script(src='/assets/libs/jquery/dist/jquery.min.js')
+    script(src='/assets/libs/semantic/dist/semantic.min.js')
+    script(src='https://www.google.com/recaptcha/api.js')
+
+    style(type='text/css').
+      body {
+        background-color: #DADADA;
+      }
+
+      body > .grid {
+        height: 100%;
+      }
+
+      .image {
+        margin-top: -100px;
+      }
+
+      .column {
+        max-width: 450px;
+      }
+    block script
+  body.page
+    include ../../dashboard/view/mixins/form
+    include ../../dashboard/view/mixins/messages
+
+    .ui.middle.aligned.center.aligned.grid
+      .column
+        block content

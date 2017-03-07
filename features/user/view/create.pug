@@ -1,0 +1,186 @@
+extends ../../dashboard/view/layout
+
+block variables
+  -
+    var module = loadFeature('user');
+    module.type = 'module_create';
+    module.plugin = {calendar: true};
+    module.editing = !!user._id;
+
+block content
+  include ../../dashboard/view/mixins/province
+  +messages
+
+  form.ui.form.create-user#main-form(class= module.editing ? 'editing' : '', method='post')
+    +_csrf
+    .ui.error.message.pt0
+    .fields
+      .field.wide.five.hideonsmall
+        h3 Thông tin chung
+      .field.wide.eleven
+        .fields
+          // Tên - fullname
+          +Input({
+              name:'fullname',
+              label: 'Tên',
+              placeholder: 'Họ và tên',
+              className: 'wide ten required',
+              value: user.fullname
+          })
+        .fields
+          // Điện thoại - phone
+          +Input({
+              name:'phone',
+              label: 'Điện thoại',
+              className: 'wide five',
+              value: user.phone
+          })
+          // Giới tính - gender
+          +Select({
+            name: 'gender',
+            label: 'Giới tính',
+            className: 'wide five',
+            defaultText: '-- Giới tính --',
+            value: user.gender,
+            items: [
+                {value: 'nam', text: 'Nam'},
+                {value: 'nu', text: 'Nữ'}
+            ]
+          })
+        .fields
+          // Ngày sinh - birthday
+          +InputDate({
+            name: 'birthday',
+            label: 'Ngày sinh',
+            value: user.birthday,
+            className: 'wide five'
+          })
+    .ui.divider
+    .fields
+      .field.wide.five.hideonsmall
+        h3 Thông tin liên hệ
+      .field.wide.eleven
+        .fields
+          // Địa chỉ - address
+          +Input({
+              name:'address',
+              label: 'Địa chỉ',
+              className: 'wide ten',
+              value: user.address
+          })
+        .fields
+          // Tỉnh/Thành - city
+          .field.wide.five
+            +Province(user.province, user.province_name)
+          // Quận/Huyện - county
+          +Input({
+              name: 'district',
+              label: 'Quận/Huyện',
+              value: user.district,
+              className: 'wide five'
+          })
+    .ui.divider
+    .fields
+      .field.wide.five.hideonsmall
+        h3 Thông tin tài khoản
+      .field.wide.eleven
+        if (user._id)
+          .fields
+            // Email - email
+            +Input({
+                label: 'Email đăng nhập',
+                className: 'wide ten required',
+                readonly: !!user._id,
+                value: user.email
+            })
+          .ui.accordion.new-email.field
+            .title
+              i.icon.dropdown
+              | Thay đổi Email
+            .content
+              .fields
+                +Input({
+                    name: 'email',
+                    type: 'email',
+                    label: 'Nhập Email mới',
+                    className: 'wide ten required'
+                })
+              .ui.divider
+          .ui.accordion.change-password.field
+            .title
+              i.icon.dropdown
+              | Đặt lại mật khẩu cho tài khoản này
+            .content
+              .fields
+                // Password - password
+                +Input({
+                    name:'password',
+                    type: 'password',
+                    label: 'Mật khẩu',
+                    className: 'wide five required'
+                })
+                // Password2 - password2
+                +Input({
+                  name:'password2',
+                  type: 'password',
+                  label: 'Nhập lại mật khẩu',
+                  className: 'wide five required'
+              })
+              .ui.divider
+        else
+          .fields
+            // Email - email
+            +Input({
+                name: 'email',
+                type: 'email',
+                label: 'Email đăng nhập',
+                className: 'wide ten required',
+                value: user.email
+            })
+          .fields
+            // Password - password
+            +Input({
+                name:'password',
+                type: 'password',
+                label: 'Mật khẩu',
+                className: 'wide five required'
+            })
+            // Password2 - password2
+            +Input({
+                name:'password2',
+                type: 'password',
+                label: 'Nhập lại mật khẩu',
+                className: 'wide five required'
+            })
+
+        .fields
+          // Chi nhánh - branch
+          +Select({
+              name: 'branch',
+              label: 'Chi nhánh',
+              className: 'wide five',
+              defaultText: '-- Chi nhánh --',
+              value: user.branch,
+              items: branches,
+              identifier: {
+                  value: '_id',
+                  text: 'name'
+              }
+          })
+          // Phân quyền - role
+          +Select({
+              name: 'role',
+              label: 'Phân quyền',
+              className: 'wide five',
+              defaultText: '-- Phân quyền --',
+              value: user.role,
+              items: roles,
+              identifier: {
+                  value: '_id',
+                  text: 'name'
+              }
+          })
+
+    .ui.divider
+
+  +FormBottom({id: user._id})

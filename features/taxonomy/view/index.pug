@@ -1,0 +1,56 @@
+extends ../../dashboard/view/layout
+
+block variables
+  -
+    var module = loadFeature('taxonomy');
+    module.type = 'module_list';
+    module.filterbar = false;
+    module.label = taxonomyInfo.title;
+
+
+block navigation
+  +Breadcrumb({ current: { title: module.label } })
+  +Pagination(paginated)
+  +Buttons({
+        createButton: {
+          url: `/${module.slug}/create?module=${taxonomyInfo.module}&type=${taxonomyInfo.type}`
+        },
+        importButton: {display: false},
+        exportButton: {display: false},
+        searchButton: {display: false},
+      })
+
+
+
+block content
+  +messages
+  table.tctable.ui.small.unstackable.very.basic.selectable.table.scrollbar
+    thead
+      tr
+        th(style='width: 40px') STT
+        th Tên
+        th Miêu tả
+        th(style='width: 200px') Trạng thái
+        th(style='width: 200px') Được thêm bởi
+        th(style='width: 200px') Ngày tạo
+    tbody
+      - var count = 0;
+      if taxonomies.length > 0
+        each taxonomy in taxonomies
+          - count++
+          tr
+            td= count
+            td.head
+              a(href=`/${module.slug}/${taxonomy._id}/edit?module=${taxonomyInfo.module}&type=${taxonomyInfo.type}`)= taxonomy.name
+            td= taxonomy.description
+            td
+              if (taxonomy.status === true)
+                .ui.small.label.green Enabled
+              else
+                .ui.small.label.grey Disabled
+            td
+              if taxonomy.createdBy
+                a(href=`/${module.slug}?createdBy=${taxonomy.createdBy.id}`)= taxonomy.createdBy.fullname
+            td= moment_format(taxonomy.createdOn, 'DD/MM/Y')
+      else
+        p Không tìm thấy bản ghi nào!

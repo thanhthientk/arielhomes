@@ -1,0 +1,68 @@
+extends ../../dashboard/view/layout
+
+block variables
+  -
+    var module = loadFeature('user');
+    module.type = 'module_list';
+    module.filterbar = users.length > 0;
+
+
+block navigation
+  +Breadcrumb({ current: { title: module.label } })
+  +Pagination(paginated)
+  +Buttons({
+      importButton: {display: false},
+      exportButton: {display: false},
+      createButton: {
+          url: `/${module.slug}/create`
+      }
+  })
+
+block filterbar
+  if module.filterbar
+    include ../../dashboard/view/mixins/filterbar
+    +FilterBar({
+        textSearch: true,
+        dateSearch: true,
+        dropdowns: [ 'branch', 'createdBy', 'province' ]
+    }, reqQueryParams)
+
+block content
+  +messages
+  if users.length > 0
+    table.tctable.ui.small.unstackable.very.basic.selectable.table.scrollbar
+      thead
+        tr
+          th Thông tin chung
+          th Số điện thoại
+          th Email
+          th Chi nhánh
+          th Chức vụ
+          th Được thêm bởi
+          th Ngày tạo
+          th
+      tbody
+        each user in users
+          tr
+            td.head
+              a(href=`/${module.slug}/${user.id}/edit`)= user.fullname
+              span= user.province_name
+            td= user.phone
+            td= user.email
+            td
+              if user.branch
+                a(href=`/${module.slug}?branch=${user.branch.id}`)= user.branch.name
+            td
+              if user.role
+                a= user.role.name
+            td
+              if user.createdBy
+                a(href=`/${module.slug}?createdBy=${user.createdBy.id}`)= user.createdBy.fullname
+            td= moment_format(user.createdOn, 'DD/MM/Y')
+            td
+              a.ui.mini.icon.button(href=`/users/${user._id}/edit`)
+                i.icon.external.square
+  else
+    +Zerodata({
+        icon: 'users'
+    })

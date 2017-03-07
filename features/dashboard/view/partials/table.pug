@@ -1,0 +1,20 @@
+mixin table(datas, columns)
+  table.tctable.ui.small.unstackable.very.basic.selectable.table.scrollbar
+
+    thead
+      tr
+        each column in columns
+          th= column.name
+
+    tbody
+      each data in datas
+        tr
+          each column in columns
+            case column.type
+              when 'link'
+                td
+                  - var urlStart = column.url_format.start || '';
+                  - var urlEnd = column.url_format.end || '';
+                  - var param = data[column.url_format.param] || '';
+                  a(href=(urlStart + param + urlEnd))
+                    = getObjectPropertyByStringPath(data, column.data_field)

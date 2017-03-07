@@ -1,0 +1,62 @@
+mixin Breadcrumb(obj)
+  .pull-left.ui.large.breadcrumb
+    if (obj.parent)
+      a.section.active(href=obj.parent.url)
+        span= obj.parent.title
+      i.chevron.right.icon
+    .section
+      a(href=(!obj.parent) ? `/${module.slug}` : '')= obj.current.title
+      if (paginated)
+        span.number= paginated.total
+
+mixin Pagination(paginated)
+  - var {page, pages, path} = paginated
+  - var prevPage = Number(page) - 1
+  - var nextPage = Number(page) + 1
+  .pull-right.paginationwrapper
+    .ui.pagination.small.menu
+      if prevPage == 0
+        a.item.disabled(href='#')
+          i.angle.left.icon
+      else
+        a.item(href=path[prevPage-1])
+          i.angle.left.icon
+
+      .ui.scrolling.dropdown.item.item-active.center.aligned
+        .text= `Trang ${page} / ${pages}`
+        .menu
+          - for (var i = 1; i <= pages; i++)
+            a.item(class=(i == page) ? 'active' : '', href=path[i-1])= `Trang ${i} / ${pages}`
+
+      if nextPage > pages
+        a.item.disabled(href='#')
+          i.angle.right.icon
+      else
+        a.item(href=path[nextPage - 1])
+          i.angle.right.icon
+
+mixin Buttons(obj)
+  .pull-right.headingbuttons
+    if (!obj.searchButton || obj.searchButton.display !== false)
+      a#open-filterbar(href='#')
+        i.icon.search
+    if (!obj.importButton || obj.importButton.display !== false)
+      a.hideonsmall(href='#')
+        i.icon.upload
+        span Nhập từ Excel
+    if (!obj.exportButton || obj.exportButton.display !== false)
+      a(id='export-bill')
+        i.icon.download
+        span Xuất Excel
+    if (!obj.createButton || obj.createButton.display !== false)
+      a(href=obj.createButton.url)
+        i.icon.plus
+        span Thêm mới
+
+mixin FormButton(obj)
+  .pull-right
+    .buttons
+      button.ui.green.button(class= obj.className, id=obj.id ? obj.id : 'submit-form', data-form='#main-form')
+        if obj.icon
+          i.icon(class= obj.icon)
+        = obj.text

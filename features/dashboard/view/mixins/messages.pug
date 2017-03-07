@@ -1,0 +1,13 @@
+mixin messages
+  if messages.errors
+    .ui.negative.message
+      i.close.icon
+      ul.list.mt0
+        each error in messages.errors
+          li= error.msg
+  if messages.successes
+    .ui.green.message
+      i.close.icon
+      ul.list.mt0
+        each success in messages.successes
+          li= success.msg

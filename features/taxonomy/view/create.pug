@@ -1,0 +1,88 @@
+extends ../../dashboard/view/layout
+
+block variables
+  -
+    var module = loadFeature('taxonomy');
+    module.type = 'taxonomy_create';
+    module.plugin = {calendar: true};
+    module.editing = !!taxonomy._id;
+    var taxonomyType = taxonomyInfo.type;
+    var taxonomyModule = taxonomyInfo.module;
+
+block navigation
+  - headText = module.editing ? 'Cập nhật' : 'Thêm mới'
+  +Breadcrumb({
+      parent: {
+          url: `/${module.slug}?module=${taxonomyModule}&type=${taxonomyType}`,
+        title: taxonomyInfo.title
+      },
+      current: {title: headText}
+    })
+  +FormButton({text: headText, className: module.editing ? 'primary' : ''})
+
+block content
+
+  +messages
+
+  form.ui.form.create-module.single-field-validation#main-form(
+    class= module.editing ? 'editing' : '',
+    method='post',
+    data-label=module.label
+  )
+    +_csrf
+    input(type='hidden', name='module', value=taxonomyModule)
+    input(type='hidden', name='type', value=taxonomyType)
+    .ui.error.message.pt0
+    .fields
+      .field.wide.five.hideonsmall
+        if taxonomyType == 'category' && taxonomyModule == 'product'
+          h3 Tổng quan danh mục sản phẩm
+          p Thông tin danh mục sản phẩm
+        if taxonomyType == 'unit' && taxonomyModule == 'product'
+          h3 Tổng quan đơn vị sản phẩm
+          p Thông tin đơn vị sản phẩm
+
+      .field.wide.eleven
+        .fields
+          // Tên - fullname
+          +Input({
+              name:'name',
+              label: 'Tên',
+              className: 'wide ten required',
+              value: taxonomy.name
+          })
+        if (taxonomyType == 'shortcut' && taxonomyModule == 'dashboard')
+          .fields
+            +Input({
+                name: 'icon',
+                label: 'Icon',
+                className: 'wide ten',
+                value: taxonomy.icon
+            })
+          .fields
+            +Input({
+                name: 'link',
+                label: 'Liên kết',
+                className: 'wide ten',
+                value: taxonomy.link
+            })
+        .fields
+          +Textarea({
+              name: 'description',
+              label: 'Ghi chú',
+              row: 3,
+              className: 'wide ten',
+              value: taxonomy.description
+          })
+    .fields
+      .field.wide.five.hideonsmall
+      .field.wide.eleven
+        .fields
+          .inline.field
+            .ui.toggle.checkbox
+              label Trạng thái
+              input.hidden(type='checkbox', name='status', checked=(taxonomy.status !== false), tabindex='0')
+
+    .ui.divider
+
+  +FormBottom({id: taxonomy._id})

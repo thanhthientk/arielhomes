@@ -1,0 +1,56 @@
+extends ../../dashboard/view/layout
+
+block variables
+  -
+    var module = loadFeature('role');
+    module.type = 'module_list';
+    module.filterbar = true;
+
+block navigation
+  +Breadcrumb({ current: {title: 'Phân Quyền', total: paginated.total} })
+  +Pagination(paginated)
+  +Buttons({
+      createButton: {
+          display: true,
+          url: '/roles/create'
+      },
+      exportButton: {display: false},
+      importButton: {display: false}
+  })
+
+include ../../dashboard/view/mixins/filterbar
+
+block filterbar
+  +FilterBar({
+      textSearch: false,
+      dateSearch: true,
+      dropdowns: [ 'createdBy' ]
+  }, reqQueryParams)
+
+
+block content
+  +messages
+  table.tctable.ui.small.unstackable.very.basic.selectable.table.scrollbar
+    thead
+      tr
+        th(style='width: 40px') STT
+        th Tên
+        th Ghi chú
+        th Được tạo bởi
+        th Ngày tạo
+    tbody
+      - var count = 0;
+      if (roles.length > 0)
+        each role in roles
+          - count++
+          tr
+            td= count
+            td.head
+              a(href=`/${module.slug}/${role._id}/edit`)= role.name
+            td= role.description
+            td
+              if role.createdBy
+                a(href=`/users/${role.createdBy.id}/edit`)= role.createdBy.fullname
+            td= moment_format(role.createdOn, 'DD/MM/Y')
+      else
+        p Không tìm thấy bản ghi nào!

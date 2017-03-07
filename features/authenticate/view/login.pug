@@ -1,0 +1,59 @@
+extends layout
+
+block script
+  script.
+      $(document)
+          .ready(function () {
+              $('.ui.form')
+                  .form({
+                      fields: {
+                          email: {
+                              identifier: 'email',
+                              rules: [
+                                  {
+                                      type: 'empty',
+                                      prompt: 'Vui lòng nhập Email đăng nhập'
+                                  }
+                              ]
+                          },
+                          password: {
+                              identifier: 'password',
+                              rules: [
+                                  {
+                                      type: 'empty',
+                                      prompt: 'Vui lòng nhập mật khẩu'
+                                  }
+                              ]
+                          }
+                      }
+                  })
+              ;
+          })
+      ;
+
+block content
+  h2.ui.teal.image.header
+    img.image(src='/assets/img/logo-login.png')
+    .content(style='display: block;')
+      | Đăng nhập vào hệ thống
+  div(style="text-align: left")
+    +messages
+
+  form.ui.large.form(method='post')
+    +_csrf
+    .ui.error.message
+    .ui.stacked.segment
+      .field
+        .ui.left.icon.input
+          i.user.icon
+          input(type='email', name='email', required, placeholder='Email nhân viên')
+      .field
+        .ui.left.icon.input
+          i.lock.icon
+          input(type='password', name='password', required, placeholder='Mật khẩu')
+      .field
+        .g-recaptcha(data-sitekey=recaptchaSiteKey)
+      .ui.fluid.large.teal.submit.button Đăng nhập
+
+  //.ui.message
+    a(href='/authenticate/forgot-password') Quên mật khẩu?
