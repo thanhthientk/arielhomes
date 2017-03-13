@@ -1,0 +1,18 @@
+<section class="content-header">
+    <h1>
+        {{ moduleInfo.label }}
+        <small>{{ moduleInfo.childLabel }}</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/admin"><i class="fa fa-dashboard"></i>Dashboard</a></li>
+        {% if controller == 'index' %}
+            <li class="active">{{ moduleInfo.label }}</li>
+        {% else %}
+            <li><a href="/admin/{{ moduleInfo.slug }}">{{ moduleInfo.label }}</a></li>
+        {% endif %}
+
+        {% if controller != 'index' %}
+            <li class="active">{{ moduleInfo.childLabel }}</li>
+        {% endif %}
+    </ol>
+</section>

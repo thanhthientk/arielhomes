@@ -1,0 +1,43 @@
+{% macro Label(obj) %}
+    {% if obj.label %}
+        <label for="{{ obj.name }}">
+            {{ obj.label }}
+            {% if obj.required %}
+                <span class="required">*</span>
+            {% endif %}
+        </label>
+    {% endif %}
+{% endmacro %}
+
+{% macro Input(obj = {label: '', name: '', type: '', value: '', requied: false}) %}
+    <div class="form-group">
+        {{ Label(obj) }}
+        <input id="{{ obj.name }}" name="{{ obj.name }}" type="{{ obj.type }}" class="form-control" autocomplete="off" value="{{ obj.value }}" />
+    </div>
+{% endmacro %}
+
+{% macro Textarea(obj = {label: '', name: '', value: '', rows: 4, requied: false}) %}
+    <div class="form-group">
+        {{ Label(obj) }}
+        <textarea id="{{ obj.name }}" name="{{ obj.name }}" class="form-control" rows="{{ obj.rows if obj.rows else 4}}">{{ obj.value }}</textarea>
+    </div>
+{% endmacro %}
+
+{% macro Select(obj = {label: '', name: '',  value: '', item: [], fieldDisplay: 'name', requied: false}) %}
+    {% if obj.fieldDisplay %}
+        {% set fieldDisplay = obj.fieldDisplay %}
+    {% else %}
+        {% set fieldDisplay = 'name' %}
+    {% endif %}
+    <div class="form-group">
+        {{ Label(obj) }}
+        <select id="{{ obj.name }}" name="{{ obj.name }}" class="form-control">
+            <option selected value=""> All </option>
+            {% for item in obj.items %}
+                <option {{ 'selected' if item.id == obj.value }} value="{{ item.id }}">
+                    {{ item[fieldDisplay] }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+{% endmacro %}

@@ -1,0 +1,28 @@
+.content-header{
+    padding: 0 !important;
+    margin-bottom: 15px;
+}
+.content-header>.breadcrumb{
+    padding: 0;
+    top:9px;
+}
+.toolbar {
+    margin-bottom: 10px;
+}
+.main-table{}
+.main-table thead th a{
+    display: block;
+}
+.main-table input[type=checkbox]{
+    transform: scale(1.2);
+    width:100%;
+}
+.main-table i.fa-sort{
+    margin-top: 3px;
+}
+.role-checkbox{
+    padding-left: 15px;
+}
+.role-checkbox input{
+    vertical-align: top;
+}

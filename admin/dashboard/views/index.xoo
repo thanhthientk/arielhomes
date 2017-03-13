@@ -1,0 +1,9 @@
+{% extends "../../views/layout.xoo" %}
+
+{% block content %}
+    <!-- Main content -->
+    <section class="content">
+
+    </section>
+    <!-- /.content -->
+{% endblock %}

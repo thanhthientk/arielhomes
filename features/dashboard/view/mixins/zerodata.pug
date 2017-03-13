@@ -1,9 +1,0 @@
-mixin Zerodata(obj)
-  .zerodata
-    div
-      .zerodataimage
-        i.icon(class= obj.icon)
-      h3!= `Chưa có <span>${module.label}</span> nào!`
-      p!= `Tạo <span>${module.label}</span> đầu tiên bằng cách nhấn nút bên dưới.`
-      .zerodatabutton
-        a.ui.button(href=`/${module.slug}/create`) Thêm mới
