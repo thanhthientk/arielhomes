@@ -4,6 +4,8 @@ const co = require('co');
 const recaptcha = require(`${__libs}/recaptcha`);
 const _Module = _app.model.user;
 const _info = require('../index').info;
+const bcrypt = require(_join('libraries/bcrypt'));
+const nodemailer = require('nodemailer');
 
 const generateColumns = function (users = {}, roles = {}) {
     return [
@@ -26,7 +28,7 @@ const generateColumns = function (users = {}, roles = {}) {
             name: 'email',
             displayType: 'title',
             headSort: true,
-            width: '27%',
+            width: '22%',
             search: {
                 type: 'text'
             }
@@ -37,7 +39,7 @@ const generateColumns = function (users = {}, roles = {}) {
             access: 'role.name',
             displayType: 'sort',
             headSort: true,
-            width: '20%',
+            width: '15%',
             class: 'label bg-blue',
             search: {
                 type: 'select',
@@ -51,7 +53,7 @@ const generateColumns = function (users = {}, roles = {}) {
             access: 'createdBy.fullname',
             displayType: 'sort',
             headSort: true,
-            width: '20%',
+            width: '15%',
             class: 'label bg-blue',
             search: {
                 type: 'select',
@@ -64,12 +66,24 @@ const generateColumns = function (users = {}, roles = {}) {
             name: 'createdOn',
             displayType: 'time',
             headSort: true,
-            width: '20%',
+            width: '15%',
             search: {
                 type: 'date-range'
             }
         }
     ];
+};
+const CheckToken = function (userId, token) {
+    //return false: wrong token or userId
+    return new Promise(function (resolve, reject) {
+        _app.model.user.findById(userId)
+            .then(user => {
+                resolve((userId && token && user && user.token.value === token));
+            })
+            .catch(() => {
+                resolve(false);
+            })
+    })
 };
 
 module.exports = {
@@ -177,6 +191,8 @@ module.exports = {
             return res.redirect('back');
         }
 
+        delete req.body.password;
+        delete req.body.email;
         delete req.body.createdBy;
         _Module.findByIdAndUpdate(req.params.id, cleanObj(req.body))
             .then(() => {
@@ -202,6 +218,55 @@ module.exports = {
                 next(err);
             })
     },
+
+    changePassword: co.wrap(function* (req, res, next) {
+        let response = {
+            status: 'error',
+            message: 'Xảy ra lỗi'
+        };
+        req.checkBody('oldPassword', 'Mật khẩu hiện tại không được trống').notEmpty();
+        req.checkBody('newPassword', 'Mật khẩu mới không được trống').notEmpty();
+        req.checkBody('newPassword', 'Mật khẩu mới có độ dài từ 6 đến 32 kí tự').isLength({min: 6, max: 32});
+        req.checkBody('newPassword2', 'Xác nhận mật khẩu mới không khớp').equals(req.body.newPassword);
+        const errors = req.validationErrors();
+        if (errors) {
+            response.message = 'Lỗi xác thực';
+            response.errCode = 'VALIDATION_ERRORS';
+            response.errors = errors;
+            return res.json(response);
+        }
+        //Check permission
+        let updatePermission = _checkPermission('user_update', req.user);
+        if (!updatePermission && !(req.body.userId == req.user.id)) {
+            response.message = 'Bạn không có quền thay đổi mật khẩu của tài khoản này';
+            return res.json(response);
+        }
+
+        //Check old Password
+        let checkOldPassword = yield bcrypt.checkUserPassword(req.body.userId, req.body.oldPassword);
+        if (!checkOldPassword) {
+            response.message = 'Mật khẩu hiện tại không chính xác';
+            return res.json(response);
+        }
+
+        //Update Pass
+        let newPass = yield bcrypt.hash(req.body.newPassword);
+        if (!newPass) {
+            response.message = 'Lỗi khi mã hóa mật khẩu mới. Vui lòng thử lại sau';
+            return res.json(response);
+        }
+        _app.model.user.findByIdAndUpdate(req.body.userId, {password: newPass})
+            .then(() => {
+                response.status = 'success';
+                response.message = 'Đổi mật khẩu thành công';
+                res.json(response);
+            })
+            .catch(err => {
+                console.log(err);
+                response.message = 'Xảy ra lỗi khi cập nhật mật khẩu mới';
+                res.json(response);
+            })
+    }),
 
     //Authenticate routes
     getLogin: function (req, res, next) {
@@ -250,5 +315,147 @@ module.exports = {
         req.logout();
         res.redirect('/admin/login');
     },
+    
+    getForgotPassword: function (req, res, next) {
+        res.render('users/views/forgot-password', { recaptchaSiteKey: process.env.RECAPTCHA_SITE_KEY })
+    },
+
+    postForgotPassword: co.wrap(function* (req, res, next) {
+        req.checkBody('email', 'Email không đúng định dạng').isEmail();
+        let errors = req.validationErrors();
+        if (errors) {
+            req.flash('errors', errors);
+            return res.redirect('back');
+        }
+
+        //TODO: enable captcha
+        // let GetCheckCaptCha;
+        // try {
+        //     GetCheckCaptCha = yield recaptcha.checkCaptCha(req.body["g-recaptcha-response"]);
+        // } catch (err) {
+        //     req.flash('errors', {msg: 'Lỗi xác thực captcha. Vui lòng thử lại!'});
+        //     return res.redirect('back');
+        // }
+        // if (GetCheckCaptCha.success === false) {
+        //     req.flash('errors', {msg: 'Lỗi xác thực captcha'});
+        //     return res.redirect('back');
+        // }
+
+        let userFound = {}, token = '';
+        _app.model.user.findOne({email: req.body.email})
+            .then(user => {
+                if (!user) {
+                    req.flash('email', req.body.email);
+                    req.flash('errors', {msg: 'Không tìm thấy người dùng'});
+                    return res.redirect('back');
+                }
+                userFound = user;
+                return bcrypt.hash('ahskd123123jhksda' + Date.now());
+            })
+            .then(tokenResult => {
+                token = tokenResult;
+                let now = new Date();
+                let expires = now.setDate(now.getDate() + 1);
+                return _app.model.user.findByIdAndUpdate(userFound._id, {"token.value": token, "token.expires": expires});
+            })
+            .then(user => {
+                let link = `http://localhost:3000/admin/forgot-password/confirm?f=${user.id}&s=${token}`;
+                let html = `<h2>Bạn vừa thực hiện yêu cầu khôi phục mật khẩu</h2>
+                            <p>Vui lòng truy cập vào liên kết sau</p>
+                            <p><a href="${link}">${link}</a></p>`;
+                let transporter = nodemailer.createTransport({
+                    service: 'gmail',
+                    auth: {
+                        user: 'thanhthientk69@gmail.com',
+                        pass: 'qpqtaptvjkvyruim'
+                    }
+                });
+                let mailOptions = {
+                    from: '<admin@cms.com>',
+                    to: user.email,
+                    subject: 'XooCms - Khôi phục mật khẩu',
+                    html
+                };
+                transporter.sendMail(mailOptions, (error, info) => {
+                    if (error) {
+                        req.flash('errors', {msg: 'Có lỗi xảy ra. Vui lòng thử lại'});
+                        return res.redirect('back');
+                    }
+                    req.flash('success', 'Chúng tôi đã gửi liên kết khôi phục mật khẩu. Vui lòng kiểm tra email của bạn!');
+                    res.redirect('back');
+                });
+            })
+            .catch(err => {
+                console.log(err);
+                req.flash('errors', {msg: 'Xảy ra lỗi, Vui lòng thử lại!'});
+                return res.redirect('back');
+            })
+    }),
+
+    confirmToken: co.wrap(function* (req, res, next) {
+        let userId = req.query.f,
+            token = req.query.s;
+        let checkToken = yield CheckToken(userId, token);
+
+        if (!checkToken) {
+            req.flash('errors', {msg: 'Liên kết không đúng hoặc đã hết thời gian thực thi. Vui lòng thử lại'});
+            return res.redirect('/admin/forgot-password');
+        }
+
+        res.render('users/views/change-password', {
+            userId,
+            token,
+            recaptchaSiteKey: process.env.RECAPTCHA_SITE_KEY
+        })
+    }),
+
+    postChangePassword: co.wrap(function* (req, res, next) {
+        //TODO: enable captcha
+        // let GetCheckCaptCha;
+        // try {
+        //     GetCheckCaptCha = yield recaptcha.checkCaptCha(req.body["g-recaptcha-response"]);
+        // } catch (err) {
+        //     req.flash('errors', {msg: 'Lỗi xác thực captcha. Vui lòng thử lại!'});
+        //     return res.redirect('back');
+        // }
+        // if (GetCheckCaptCha.success === false) {
+        //     req.flash('errors', {msg: 'Lỗi xác thực captcha'});
+        //     return res.redirect('back');
+        // }
+        //Validation
+        req.checkBody('password', 'Password không được để trống').notEmpty();
+        req.checkBody('password', 'Password từ 8 đến 32 kí tự').isLength({min: 6, max: 32});
+        req.checkBody('password2', 'Password nhập lại không đúng').equals(req.body.password);
+        let errors = req.validationErrors();
+        if (errors) {
+            req.flash('errors', errors);
+            return res.redirect('back');
+        }
+        //Check userId & token
+        let userId = req.body.userId,
+            token = req.body.token;
+        let checkToken = yield CheckToken(userId, token);
+        if (!checkToken) {
+            req.flash('errors', {msg: 'Liên kết không đúng hoặc đã hết thời gian thực thi. Vui lòng thử lại'});
+            return res.redirect('/admin/forgot-password');
+        }
+
+        //Update Password
+        let newPass = yield bcrypt.hash(req.body.password);
+        if (!newPass) {
+            req.flash('errors', {msg: 'Có lỗi xảy ra. Vui lòng thử lại'});
+            return res.redirect('back');
+        }
+        _app.model.user.findByIdAndUpdate(req.body.userId, {password: newPass})
+            .then(() => {
+                req.flash('success', 'Đổi mật khẩu thành công. Vui lòng đăng nhập');
+                res.redirect('/admin/login');
+            })
+            .catch(err => {
+                console.log(err);
+                req.flash('errors', {msg: 'Có lỗi xảy ra. Vui lòng thử lại'});
+                res.redirect('back');
+            })
+    })
 
 };

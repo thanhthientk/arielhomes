@@ -18,5 +18,15 @@ module.exports = {
             method: 'get',
             authenticate: true
         }
-    ]
+    ],
+    menu: {
+        icon: 'fa fa-link',
+        label: 'Dashboard',
+        url: '/admin',
+        position: 1,
+        activeIf: {
+            module: 'dashboard',
+            controller: ['index']
+        }
+    }
 };

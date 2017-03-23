@@ -1,6 +1,7 @@
 "use strict";
 const url = require('url');
 const moment = require('moment');
+const fs = require('fs');
 
 module.exports = {
 
@@ -36,7 +37,7 @@ module.exports = {
         let query = Object.assign({}, reqQuery);
 
         query.sortBy = sortBy;
-        query.sort = 'desc';
+        query.sort = 'asc';
 
         if (reqQuery.sortBy == sortBy){
             switch (reqQuery.sort) {
@@ -53,6 +54,83 @@ module.exports = {
             pathname: url.parse(originalUrl).pathname,
             query: query
         });
+    },
+
+    sidebarMenu: function (logged_user, module, controller, reqQuery) {
+        function checkActive(menu) {
+            //TODO: short it :(
+            if (
+                (menu.activeIf.module == module || menu.activeIf.module.indexOf(module) >= 0)
+                && menu.activeIf.controller.indexOf(controller) >= 0
+                && (!menu.activeIf.params || (menu.activeIf.params && reqQuery[menu.activeIf.params.reqParam] === menu.activeIf.params.value))
+            ){
+                return 'active'
+            } else {
+                return '';
+            }
+        }
+
+        let html = '<ul class="sidebar-menu">';
+
+        let menus = [];
+        for (let module of ALL_MODULES) {
+            let Menu = require(`${__root}/admin/${module}/index`).menu;
+            if (Menu) {
+                if (Array.isArray(Menu)) {
+                    for (let menu of Menu) {
+                        menus.push(menu)
+                    }
+                } else {
+                    menus.push(Menu);
+                }
+            }
+        }
+        menus = menus.sort(function (a, b) {
+            return a.position - b.position;
+        });
+
+        for (let menu of menus) {
+            if (menu.child) {
+                let parentHtml = `<a href="#"><i class="${menu.icon}"></i><span>${menu.label}</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>`;
+                let childHtml = '<ul class="treeview-menu">';
+                let emptyChild = false;
+                for (let child of menu.child) {
+                    let childActive = checkActive(child);
+                    if (!child.permission || _checkPermission(child.permission, logged_user)){
+                        childHtml += `<li class="${childActive}"><a href="${child.url}">${child.label}</a></li>`;
+                        emptyChild = true;
+                    }
+                }
+                childHtml += '</ul>';
+
+                let parentActive = checkActive(menu);
+                if (emptyChild)
+                    html += `<li class="treeview ${parentActive}">${parentHtml}${childHtml}</li>`;
+            } else {
+                let active = checkActive(menu);
+                if (!menu.permission || (menu.permission && _checkPermission(menu.permission, logged_user)))
+                    html += `<li class="${active}"><a href="${menu.url}"><i class="${menu.icon}"></i><span>${menu.label}</span></a></li>`;
+            }
+        }
+
+        html += '</ul>';
+        return html;
+    },
+
+    toArray: function (arrayObjects, field) {
+        let arr = [];
+        for (let item of arrayObjects) {
+            arr.push(item[field]);
+        }
+        return arr;
+    },
+
+    generateUrlQuery: function (params) {
+        let query = '?';
+        for (let param of params) {
+            query += `&${param.name}=${param.value}`;
+        }
+        return query;
     }
 
 };

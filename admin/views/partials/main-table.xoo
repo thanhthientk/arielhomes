@@ -6,7 +6,11 @@
             <th width="{{ column.width }}">
                 {% if column.displayType == 'checkbox' %}
                     <input type="checkbox">
-                    {% elif column.headSort == true %}
+                {% elif column.displayType == 'image-thumb' %}
+                    <span></span>
+                {% elif column.displayType == 'edit-button' %}
+                    <span></span>
+                {% elif column.headSort == true %}
                     <a href="{{ _global.createSortLink(originalUrl, reqQuery, column.name) }}">
                         {{ column.label }}
                         <i class="fa fa-sort{{ '-' + reqQuery.sort if reqQuery.sortBy == column.name }} pull-right"></i>
@@ -53,35 +57,62 @@
         </form>
     </tr>
     </thead>
+    {# content #}
     <tbody>
-    <form id="multipleDelete" method="post" action="/admin/{{ moduleInfo.slug }}/delete">
-        <input type="hidden" name="_csrf" value={{ _csrf }}>
-        {% for item in items %}
-            <tr>
-                {% for column in columns %}
-                    {% set type = column.displayType %}
-                    {% set name = column.name %}
+        <form id="multipleDelete" method="post" action="/admin/{{ moduleInfo.slug }}/delete">
+            <input type="hidden" name="_csrf" value={{ _csrf }}>
+            {% for item in items %}
+                <tr>
+                    {% for column in columns %}
+                        {% set type = column.displayType %}
+                        {% set name = column.name %}
 
-                    {% if type == 'checkbox' %}
-                        <td><input type="checkbox" name="listId" value={{ item.id }}></td>
-                    {% elif type == 'title' %}
-                        <td><a href="/admin/{{moduleInfo.slug}}/{{item.id}}/edit">{{ item[name] }}</a></td>
-                    {% elif type == 'sort' %}
-                        <td>
-                            {% if item[name] %}
-                                <a class="{{ column.class }}" href="/admin/{{moduleInfo.slug}}/?{{name}}={{item[name].id}}">
-                                    {{ _global.accessObjectByString(item, column.access) }}
-                                </a>
+                        {% if type == 'checkbox' %}
+                            <td><input type="checkbox" name="listId" value={{ item.id }}></td>
+                        {% elif type == 'image-thumb' %}
+                            <td>
+                                <img src="/uploads/{{ item.path }}-150x150{{ item.ext }}" alt="{{ item.name }}" width="50">
+                            </td>
+                        {% elif type == 'title' %}
+                            {% if column.params %}
+                                {% set query = _global.generateUrlQuery(column.params) %}
                             {% endif %}
-                        </td>
-                    {% elif type == 'text' %}
-                        <td>{{ item[name] }}</td>
-                    {% elif type == 'time' %}
-                        <td>{{ _global.timeFormat(item[name], 'DD/MM/Y') }}</td>
-                    {% endif %}
-                {% endfor %}
-            </tr>
-        {% endfor %}
-    </form>
+                            <td><a href="/admin/{{moduleInfo.slug}}/{{item.id}}/edit{{ query }}">{{ item[name] }}</a></td>
+                        {% elif type == 'sort' %}
+                            <td>
+                                {% if item[name] %}
+                                    <a class="{{ column.class }}" href="/admin/{{moduleInfo.slug}}/?{{name}}={{item[name].id}}">
+                                        {{ _global.accessObjectByString(item, column.access) }}
+                                    </a>
+                                {% endif %}
+                            </td>
+                        {% elif type == 'text' %}
+                            <td>{{ item[name] }}</td>
+                        {% elif type == 'time' %}
+                            <td>{{ _global.timeFormat(item[name], 'DD/MM/Y') }}</td>
+                        {% elif type == 'collections' %}
+                            <td>
+                                {% for document in item[name] %}
+                                    <a class="{{ column.class }}" href="/admin/{{moduleInfo.slug}}/?{{name}}={{document.id}}">
+                                        {{ _global.accessObjectByString(document, column.access) }}
+                                    </a>
+                                {% endfor %}
+                            </td>
+                        {% elif type == 'label' %}
+                            <td>
+                                {% set label = column.itemsInfo[item[name]] %}
+                                <span class="label {{ label.class }}">{{ label.text }}</span>
+                            </td>
+                        {% elif type == 'edit-button' %}
+                            <td>
+                                <a href="/admin/{{moduleInfo.slug}}/{{item.id}}/edit">
+                                    <i class="fa fa-pencil-square-o"></i>
+                                </a>
+                            </td>
+                        {% endif %}
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </form>
     </tbody>
 </table>

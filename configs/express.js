@@ -7,7 +7,6 @@ const express = require('express');
 const app = express();
 const nunjucks = require('./nunjucks/nunjucks');
 const database = require('./database');
-const csrf = require('csurf');
 
 module.exports = {
 	start: function() {
@@ -22,7 +21,7 @@ module.exports = {
 
 		//Setup view
 		let engine = nunjucks.init(app);
-		nunjucks.addGlobal(engine, 'author', process.env.AUTHOR);
+		//nunjucks.addGlobal(engine, 'author', process.env.AUTHOR);
 
 		//Session
 		require('./session')(app);
@@ -32,10 +31,8 @@ module.exports = {
 
 		//Middleware
 		require('./middlewares')(app);
-		app.use(csrf());
         /** Public variables for views */
         app.use((req, res, next) => {
-            res.locals._csrf = req.csrfToken();
             res.locals.originalUrl = req.originalUrl;
             res.locals.reqQuery = req.query;
             if (req.user)

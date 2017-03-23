@@ -13,6 +13,10 @@ const userSchema = new mongoose.Schema({
     gender: String,
     birthday: String,
     address: String,
+    token: {
+        value: String,
+        expires: Date
+    },
     createdBy: {type: String, ref: 'User'},
     createdOn: {type: Date, default: Date.now}
 });

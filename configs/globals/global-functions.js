@@ -1,8 +1,21 @@
 "use strict";
 const url = require('url');
+const path = require('path');
 
 const omitEmpty = require('omit-empty');
 global.cleanObj = omitEmpty;
+
+/** Check User Permission */
+global._join = function (inputPath) {
+    return path.join(__root, inputPath);
+};
+
+/** Check User Permission */
+global._checkPermission = function (permission, logged_user) {
+    if (logged_user.role && logged_user.role.permissions.indexOf('supperadmin') > -1)
+        return true;
+    return (logged_user.role && logged_user.role.permissions.indexOf(permission) >= 0);
+};
 
 /** Convert DateRange to Separate Date
  * dd/mm/yyyy - dd/mm/yyyy to yyyy-mm-dd, yyyy-mm-dd
@@ -26,9 +39,15 @@ const separateDateRange = function (dateRange) {
     return {start: startTime, end: endTime}
 };
 
-/** Generate Paginate Query */
-global.generatePaginateParams = function(tableColumns, setPaginateOptions, reqQuery) {
-    let queries = {};
+/**
+ *
+ * @param tableColumns: read field from table to set queries
+ * @param setPaginateOptions: input other paginate option
+ * @param reqQuery: req.query
+ * @param queries: input other queries
+ * @returns {{queries: *, options: *}}
+ */
+global.generatePaginateParams = function(tableColumns, setPaginateOptions, reqQuery, queries = {}) {
 
     let defaultPaginateOptions ={
         page: reqQuery.page || 1,

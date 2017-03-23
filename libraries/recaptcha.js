@@ -17,8 +17,6 @@ const checkCaptCha = function (captchaInput) {
                     try {
                         let parsedData = JSON.parse(data);
                         resolve(parsedData);
-                        //TODO: bat lai captcha
-                        // resolve(true);
                     } catch (e) {
                         resolve(false);
                     }

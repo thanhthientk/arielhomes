@@ -1,3 +1,11 @@
+.pointer{
+    cursor: pointer;
+}
+.sperate{
+    font-size: 10px;
+    position: relative;
+    top: -2px;
+}
 .content-header{
     padding: 0 !important;
     margin-bottom: 15px;
@@ -25,4 +33,77 @@
 }
 .role-checkbox input{
     vertical-align: top;
+}
+
+#uploadPopup .modal-body{
+    padding: 3px !important;
+}
+a.add-img-to-editor{
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+}
+a.img-thumb{
+    cursor: pointer;
+    float: left;
+    width:12.5%;
+    padding: 5px;
+}
+a.img-thumb img{
+    width:100%;
+}
+a.img-thumb.selected img{
+    border: 5px solid #1ab7ea;
+    padding:1px;
+}
+#MediaPopup .modal-body{
+    padding: 6px;
+}
+#MediaPopup .modal-footer{
+    padding: 10px !important;
+}
+#MediaPopup .modal-body,
+#MediaPopup .modal-footer,
+#MediaPopup .modal-content {
+    float: left;
+    width:100%;
+}
+
+.media-navigation button{
+    background-color: #fff;
+}
+.media-navigation button i{
+    font-size: 18px;
+}
+.fw600{
+    font-weight: 600;
+}
+.checkbox-group .form-group{
+    margin-bottom: 0;
+}
+.checkbox-group .form-group label{
+    font-weight: 400;
+}
+.checkbox-group .form-group input{
+    transform: scale(1.2);
+    vertical-align: top;
+    margin-right: 5px;
+}
+.mb0{
+    margin-bottom: 0 !important;
+}
+.mt5{
+    margin-top: 5px !important;
+}
+.ml5{
+    margin-left: 5px;
+}
+.mr3{
+    margin-right: 3px;
+}
+.pl5{
+    padding-left: 5px;
+}
+.fz13{
+    font-size: 13px;
 }

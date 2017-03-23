@@ -1,4 +1,20 @@
 "use strict";
+const rolePermissions = require('../roles/index').permissions;
+
+const info = {
+    label: "Người dùng",
+    slug: "users",
+    singular_slug: "user",
+    views: {
+        index: "users/views/index",
+        create: "users/views/create"
+    },
+    page_title: {
+        index: "Người dùng",
+        create: "Thêm mới",
+        update: "Cập nhật",
+    }
+};
 
 const permissions = {
     read: {
@@ -20,20 +36,7 @@ const permissions = {
 };
 
 module.exports = {
-    info: {
-        label: "Người dùng",
-        slug: "users",
-        singular_slug: "user",
-        views: {
-            index: "users/views/index",
-            create: "users/views/create"
-        },
-        page_title: {
-            index: "Người dùng",
-            create: "Thêm mới",
-            update: "Cập nhật",
-        }
-    },
+    info,
     permissions,
     routes: [
         {
@@ -51,6 +54,26 @@ module.exports = {
             controller: 'getLogout',
             method: 'get',
             authenticate: true
+        },
+        {
+            path: '/admin/forgot-password',
+            controller: 'getForgotPassword',
+            method: 'get'
+        },
+        {
+            path: '/admin/forgot-password',
+            controller: 'postForgotPassword',
+            method: 'post'
+        },
+        {
+            path: '/admin/forgot-password/confirm',
+            controller: 'confirmToken',
+            method: 'get'
+        },
+        {
+            path: '/admin/forgot-password/confirm',
+            controller: 'postChangePassword',
+            method: 'post'
         },
         {
             path: '/admin/users',
@@ -88,11 +111,57 @@ module.exports = {
             authenticate: true
         },
         {
-            path: '/admin/users/destroy',
+            path: '/admin/users/delete',
             controller: 'destroy',
             method: 'post',
             permission: permissions.destroy.slug,
             authenticate: true
+        },
+        {
+            path: '/admin/users/change-password',
+            controller: 'changePassword',
+            method: 'post',
+            authenticate: false,
+            csrf: false
         }
-    ]
+    ],
+    menu: {
+        icon: 'fa fa-link',
+        label: info.label,
+        permission: permissions.read,
+        position: 4,
+        activeIf: {
+            module: [info.slug, 'roles'],
+            controller: ['index', 'create', 'edit']
+        },
+        child: [
+            {
+                label: 'Danh sách',
+                permission: permissions.read.slug,
+                url: '/admin/users',
+                activeIf: {
+                    module: 'users',
+                    controller: ['index']
+                }
+            },
+            {
+                label: 'Thêm mới',
+                permission: permissions.create.slug,
+                url: '/admin/users/create',
+                activeIf: {
+                    module: 'users',
+                    controller: ['create']
+                }
+            },
+            {
+                label: 'Nhóm quyền',
+                permission: rolePermissions.read.slug,
+                url: '/admin/roles',
+                activeIf: {
+                    module: 'roles',
+                    controller: ['index', 'edit', 'create']
+                }
+            }
+        ]
+    },
 };

@@ -1,0 +1,59 @@
+{% extends "../../views/layout.xoo" %}
+
+{% block content %}
+    <section class="content-header">
+        <h1>
+            {{ moduleInfo.childLabel }}
+            {{ moduleInfo.label }}
+        </h1>
+    </section>
+
+    {% if controller == 'edit' %}
+        <form method="post" action="/admin/{{ moduleInfo.slug }}/delete" class="pull-right">
+            <input type="hidden" name="_csrf" value={{ _csrf }}>
+            <input type="hidden" name="single" value='true'>
+            <input type="hidden" name="listId" value={{ item.id }}>
+            <button type="submit" class="btn btn-danger pull-right">
+                <i class="fa fa-remove"></i>
+                Xóa
+            </button>
+        </form>
+    {% endif %}
+    <div class="toolbar">
+        <a href="/admin/{{ moduleInfo.slug }}?module={{ moduleInfo.taxonomy.module }}&type={{ moduleInfo.taxonomy.type }}" class="btn btn-default">
+            <i class="fa fa-angle-left"></i>
+            Quay lại
+        </a>
+        <button class="btn btn-primary" id="submitMainForm">
+            <i class="fa fa-check"></i>
+            {{ moduleInfo.childLabel }}
+        </button>
+    </div>
+
+    <form method="post" id="main-form">
+        <input type="hidden" name="_csrf" value={{ _csrf }}>
+        <input type="hidden" name="itemId" value="{{ item.id }}">
+        {% if controller === 'create' %}
+            <input type="hidden" name="module" value="{{ moduleInfo.taxonomy.module }}">
+            <input type="hidden" name="type" value="{{ moduleInfo.taxonomy.type }}">
+        {% elif controller === 'edit' %}
+            <input type="hidden" name="module" value="{{ item.module }}">
+            <input type="hidden" name="type" value="{{ item.type }}">
+        {% endif %}
+        {# Form inputs#}
+        <div class="box box-primary">
+            <div class="box-body">
+                {{ Form.Input({label: 'Tên', name: 'name', value: item.name, required: true}) }}
+                {{ Form.Textarea({label: 'Miêu tả', name: 'description', value: item.description}) }}
+                {% if controller === 'edit' %}
+                    <div class="form-group form-group-sm" id="aliasSection">
+                        <label for="slug">Alias</label>
+                        <a class="pointer pl5 fz13" id="editSlug" data-module="taxonomies">edit alias</a>
+                        <input readonly class="form-control" type="text" id="slug" name="slug" value="{{ item.slug }}">
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </form>
+
+{% endblock %}

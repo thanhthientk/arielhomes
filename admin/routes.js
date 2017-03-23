@@ -1,6 +1,7 @@
 "use strict";
 const express = require('express');
 const ROUTER = express.Router();
+const csrf = require('csurf');
 
 const authenticateMiddleware = (req, res, next) => {
     if (req.user)
@@ -11,11 +12,8 @@ const authenticateMiddleware = (req, res, next) => {
 
 const checkPermission = function(permission = '') {
     return function (req, res, next) {
-        if (req.user.role && req.user.role.permissions.indexOf('supperadmin') > -1)
-            return next();
-
-        if (req.user.role && req.user.role.permissions.indexOf(permission) >= 0) {
-            next();
+        if (_checkPermission(permission, req.user)) {
+            next()
         } else {
             res.render('views/errors/limit-permission', { pageTitle: 'Bạn không thể truy cập trang này!'});
         }
@@ -24,9 +22,9 @@ const checkPermission = function(permission = '') {
 
 const returnModuleInfo = function (info, controller) {
     return function (req, res, next) {
-        if (controller == 'create')
+        if (controller === 'create')
             info.childLabel = 'Thêm mới';
-        else if (controller == 'edit')
+        else if (controller === 'edit')
             info.childLabel = 'Cập nhật';
 
         res.locals.controller = controller;
@@ -62,6 +60,14 @@ for (let module of modules) {
             for (let i = 0; i < route.middlewares.length; i++) {
                 middlewares.push(route.middlewares[i]);
             }
+        }
+
+        if (route.csrf !== false) {
+            middlewares.push(csrf());
+            middlewares.push(function (req, res, next) {
+                res.locals._csrf = req.csrfToken();
+                next();
+            })
         }
 
         ROUTER[method](path, middlewares, controllers[controller]);

@@ -16,4 +16,4 @@ module.exports = {
 	addGlobal: function(engine, globalName, globalValue) {
 		engine.addGlobal(globalName, globalValue);
 	}
-}
+};

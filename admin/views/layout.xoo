@@ -28,7 +28,6 @@
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-
     <!-- Main Header -->
     {% include "./partials/header.xoo" %}
 
@@ -112,7 +111,12 @@
 <script src="/admin/plugins/toastr/toastr.min.js"></script>
 <script src="/admin/plugins/moment/moment.js"></script>
 <script src="/admin/plugins/jquery-date-range-picker/dist/jquery.daterangepicker.min.js"></script>
+
+{% block js %}
+{% endblock %}
+
 <script src="/admin/dist/js/custom.js"></script>
+<script src="/admin/dist/js/upload.js"></script>
 <script src="/admin/dist/js/app.js"></script>
 
 <script>
@@ -126,10 +130,6 @@
         {% endif %}
     })
 </script>
-
-
-{% block js %}
-{% endblock %}
 
 </body>
 </html>

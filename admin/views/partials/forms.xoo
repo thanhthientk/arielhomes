@@ -1,3 +1,7 @@
+{% macro Csrf(_csrf) %}
+    <input type="hidden" name="_csrf" value="{{ _csrf }}">
+{% endmacro %}
+
 {% macro Label(obj) %}
     {% if obj.label %}
         <label for="{{ obj.name }}">
@@ -12,7 +16,15 @@
 {% macro Input(obj = {label: '', name: '', type: '', value: '', requied: false}) %}
     <div class="form-group">
         {{ Label(obj) }}
-        <input id="{{ obj.name }}" name="{{ obj.name }}" type="{{ obj.type }}" class="form-control" autocomplete="off" value="{{ obj.value }}" />
+        <input
+            id="{{ obj.name }}"
+            name="{{ obj.name }}"
+            type="{{ obj.type }}"
+            class="form-control"
+            autocomplete="off"
+            value="{{ obj.value }}"
+            {{ 'readonly' if obj.readonly }}
+        />
     </div>
 {% endmacro %}
 
@@ -23,7 +35,7 @@
     </div>
 {% endmacro %}
 
-{% macro Select(obj = {label: '', name: '',  value: '', item: [], fieldDisplay: 'name', requied: false}) %}
+{% macro Select(obj = {label: '', name: '',  value: '', items: [], fieldDisplay: 'name', requied: false}) %}
     {% if obj.fieldDisplay %}
         {% set fieldDisplay = obj.fieldDisplay %}
     {% else %}
@@ -39,5 +51,45 @@
                 </option>
             {% endfor %}
         </select>
+    </div>
+{% endmacro %}
+
+{% macro CallMediaPopup(obj = {class: '', action: '', targetId: '', text: ''}) %}
+    <a class="{{ obj.class }}"
+       type="button"
+       data-toggle="modal"
+       data-target="#MediaPopup"
+       data-action="{{ obj.action }}"
+       data-targetid="{{ obj.targetId }}">{{ obj.text }}</a>
+{% endmacro %}
+
+{% macro Editor(obj) %}
+    <div class="form-group">
+        {{ Label(obj) }}
+        <p>{{ CallMediaPopup({text: 'Chèn ảnh', action: 'add-img-to-editor', class: 'add-img-to-editor', targetId: obj.name}) }}</p>
+        <textarea id="{{ obj.name }}" name="{{ obj.name }}" class="form-control editor">{{ obj.value }}</textarea>
+    </div>
+{% endmacro %}
+
+{#Checkbox Group#}
+{% macro CheckboxGroup(obj = {items: []}) %}
+    {% if not obj.value %}
+        {% set checkedItems = [] %}
+    {% else %}
+        {% set checkedItems = obj.value %}
+    {% endif %}
+    <p><strong>{{ obj.label }}</strong></p>
+    <div class="checkbox-group">
+        {% for item in obj.items %}
+            <div class="form-group">
+                <input
+                    {{ "checked" if checkedItems.indexOf(item.id) > -1 }}
+                    type="checkbox"
+                    id="{{ item.id }}"
+                    value="{{ item.id }}"
+                    name="{{ obj.name }}">
+                <label for="{{ item.id }}">{{ item.name }}</label>
+            </div>
+        {% endfor %}
     </div>
 {% endmacro %}
