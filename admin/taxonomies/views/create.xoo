@@ -19,8 +19,12 @@
             </button>
         </form>
     {% endif %}
+
+    {% if reqQuery['post_type'] %}
+        {% set postType = '&post_type=' + reqQuery['post_type'] %}
+    {% endif %}
     <div class="toolbar">
-        <a href="/admin/{{ moduleInfo.slug }}?module={{ moduleInfo.taxonomy.module }}&type={{ moduleInfo.taxonomy.type }}" class="btn btn-default">
+        <a href="/admin/{{ moduleInfo.slug }}?module={{ moduleInfo.taxonomy.module }}&type={{ moduleInfo.taxonomy.type }}{{ postType }}" class="btn btn-default">
             <i class="fa fa-angle-left"></i>
             Quay lại
         </a>
@@ -36,9 +40,11 @@
         {% if controller === 'create' %}
             <input type="hidden" name="module" value="{{ moduleInfo.taxonomy.module }}">
             <input type="hidden" name="type" value="{{ moduleInfo.taxonomy.type }}">
+            <input type="hidden" name="postType" value="{{ moduleInfo.taxonomy.postType }}">
         {% elif controller === 'edit' %}
             <input type="hidden" name="module" value="{{ item.module }}">
             <input type="hidden" name="type" value="{{ item.type }}">
+            <input type="hidden" name="postType" value="{{ item.postType }}">
         {% endif %}
         {# Form inputs#}
         <div class="box box-primary">

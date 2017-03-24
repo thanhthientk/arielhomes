@@ -60,8 +60,8 @@ module.exports = {
         function checkActive(menu) {
             //TODO: short it :(
             if (
-                (menu.activeIf.module == module || menu.activeIf.module.indexOf(module) >= 0)
-                && menu.activeIf.controller.indexOf(controller) >= 0
+                (menu.activeIf.module === module || menu.activeIf.module.indexOf(module) >= 0)
+                && ( menu.activeIf.controller === 'all' || menu.activeIf.controller.indexOf(controller) >= 0)
                 && (!menu.activeIf.params || (menu.activeIf.params && reqQuery[menu.activeIf.params.reqParam] === menu.activeIf.params.value))
             ){
                 return 'active'
@@ -128,7 +128,8 @@ module.exports = {
     generateUrlQuery: function (params) {
         let query = '?';
         for (let param of params) {
-            query += `&${param.name}=${param.value}`;
+            if (param.name && param.value)
+                query += `&${param.name}=${param.value}`;
         }
         return query;
     }

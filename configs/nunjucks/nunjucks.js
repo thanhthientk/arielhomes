@@ -3,7 +3,7 @@
 const nunjucks = require('nunjucks');
 module.exports = {
 	init: function(app) {
-		const engine = nunjucks.configure('admin',{
+		const engine = nunjucks.configure(['admin', 'themes'],{
 		    autoescape : true,
 		    watch: true,
 		    express : app

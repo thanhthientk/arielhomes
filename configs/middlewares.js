@@ -16,6 +16,7 @@ module.exports = function(app) {
 	app.use(flash());
 	if (process.env.ENV == 'development'){
 	    app.use(express.static(path.join(__root, 'public'))); //{ maxAge: '7d'}
+	    app.use(express.static(path.join(__root, 'themes'))); //{ maxAge: '7d'}
 		app.use(logger('dev'));
 	}
 };

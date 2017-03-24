@@ -4,13 +4,15 @@ const mongoosePaginate = require('mongoose-paginate');
 const info = require('../index').info;
 
 const schema = new mongoose.Schema({
-    slug: {type: String, unique: true},
     name: {type: String, required: true},
+    slug: {type: String, unique: true},
+    postType: {type: String, default: 'post'},
     content: String,
     description: String,
     categories: [{type: String, ref: 'Taxonomy'}],
     tags: [{type: String, ref: 'Taxonomy'}],
     image: {path: String, ext: String},
+    fields: {},
     status: {type: String, default: 'show'},
     createdBy: {type: String, ref: 'User', required: true},
     createdOn: {type: Date, default: Date.now}

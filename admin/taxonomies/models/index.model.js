@@ -7,6 +7,7 @@ const schema = new mongoose.Schema({
     slug: {type: String},
     name: {type: String, required: true},
     description: String,
+    postType: String,
     module: String,
     type: String,
     createdBy: {type: String, ref: 'User', required: true},

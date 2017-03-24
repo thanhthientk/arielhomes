@@ -43,6 +43,7 @@ module.exports = {
         /**
          * Routes
          */
+        app.use('/', require(path.join(__root, 'frontend/routes')));
         app.use('/', require(path.join(__root, 'admin/routes')));
 
 		//Errors Handler

@@ -6,13 +6,20 @@ const PostRoles = require('../posts/index').permissions;
  */
 const getTaxonomyInfo = function (req, res, next) {
     let taxonomyModule = req.query.module,
-        taxonomyType = req.query.type;
+        taxonomyType = req.query.type,
+        postType = req.query['post_type'];
+
     if (!taxonomyModule || !taxonomyType){
         console.log('Wrong module && type', taxonomyModule, taxonomyType);
         return res.redirect('back');
     }
 
-    let taxonomyInfo = require(_join(`admin/${taxonomyModule}/index`)).taxonomies[taxonomyType];
+    let taxonomyInfo;
+    if (postType)
+        taxonomyInfo = require(_join(`admin/${taxonomyModule}/post_types/${postType}`)).taxonomies[taxonomyType];
+    else
+        taxonomyInfo = require(_join(`admin/${taxonomyModule}/index`)).taxonomies[taxonomyType];
+
     res.locals.moduleInfo.label = taxonomyInfo.label;
     res.locals.moduleInfo.taxonomy = {
         module: taxonomyModule,

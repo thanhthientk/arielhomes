@@ -1,11 +1,19 @@
 {% extends "../../views/layout.xoo" %}
 
 {% block content %}
-    {% include "../../views/partials/module-header.xoo" %}
+    <section class="content-header">
+        <h1>
+            {% if controller !== 'index' %}
+                {{ moduleInfo.childLabel }}
+            {% endif %}
+            {{ postTypeInfo.info.label }}
+        </h1>
+    </section>
 
     <form method="post" id="main-form">
         <input type="hidden" name="_csrf" value={{ _csrf }}>
         <input type="hidden" name="itemId" value="{{ item.id }}">
+        <input type="hidden" name="postType" value="{{ postTypeInfo.info.slug }}">
         {# Form inputs#}
         <div class="row">
             {#left#}

@@ -7,7 +7,7 @@ const _Module = _app.model[_info.singular_slug];
 const Slug = require(_join('libraries/slug'));
 const co = require('co');
 
-const generateColumns = function (users = {}, taxonomyModule, taxonomyType) {
+const generateColumns = function (users = {}, taxonomyModule, postType, taxonomyType) {
     return [
         {
             displayType: 'checkbox',
@@ -24,7 +24,8 @@ const generateColumns = function (users = {}, taxonomyModule, taxonomyType) {
             },
             params: [
                 {name: 'module', value: taxonomyModule},
-                {name: 'type', value: taxonomyType}
+                {name: 'type', value: taxonomyType},
+                {name: 'post_type', value: postType}
             ]
         },
         {
@@ -64,8 +65,11 @@ module.exports = {
         };
         let queries = {
             module: req.query.module,
-            type: req.query.type
+            type: req.query.type,
         };
+        if (req.query['post_type'])
+            queries.postType = req.query['post_type'];
+
         let paginateParams = generatePaginateParams(generateColumns(), setPaginateOptions, req.query, queries);
 
         Promise.all([
@@ -76,7 +80,7 @@ module.exports = {
                 let users = results[1];
                 let items = results[0].docs;
                 let paginated = generatePaginateLink(req, results[0]);
-                let columns = generateColumns(users, req.query.module, req.query.type);
+                let columns = generateColumns(users, req.query.module, req.query['post_type'], req.query.type);
                 res.render(_info.views.index, { items, paginated, columns });
             }))
             .catch(err => {
@@ -103,7 +107,8 @@ module.exports = {
         _module.save()
             .then(() => {
                 req.flash('success', `Bạn đã thêm một ${_info.label} mới!`);
-                res.redirect(`/admin/${_info.slug}?module=${req.body.module}&type=${req.body.type}`);
+                let postType = (req.body.postType) ? `&post_type=${req.body.postType}` : '';
+                res.redirect(`/admin/${_info.slug}?module=${req.body.module}&type=${req.body.type}${postType}`);
             })
             .catch(err => {
                 next(err);

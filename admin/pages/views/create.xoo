@@ -1,0 +1,72 @@
+{% extends "../../views/layout.xoo" %}
+
+{% block content %}
+    {% include "../../views/partials/module-header.xoo" %}
+
+    <form method="post" id="main-form">
+        <input type="hidden" name="_csrf" value={{ _csrf }}>
+        <input type="hidden" name="itemId" value="{{ item.id }}">
+        {# Form inputs#}
+        <div class="row">
+            {#left#}
+            <div class="col-md-9 col-xs-12">
+                <div class="box">
+                    <div class="box-body">
+                        {{ Form.Input({label: 'Tiêu đề', name: 'name', value: item.name, required: true}) }}
+                        {{ Form.Editor({label: 'Nội dung', name: 'content', value: item.content}) }}
+                        {% if controller !== 'create' %}
+                            <div class="form-group form-group-sm" id="aliasSection">
+                                <label for="slug">Alias</label>
+                                <a class="pointer pl5 fz13" id="editSlug" data-module="posts">edit alias</a>
+                                <input readonly class="form-control" type="text" id="slug" name="slug" value="{{ item.slug }}">
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {#right#}
+            <div class="col-md-3 col-xs-12">
+                <div class="box">
+                    <div class="box-body">
+                        <div class="form-group">
+                            {% set items = [{id: 'show', name: 'Hiển thị'}, {id: 'hide', name: 'Ẩn'}] %}
+                            {{ Form.Select({label: 'Trạng thái', name: 'status', items: items, value: item.status}) }}
+                        </div>
+                        <div class="text-right">
+                            <button class="btn btn-primary">Lưu</button>
+                        </div>
+                    </div>
+                </div>
+                {#image#}
+                <div class="box">
+                    <div class="box-body">
+                        <label>Chọn ảnh đại diện</label>
+                        <div id="featureImage">
+                            <input type="hidden" name="imgPath" value="{{ item.image.path }}">
+                            <input type="hidden" name="imgExt" value="{{ item.image.ext }}">
+                            {% if (item.image and item.image.path) %}
+                                <img src="/uploads/{{ item.image.path }}-150x150{{ item.image.ext }}" alt="">
+                            {% endif %}
+                        </div>
+                        <div style="margin-top: 10px;">
+                            {{ Form.CallMediaPopup({text: 'Chọn ảnh', action: 'single', class: 'pointer', targetId: 'featureImage'}) }}
+                            <span class="sperate"> &nbsp; &nbsp; | &nbsp; &nbsp; </span>
+                            <a class="pointer removeSingleImage" data-targetid="featureImage">Xóa</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    {#Media Popup#}
+    {% include "../../media/views/media-popup.xoo" %}
+    {#Upload Popup#}
+    {% include "../../media/views/upload-popup.xoo" %}
+
+
+{% endblock %}
+
+{% block js %}
+    <script src="/admin/plugins/ckeditor/ckeditor.js"></script>
+{% endblock %}

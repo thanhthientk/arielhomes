@@ -1,7 +1,20 @@
 {% extends "../../views/layout.xoo" %}
 
 {% block content %}
-    {{ super() }}
+    <div class="toolbar">
+        <a href="/admin/{{ moduleInfo.slug }}?post_type={{ postTypeInfo.info.slug }}" class="btn btn-info">
+            <i class="fa fa-refresh"></i>
+            Làm mới
+        </a>
+        <a href="/admin/{{ moduleInfo.slug }}/create?post_type={{ postTypeInfo.info.slug }}" class="btn btn-primary">
+            <i class="fa fa-plus"></i>
+            Thêm mới
+        </a>
+        <a class="btn btn-danger pull-right disabled" id="multipleDelete-btn">
+            <i class="fa fa-remove"></i>
+            Xóa
+        </a>
+    </div>
 
     {#Table Content#}
     <div class="box">

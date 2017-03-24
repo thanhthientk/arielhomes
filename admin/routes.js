@@ -47,7 +47,7 @@ for (let module of modules) {
         if (typeof controllers[controller] != 'function')
             throw new Error(`Not Found Controller: ${controller} - Module: ${module}`);
 
-        if (controller == 'index' || controller == 'create' || controller == 'edit')
+        if (method !== 'post')
             middlewares.push(returnModuleInfo(selfModule.info, controller));
 
         if (authenticate)

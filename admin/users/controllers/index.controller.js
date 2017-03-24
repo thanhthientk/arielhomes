@@ -317,7 +317,7 @@ module.exports = {
     },
     
     getForgotPassword: function (req, res, next) {
-        res.render('users/views/forgot-password', { recaptchaSiteKey: process.env.RECAPTCHA_SITE_KEY })
+        res.render('users/views/forgot-password', { pageTitle: 'Quên mật khẩu', recaptchaSiteKey: process.env.RECAPTCHA_SITE_KEY })
     },
 
     postForgotPassword: co.wrap(function* (req, res, next) {
@@ -328,18 +328,17 @@ module.exports = {
             return res.redirect('back');
         }
 
-        //TODO: enable captcha
-        // let GetCheckCaptCha;
-        // try {
-        //     GetCheckCaptCha = yield recaptcha.checkCaptCha(req.body["g-recaptcha-response"]);
-        // } catch (err) {
-        //     req.flash('errors', {msg: 'Lỗi xác thực captcha. Vui lòng thử lại!'});
-        //     return res.redirect('back');
-        // }
-        // if (GetCheckCaptCha.success === false) {
-        //     req.flash('errors', {msg: 'Lỗi xác thực captcha'});
-        //     return res.redirect('back');
-        // }
+        let GetCheckCaptCha;
+        try {
+            GetCheckCaptCha = yield recaptcha.checkCaptCha(req.body["g-recaptcha-response"]);
+        } catch (err) {
+            req.flash('errors', {msg: 'Lỗi xác thực captcha. Vui lòng thử lại!'});
+            return res.redirect('back');
+        }
+        if (GetCheckCaptCha.success === false) {
+            req.flash('errors', {msg: 'Lỗi xác thực captcha'});
+            return res.redirect('back');
+        }
 
         let userFound = {}, token = '';
         _app.model.user.findOne({email: req.body.email})
@@ -405,23 +404,23 @@ module.exports = {
         res.render('users/views/change-password', {
             userId,
             token,
+            pageTitle: 'Quên mật khẩu',
             recaptchaSiteKey: process.env.RECAPTCHA_SITE_KEY
         })
     }),
 
     postChangePassword: co.wrap(function* (req, res, next) {
-        //TODO: enable captcha
-        // let GetCheckCaptCha;
-        // try {
-        //     GetCheckCaptCha = yield recaptcha.checkCaptCha(req.body["g-recaptcha-response"]);
-        // } catch (err) {
-        //     req.flash('errors', {msg: 'Lỗi xác thực captcha. Vui lòng thử lại!'});
-        //     return res.redirect('back');
-        // }
-        // if (GetCheckCaptCha.success === false) {
-        //     req.flash('errors', {msg: 'Lỗi xác thực captcha'});
-        //     return res.redirect('back');
-        // }
+        let GetCheckCaptCha;
+        try {
+            GetCheckCaptCha = yield recaptcha.checkCaptCha(req.body["g-recaptcha-response"]);
+        } catch (err) {
+            req.flash('errors', {msg: 'Lỗi xác thực captcha. Vui lòng thử lại!'});
+            return res.redirect('back');
+        }
+        if (GetCheckCaptCha.success === false) {
+            req.flash('errors', {msg: 'Lỗi xác thực captcha'});
+            return res.redirect('back');
+        }
         //Validation
         req.checkBody('password', 'Password không được để trống').notEmpty();
         req.checkBody('password', 'Password từ 8 đến 32 kí tự').isLength({min: 6, max: 32});

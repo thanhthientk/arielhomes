@@ -23,6 +23,7 @@
             class="form-control"
             autocomplete="off"
             value="{{ obj.value }}"
+            placeholder="{{ obj.placeholder }}"
             {{ 'readonly' if obj.readonly }}
         />
     </div>
@@ -31,7 +32,12 @@
 {% macro Textarea(obj = {label: '', name: '', value: '', rows: 4, requied: false}) %}
     <div class="form-group">
         {{ Label(obj) }}
-        <textarea id="{{ obj.name }}" name="{{ obj.name }}" class="form-control" rows="{{ obj.rows if obj.rows else 4}}">{{ obj.value }}</textarea>
+        <textarea
+                id="{{ obj.name }}"
+                name="{{ obj.name }}"
+                class="form-control"
+                placeholder="{{ obj.placeholder }}"
+                rows="{{ obj.rows if obj.rows else 4}}">{{ obj.value }}</textarea>
     </div>
 {% endmacro %}
 
