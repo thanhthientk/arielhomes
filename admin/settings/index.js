@@ -15,13 +15,13 @@ const info = {
     }
 };
 const permissions = {
-    read: {
-        title: `Quản lý ${info.label}`,
-        slug: `${info.singular_slug}_read`
+    general: {
+        title: 'Cài đặt chung',
+        slug: `${info.singular_slug}_general`
     },
-    create: {
-        title: `Thêm ${info.label} mới`,
-        slug: `${info.singular_slug}_create`
+    themeOption: {
+        title: 'Tùy chỉnh giao diện',
+        slug: `${info.singular_slug}_theme_option`
     },
     update: {
         title: `Cập nhật ${info.label}`,
@@ -41,32 +41,56 @@ module.exports = {
             path: `/admin/${info.slug}/general`,
             controller: 'general',
             method: 'get',
-            authenticate: true
+            authenticate: true,
+            permission: permissions.general.slug,
         },
         {
             path: `/admin/${info.slug}/general`,
             controller: 'postGeneral',
             method: 'post',
-            authenticate: true
+            authenticate: true,
+            permission: permissions.general.slug,
+        },
+        {
+            path: `/admin/${info.slug}/theme-options`,
+            controller: 'themeOptions',
+            method: 'get',
+            authenticate: true,
+            permission: permissions.themeOption.slug,
+        },
+        {
+            path: `/admin/${info.slug}/general`,
+            controller: 'postThemeOptions',
+            method: 'post',
+            authenticate: true,
+            permission: permissions.themeOption.slug,
         },
     ],
     menu: {
         icon: 'fa fa-link',
         label: info.label,
-        permission: permissions.read,
         position: 90,
         activeIf: {
             module: info.slug,
-            controller: ['general', 'create', 'edit']
+            controller: 'all'
         },
         child: [
             {
                 label: 'Cài đặt chung',
-                permission: permissions.read.slug,
+                permission: permissions.general.slug,
                 url: `/admin/${info.slug}/general`,
                 activeIf: {
                     module: info.slug,
                     controller: ['general']
+                }
+            },
+            {
+                label: 'Tùy chỉnh Giao diện',
+                permission: permissions.themeOption.slug,
+                url: `/admin/${info.slug}/theme-options`,
+                activeIf: {
+                    module: info.slug,
+                    controller: ['themeOptions']
                 }
             },
         ]

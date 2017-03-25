@@ -3,7 +3,6 @@ const info = {
     label: "Trang",
     slug: "pages",
     singular_slug: "page",
-    collection: 'Pages',
     views: {
         index: "pages/views/index",
         create: "pages/views/create"

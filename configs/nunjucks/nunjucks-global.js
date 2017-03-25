@@ -2,6 +2,7 @@
 const url = require('url');
 const moment = require('moment');
 const fs = require('fs');
+const path = require('path');
 
 module.exports = {
 
@@ -132,6 +133,11 @@ module.exports = {
                 query += `&${param.name}=${param.value}`;
         }
         return query;
+    },
+
+    post_thumbnail: function (imagePath, thumbName) {
+        let image = path.parse(imagePath);
+        return `/uploads/${image.name}-150x150${image.ext}`;
     }
 
 };

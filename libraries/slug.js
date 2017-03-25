@@ -7,23 +7,12 @@ const generateSlug = function (string, model) {
 
     let slug = Slug(string.toLowerCase());
     return new Promise(function (resolve, reject) {
-        // _app.model.post.count({slug: new RegExp(slug, 'i')})
-        //     .then(count => {
-        //         if (count == 0)
-        //             resolve(slug);
-        //         else
-        //             resolve(slug + '-' + (count + 1));
-        //     })
-        //     .catch(err => {
-        //         console.log(err);
-        //         resolve(slug + '-' + Date.now());
-        //     })
-        _app.model[model].count({slug})
+        _app.model[model].count({slug: new RegExp(`^(${slug})$|(${slug})-([0-9]+)`, 'ig')})
             .then(count => {
-                if (count == 0)
+                if (count === 0)
                     resolve(slug);
                 else
-                    resolve(slug + '-' + Date.now());
+                    resolve(slug + '-' + (count + 1));
             })
             .catch(err => {
                 console.log(err);

@@ -160,7 +160,7 @@ module.exports = {
             })
     },
 
-    apiCreate: function(req, res, next) {
+    apiCreate: co.wrap(function* (req, res, next) {
         let response = {
             status: '',
             message: '',
@@ -175,6 +175,7 @@ module.exports = {
         }
 
         req.body.createdBy = req.user._id.toString();
+        req.body.slug = yield Slug.generateSlug(req.body.name, 'taxonomy');
 
         let _module = new _Module(cleanObj(req.body));
         _module.save()
@@ -189,7 +190,7 @@ module.exports = {
                 response.message = 'Lỗi khi thêm';
                 res.json(response);
             });
-    },
+    }),
 
     apiChangeSlug: co.wrap(function* (req, res, next) {
         let response = yield Slug.updateSlug(req, 'taxonomy');

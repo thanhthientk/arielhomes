@@ -19,8 +19,8 @@ global.ALL_MODULES = modules;
 /*** Get all model into Global Var */
 let _app = { model: {} };
 for (let module of ALL_MODULES) {
-    let modulePath = path.join(__root, `admin/${module}/models/index.model.js`);
-    if (fs.existsSync(modulePath)) {
+    let modelOfModule = path.join(__root, `admin/${module}/models/index.model.js`);
+    if (fs.existsSync(modelOfModule)) {
         let moduleSlug = require(path.join(__root, `admin/${module}`)).info.singular_slug;
         _app.model[moduleSlug] = require(path.join(__root, `admin/${module}/models/index.model.js`));
     }

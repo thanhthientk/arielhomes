@@ -24,16 +24,6 @@ const generateColumns = function (users = [{}], categories = [{}]) {
             }
         },
         {
-            label: 'Alias',
-            name: 'slug',
-            displayType: 'title',
-            headSort: true,
-            width: '18%',
-            search: {
-                type: 'text'
-            }
-        },
-        {
             label: 'Categories',
             name: 'categories',
             access: 'name',
@@ -108,7 +98,12 @@ module.exports = {
                 {path: 'categories', select: 'name'}
             ]
         };
-        let paginateParams = generatePaginateParams(generateColumns(), setPaginateOptions, req.query);
+        let paginateParams = generatePaginateParams(
+            generateColumns(),
+            setPaginateOptions,
+            req.query,
+            {postType: 'post'}
+        );
 
         Promise.all([
             _Module.paginate(paginateParams.queries, paginateParams.options),
@@ -147,10 +142,6 @@ module.exports = {
         }
 
         req.body.createdBy = req.user._id.toString();
-        req.body.image = {
-            path: req.body.imgPath,
-            ext: req.body.imgExt
-        };
 
         req.body.slug = yield Slug.generateSlug(req.body.name, 'post');
 
@@ -188,11 +179,6 @@ module.exports = {
             req.flash('errors', errors);
             return res.redirect('back');
         }
-
-        req.body.image = {
-            path: req.body.imgPath,
-            ext: req.body.imgExt
-        };
 
         delete req.body.slug;
         delete req.body.createdBy;

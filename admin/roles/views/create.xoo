@@ -23,7 +23,7 @@
                                                 type="checkbox"
                                                 name="permissions"
                                                 value="{{ permission.slug }}"
-                                                {{ "checked" if logged_user.role.permissions.indexOf(permission.slug) > -1 }}
+                                                {{ "checked" if (controller === 'edit' and logged_user.role.permissions.indexOf(permission.slug) > -1) }}
                                             />
                                             {{ permission.title }}
                                         </label>

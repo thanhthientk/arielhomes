@@ -3,7 +3,7 @@
  * _datas
  * _data */
 const _info = require('../index').info;
-const _Module = _app.model[_info.singular_slug];
+const _Module = _app.model.post;
 const Slug = require(_join('libraries/slug'));
 const co = require('co');
 
@@ -93,7 +93,12 @@ module.exports = {
                 {path: 'createdBy', select: 'fullname'}
             ]
         };
-        let paginateParams = generatePaginateParams(generateColumns(), setPaginateOptions, req.query);
+        let paginateParams = generatePaginateParams(
+            generateColumns(),
+            setPaginateOptions,
+            req.query,
+            {postType: 'page'}
+        );
 
         Promise.all([
             _Module.paginate(paginateParams.queries, paginateParams.options),
@@ -129,7 +134,7 @@ module.exports = {
             ext: req.body.imgExt
         };
 
-        req.body.slug = yield Slug.generateSlug(req.body.name, 'page');
+        req.body.slug = yield Slug.generateSlug(req.body.name, 'post');
 
         let _module = new _Module(cleanObj(req.body));
         _module.save()
@@ -194,7 +199,7 @@ module.exports = {
     },
 
     apiChangeSlug: co.wrap(function* (req, res, next) {
-        let response = yield Slug.updateSlug(req, 'page');
+        let response = yield Slug.updateSlug(req, 'post');
         res.json(response);
     })
 

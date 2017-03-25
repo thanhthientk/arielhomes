@@ -26,6 +26,14 @@ module.exports = {
             .catch((err) => {
                 next(err);
             })
-    }
+    },
+
+    themeOptions: function (req, res, next) {
+        let themeOptions = require('./../theme-options');
+        res.render('settings/views/theme-option', {pageTitle: 'Tùy chỉnh giao diện', themeOptions});
+    },
+    postThemeOptions: function (req, res, next) {
+
+    },
 
 };

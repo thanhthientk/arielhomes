@@ -13,7 +13,7 @@
     <form method="post" id="main-form">
         <input type="hidden" name="_csrf" value={{ _csrf }}>
         <input type="hidden" name="itemId" value="{{ item.id }}">
-        <input type="hidden" name="postType" value="{{ postTypeInfo.info.slug }}">
+        <input type="hidden" name="postType" value="post">
         {# Form inputs#}
         <div class="row">
             {#left#}
@@ -24,54 +24,33 @@
                         {{ Form.Editor({label: 'Nội dung', name: 'content', value: item.content}) }}
                         {{ Form.Textarea({label: 'Miêu tả', name: 'description', value: item.description}) }}
                         {% if controller !== 'create' %}
-                            <div class="form-group form-group-sm" id="aliasSection">
-                                <label for="slug">Alias</label>
-                                <a class="pointer pl5 fz13" id="editSlug" data-module="posts">edit alias</a>
-                                <input readonly class="form-control" type="text" id="slug" name="slug" value="{{ item.slug }}">
-                            </div>
+                            {{ Form.Alias('posts', item.slug) }}
                         {% endif %}
                     </div>
                 </div>
             </div>
             {#right#}
             <div class="col-md-3 col-xs-12">
-                <div class="box">
-                    <div class="box-body">
-                        <div class="form-group">
-                            {% set items = [{id: 'show', name: 'Hiển thị'}, {id: 'hide', name: 'Ẩn'}] %}
-                            {{ Form.Select({label: 'Trạng thái', name: 'status', items: items, value: item.status}) }}
-                        </div>
-                        <div class="text-right">
-                            <button class="btn btn-primary">Lưu</button>
-                        </div>
-                    </div>
-                </div>
+                {#Status#}
+                {{ Form.BoxPostStatus(item.status) }}
+
                 {#categories#}
-                <div class="box" id="categoriesBox">
-                    <div class="box-body">
-                        {{ Form.CheckboxGroup({label: 'Danh mục bài viết', name: 'categories', items: categories, value: item.categories}) }}
-
-                        <a role="button" data-toggle="collapse" href="#addNewCategory" aria-expanded="false" aria-controls="addNewCategory">
-                            + thêm danh mục mới
-                        </a>
-
-                        <div class="collapse" id="addNewCategory">
-                            <div class="form-group form-group-sm mb0 mt5">
-                                <input type="text" class="form-control" name="newCategory" id="newCategory" placeholder="Tên danh mục" autocomplete="off">
-                                <button id="btnAddNewCategory" class="btn btn-default btn-sm mt5" type="button">thêm mới</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {{ Form.TaxonomiesBox({
+                    label: 'Danh mục bài viết',
+                    inputName: 'categories',
+                    taxonomyModule: 'posts',
+                    taxonomyType: 'category',
+                    items: categories,
+                    selectedItems: item.categories
+                }) }}
                 {#image#}
                 <div class="box">
                     <div class="box-body">
                         <label>Chọn ảnh đại diện</label>
                         <div id="featureImage">
-                            <input type="hidden" name="imgPath" value="{{ item.image.path }}">
-                            <input type="hidden" name="imgExt" value="{{ item.image.ext }}">
-                            {% if (item.image and item.image.path) %}
-                                <img src="/uploads/{{ item.image.path }}-150x150{{ item.image.ext }}" alt="">
+                            <input type="hidden" name="image" value="{{ item.image }}">
+                            {% if (item.image) %}
+                                <img src="{{ _global.post_thumbnail(item.image) }}" />
                             {% endif %}
                         </div>
                         <div style="margin-top: 10px;">

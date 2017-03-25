@@ -1,0 +1,70 @@
+{% extends "../../views/layout.xoo" %}
+
+{% block content %}
+    <section class="content-header pull-left">
+        <h1>Tùy chỉnh giao diện</h1>
+    </section>
+
+    <div class="toolbar pull-right">
+        <button class="btn btn-primary" id="submitMainForm">
+            <i class="fa fa-check"></i>
+            Cập nhật
+        </button>
+    </div>
+    <div class="clearfix"></div>
+
+    <div class="row">
+        {#Sidebar#}
+        <div class="col-md-3">
+            <div class="box box-solid">
+                <div class="box-body no-padding">
+                    <ul class="nav nav-pills nav-stacked">
+                        {% set first = true %}
+                        {% for tabId, tab in themeOptions %}
+                            <li class="{{ "active" if first }}">
+                                <a href="#{{ tabId }}" aria-controls="{{ tabId }}" role="tab" data-toggle="tab">
+                                    <i class="{{ tab.icon }}"></i>
+                                    {{ tab.title }}
+                                </a>
+                            </li>
+                            {% set first = false %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {#Content#}
+        <div class="col-md-9">
+            <div class="tab-content">
+                {% set first = true %}
+                {% for tabId, tab in themeOptions %}
+                    <div role="tabpanel" class="tab-pane fade in {{ "active" if first }}" id="{{ tabId }}">
+                        {% for groupId, group in tab.fieldGroups %}
+                            <div class="box box-solid" data-groupid="{{ groupId }}">
+                                <div class="box-header with-border">
+                                    <p class="box-title">{{ group.title }}</p>
+                                </div>
+                                <div class="box-body">
+                                    {% for fieldId, field in group.fields %}
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <h4 class="mg0">{{ field.name }}</h4>
+                                                <p>{{ field.desc }}</p>
+                                            </div>
+                                            <div class="col-md-8">
+                                                {{ Form.Input({placeholder: field.name}) }}
+                                            </div>
+                                        </div>
+                                        <hr class="mt10">
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    {% set first = false %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

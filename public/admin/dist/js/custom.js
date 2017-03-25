@@ -1,4 +1,8 @@
 $(window).ready(function(){
+    //Config toastr
+    toastr.options = {
+        "closeButton": true,
+    };
 
     $('span.time').each(function() {
         let item = $(this);
@@ -109,8 +113,7 @@ $(window).ready(function(){
                 let target = $('#' + targetid);
                 target.find('img').remove();
                 target.append(`<img src='/uploads/${imgPath}-150x150${imgExt}' />`);
-                target.find('input[name=imgPath]').val(imgPath);
-                target.find('input[name=imgExt]').val(imgExt);
+                target.find('input[name=image]').val(imgPath+imgExt);
                 break;
         }
         MediaPopup.modal('hide');
@@ -144,23 +147,27 @@ $(window).ready(function(){
         target.find('img').remove();
     });
 
-    // addNewCategory
-    $('#btnAddNewCategory').on('click', function () {
-        let catName = $(this).closest('.form-group').find('input').val();
-        console.log(catName);
-        if (!catName) return false;
+    // addNewTaxonomy
+    $('.btnAddNewTaxonomy').on('click', function () {
+        let thisBox = $(this).closest('.box-taxonomies');
+        let taxonomyName = thisBox.find('input[name=newTaxonomy]').val(),
+            module = thisBox.data('taxonomy-module'),
+            type = thisBox.data('taxonomy-type'),
+            inputName = thisBox.data('input-name');
+        if (!taxonomyName) return false;
         $.post('/admin/taxonomies/api/create', {
-            module: 'posts',
-            type: 'category',
-            name: catName
+            module: module,
+            type: type,
+            name: taxonomyName
         }, function (data, result) {
+            console.log(data);
             if (data.status === 'error' || result === 'error') {
                 toastr["error"]("", "Thêm thất bại");
                 return false;
             }
             let item = data.data;
-            $('#categoriesBox').find('.checkbox-group').prepend(`<div class="form-group">
-                <input type="checkbox" checked id="${item._id}" value="${item._id}" name="categories">
+            thisBox.find('.checkbox-group').append(`<div class="form-group">
+                <input type="checkbox" checked id="${item._id}" value="${item._id}" name="${inputName}">
                 <label for="${item._id}">${item.name}</label>
             </div>`)
         });
@@ -171,7 +178,6 @@ $(window).ready(function(){
         AliasModule = '';
     $('#editSlug').on('click', function () {
         AliasModule = $(this).data('module');
-        console.log(AliasModule);
         Alias.find('input').removeAttr('readonly');
         Alias.find('button').remove();
         Alias.append('<button type="button" class="btn btn-sm btn-default btn-save mt5">Lưu</button>' +

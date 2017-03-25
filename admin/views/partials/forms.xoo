@@ -78,24 +78,67 @@
 {% endmacro %}
 
 {#Checkbox Group#}
-{% macro CheckboxGroup(obj = {items: []}) %}
-    {% if not obj.value %}
-        {% set checkedItems = [] %}
-    {% else %}
-        {% set checkedItems = obj.value %}
-    {% endif %}
+{% macro CheckboxGroup(obj = {label: '', inputName: '', items: '', selectedItems: ''}) %}
+    {% set selectedItems = obj.selectedItems if obj.selectedItems else [] %}
     <p><strong>{{ obj.label }}</strong></p>
     <div class="checkbox-group">
         {% for item in obj.items %}
             <div class="form-group">
                 <input
-                    {{ "checked" if checkedItems.indexOf(item.id) > -1 }}
+                    {{ "checked" if selectedItems.indexOf(item.id) > -1 }}
                     type="checkbox"
                     id="{{ item.id }}"
                     value="{{ item.id }}"
-                    name="{{ obj.name }}">
+                    name="{{ obj.inputName }}">
                 <label for="{{ item.id }}">{{ item.name }}</label>
             </div>
         {% endfor %}
+    </div>
+{% endmacro %}
+
+{#Taxonomies Box#}
+{% macro TaxonomiesBox(obj = {label: '', inputName: '', taxonomyModule: '', taxonomyType: '', items: '', selectedItems: ''}) %}
+    <div class="box box-taxonomies"
+        data-input-name="{{ obj.inputName }}"
+        data-taxonomy-type="{{ obj.taxonomyType }}"
+        data-taxonomy-module="{{ obj.taxonomyModule }}">
+        <div class="box-body">
+            {{ CheckboxGroup(obj) }}
+
+            <a role="button" data-toggle="collapse" href="#{{ obj.inputName }}Collapse" aria-expanded="false" aria-controls="{{ obj.inputName }}Collapse">
+                + thêm danh mục mới
+            </a>
+
+            <div class="collapse" id="{{ obj.inputName }}Collapse">
+                <div class="form-group form-group-sm mb0 mt5">
+                    <input type="text" class="form-control" name="newTaxonomy" id="newTaxonomy" placeholder="Tên danh mục" autocomplete="off">
+                    <button class="btnAddNewTaxonomy btn btn-default btn-sm mt5" type="button">thêm mới</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
+{#Alias#}
+{% macro Alias(module, slug) %}
+    <div class="form-group form-group-sm" id="aliasSection">
+        <label for="slug">Alias</label>
+        <a class="pointer pl5 fz13" id="editSlug" data-module="{{ module }}">edit alias</a>
+        <input readonly class="form-control" type="text" id="slug" name="slug" value="{{ slug }}">
+    </div>
+{% endmacro %}
+
+{#Box Select#}
+{% macro BoxPostStatus(status) %}
+    <div class="box">
+        <div class="box-body">
+            <div class="form-group">
+                {% set items = [{id: 'show', name: 'Hiển thị'}, {id: 'hide', name: 'Ẩn'}] %}
+                {{ Select({label: 'Trạng thái', name: 'status', items: items, value: status}) }}
+            </div>
+            <div class="text-right">
+                <button class="btn btn-primary">Lưu</button>
+            </div>
+        </div>
     </div>
 {% endmacro %}

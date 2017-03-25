@@ -52,11 +52,7 @@
                 {{ Form.Input({label: 'Tên', name: 'name', value: item.name, required: true}) }}
                 {{ Form.Textarea({label: 'Miêu tả', name: 'description', value: item.description}) }}
                 {% if controller === 'edit' %}
-                    <div class="form-group form-group-sm" id="aliasSection">
-                        <label for="slug">Alias</label>
-                        <a class="pointer pl5 fz13" id="editSlug" data-module="taxonomies">edit alias</a>
-                        <input readonly class="form-control" type="text" id="slug" name="slug" value="{{ item.slug }}">
-                    </div>
+                    {{ Form.Alias('taxonomies', item.slug) }}
                 {% endif %}
             </div>
         </div>

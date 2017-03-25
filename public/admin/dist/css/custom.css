@@ -104,9 +104,24 @@ a.img-thumb.selected img{
 .mr3{
     margin-right: 3px;
 }
+.mg0{
+    margin: 0 !important;
+}
+.mt10{
+    margin-top: 10px;
+}
 .pl5{
     padding-left: 5px;
 }
 .fz13{
     font-size: 13px;
+}
+
+.nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+    color: #444;
+    background-color: transparent !important;
+}
+.nav-pills>li>a>.fa{
+    width:22px;
+    margin-right: 0;
 }

@@ -6,6 +6,7 @@
     <form method="post" id="main-form">
         <input type="hidden" name="_csrf" value={{ _csrf }}>
         <input type="hidden" name="itemId" value="{{ item.id }}">
+        <input type="hidden" name="postType" value="page">
         {# Form inputs#}
         <div class="row">
             {#left#}
@@ -15,11 +16,7 @@
                         {{ Form.Input({label: 'Tiêu đề', name: 'name', value: item.name, required: true}) }}
                         {{ Form.Editor({label: 'Nội dung', name: 'content', value: item.content}) }}
                         {% if controller !== 'create' %}
-                            <div class="form-group form-group-sm" id="aliasSection">
-                                <label for="slug">Alias</label>
-                                <a class="pointer pl5 fz13" id="editSlug" data-module="posts">edit alias</a>
-                                <input readonly class="form-control" type="text" id="slug" name="slug" value="{{ item.slug }}">
-                            </div>
+                            {{ Form.Alias('posts', item.slug) }}
                         {% endif %}
                     </div>
                 </div>

@@ -11,7 +11,7 @@ const schema = new mongoose.Schema({
     description: String,
     categories: [{type: String, ref: 'Taxonomy'}],
     tags: [{type: String, ref: 'Taxonomy'}],
-    image: {path: String, ext: String},
+    image: String,
     fields: {},
     status: {type: String, default: 'show'},
     createdBy: {type: String, ref: 'User', required: true},

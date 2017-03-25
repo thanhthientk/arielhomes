@@ -41,23 +41,6 @@ const permissions = {
     }
 };
 
-const postsMiddleware = function () {
-    return function (req, res, next) {
-        let postType = req.query['post_type'] || req.body['post_type'];
-        if (!postType) return res.redirect('/admin/posts?post_type=post');
-
-        res.locals.postTypeInfo = require(`./post_types/${postType}`);
-        next();
-    }
-};
-
-//Get menu
-let postTypes = ['post', 'page'];
-let menu = [];
-for (let postType of postTypes) {
-    menu.push(require(`./post_types/${postType}`).menu);
-}
-
 module.exports = {
     info,
     permissions,
@@ -67,16 +50,14 @@ module.exports = {
             controller: 'index',
             method: 'get',
             permission: permissions.read.slug,
-            authenticate: true,
-            middlewares: [postsMiddleware()]
+            authenticate: true
         },
         {
             path: `/admin/${info.slug}/create`,
             controller: 'create',
             method: 'get',
             permission: permissions.create.slug,
-            authenticate: true,
-            middlewares: [postsMiddleware()]
+            authenticate: true
         },
         {
             path: `/admin/${info.slug}/create`,
@@ -90,8 +71,7 @@ module.exports = {
             controller: 'edit',
             method: 'get',
             permission: permissions.update.slug,
-            authenticate: true,
-            middlewares: [postsMiddleware()]
+            authenticate: true
         },
         {
             path: `/admin/${info.slug}/:id/edit`,
@@ -116,5 +96,68 @@ module.exports = {
             csrf: false
         }
     ],
-    menu: menu
+    menu: {
+        icon: 'fa fa-link',
+        label: info.label,
+        permission: permissions.read,
+        position: 2,
+        activeIf: {
+            module: [info.slug, 'taxonomies'],
+            controller: 'all'
+        },
+        child: [
+            {
+                label: 'Danh sách',
+                permission: permissions.read.slug,
+                url: `/admin/${info.slug}`,
+                activeIf: {
+                    module: info.slug,
+                    controller: ['index']
+                }
+            },
+            {
+                label: 'Thêm mới',
+                permission: permissions.create.slug,
+                url: `/admin/${info.slug}/create`,
+                activeIf: {
+                    module: info.slug,
+                    controller: ['create']
+                }
+            },
+            {
+                label: 'Danh mục',
+                permission: permissions.category.slug,
+                url: `/admin/taxonomies?module=posts&type=category`,
+                activeIf: {
+                    module: 'taxonomies',
+                    controller: 'all',
+                    params: {
+                        reqParam: 'type',
+                        value: 'category'
+                    }
+                }
+            },
+            {
+                label: 'Tag',
+                permission: permissions.tag.slug,
+                url: `/admin/taxonomies?module=posts&type=tag`,
+                activeIf: {
+                    module: 'taxonomies',
+                    controller: ['index', 'create', 'edit'],
+                    params: {
+                        reqParam: 'type',
+                        value: 'tag'
+                    }
+                }
+            }
+        ]
+    },
+    taxonomies: {
+        category: {
+            label: 'Danh mục'
+        },
+        tag: {
+            label: 'Tag'
+        }
+    }
 };
