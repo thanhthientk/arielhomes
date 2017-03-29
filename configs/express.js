@@ -7,9 +7,10 @@ const express = require('express');
 const app = express();
 const nunjucks = require('./nunjucks/nunjucks');
 const database = require('./database');
+const co = require('co');
 
 module.exports = {
-	start: function() {
+	start: co.wrap(function* () {
 		//Load Environment
 		env.load({ path: path.join(__dirname, './env/.env.dev') });
 
@@ -18,8 +19,13 @@ module.exports = {
 
 		//Require Global
 		require('./globals').init();
+		//Global Theme Name
+		require('../themes/index');
 
-		//Setup view
+        // let languages = yield _app.model.language.find({status: true}).select('code');
+        // global.LANG
+
+        //Setup view
 		let engine = nunjucks.init(app);
 		//nunjucks.addGlobal(engine, 'author', process.env.AUTHOR);
 
@@ -54,5 +60,5 @@ module.exports = {
         app.listen(port, () => {
             console.log('Server is running at port: ', port);
         });
-	}
+	})
 };

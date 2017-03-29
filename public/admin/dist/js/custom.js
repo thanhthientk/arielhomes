@@ -3,12 +3,32 @@ $(window).ready(function(){
     toastr.options = {
         "closeButton": true,
     };
-
+    //time
     $('span.time').each(function() {
         let item = $(this);
         let time = item.data('time'),
             format = item.data('format');
         item.html(moment(time).format(format));
+    });
+    //Switch Checkbox
+    $('input.switch[type=checkbox]').each(function () {
+        $(this).bootstrapSwitch();
+    });
+    //Select2 - Flags
+    function formatSelectFlags (state) {
+        if (!state.id) { return state.text; }
+        let flag = $(state.element).data('flag') || state.element.value;
+        let $state = $(
+            '<span><img src="/admin/dist/flags/' + flag.toLowerCase() + '.png" class="img-flag" /> ' + state.text + '</span>'
+        );
+        return $state;
+    }
+    $('.select2.flags').each(function () {
+        $(this).select2({
+            templateResult: formatSelectFlags,
+            templateSelection: formatSelectFlags,
+            theme: "bootstrap"
+        });
     });
 
     let deleteButton = $('#multipleDelete-btn'),

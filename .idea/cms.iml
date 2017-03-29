@@ -5,6 +5,7 @@
       <excludeFolder url="file://$MODULE_DIR$/.tmp" />
       <excludeFolder url="file://$MODULE_DIR$/public/admin/bootstrap" />
       <excludeFolder url="file://$MODULE_DIR$/public/admin/dist/css" />
+      <excludeFolder url="file://$MODULE_DIR$/public/admin/dist/flags" />
       <excludeFolder url="file://$MODULE_DIR$/public/admin/dist/img" />
       <excludeFolder url="file://$MODULE_DIR$/public/admin/plugins" />
       <excludeFolder url="file://$MODULE_DIR$/public/theme" />

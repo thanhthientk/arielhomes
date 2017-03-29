@@ -2,13 +2,13 @@
 
 {% block content %}
     <div class="toolbar">
-        <a href="/admin/{{ moduleInfo.slug }}?post_type={{ postTypeInfo.info.slug }}" class="btn btn-info">
+        <a href="/admin/{{ moduleInfo.slug }}" class="btn btn-info">
             <i class="fa fa-refresh"></i>
             Làm mới
         </a>
-        <a href="/admin/{{ moduleInfo.slug }}/create?post_type={{ postTypeInfo.info.slug }}" class="btn btn-primary">
+        <a href="/admin/{{ moduleInfo.slug }}/create" class="btn btn-primary">
             <i class="fa fa-plus"></i>
-            Thêm mới
+            Viết bài mới
         </a>
         <a class="btn btn-danger pull-right disabled" id="multipleDelete-btn">
             <i class="fa fa-remove"></i>

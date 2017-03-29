@@ -88,7 +88,7 @@ module.exports = {
         }
     ],
     menu: {
-        icon: 'fa fa-link',
+        icon: 'fa fa-picture-o',
         label: info.label,
         permission: permissions.read.slug,
         url: `/admin/${info.slug}`,
@@ -96,26 +96,6 @@ module.exports = {
         activeIf: {
             module: info.slug,
             controller: ['index', 'create', 'edit']
-        },
-        // child: [
-        //     {
-        //         label: 'Danh sách',
-        //         permission: permissions.read.slug,
-        //         url: `/admin/${info.slug}`,
-        //         activeIf: {
-        //             module: info.slug,
-        //             controller: ['index']
-        //         }
-        //     },
-        //     {
-        //         label: 'Thêm mới',
-        //         permission: permissions.create.slug,
-        //         url: `/admin/${info.slug}/create`,
-        //         activeIf: {
-        //             module: info.slug,
-        //             controller: ['create']
-        //         }
-        //     }
-        // ]
+        }
     }
 };

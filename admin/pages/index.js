@@ -88,7 +88,7 @@ module.exports = {
         }
     ],
     menu: {
-        icon: 'fa fa-link',
+        icon: 'fa fa-file-text',
         label: 'Trang nội dung',
         permission: permissions.read,
         position: 2,

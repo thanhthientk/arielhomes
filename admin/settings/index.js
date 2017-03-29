@@ -67,7 +67,7 @@ module.exports = {
         },
     ],
     menu: {
-        icon: 'fa fa-link',
+        icon: 'fa fa-cogs',
         label: info.label,
         position: 90,
         activeIf: {

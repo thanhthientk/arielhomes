@@ -98,7 +98,7 @@ module.exports = {
                 for (let child of menu.child) {
                     let childActive = checkActive(child);
                     if (!child.permission || _checkPermission(child.permission, logged_user)){
-                        childHtml += `<li class="${childActive}"><a href="${child.url}">${child.label}</a></li>`;
+                        childHtml += `<li class="${childActive}"><a href="${child.url}"><i class="fa fa-circle-o"></i>${child.label}</a></li>`;
                         emptyChild = true;
                     }
                 }
@@ -138,6 +138,11 @@ module.exports = {
     post_thumbnail: function (imagePath, thumbName) {
         let image = path.parse(imagePath);
         return `/uploads/${image.name}-150x150${image.ext}`;
+    },
+
+    getFlag: function (languages, languageCode) {
+        let language = languages.filter(language => language.code === languageCode)[0];
+        return language.flag;
     }
 
 };

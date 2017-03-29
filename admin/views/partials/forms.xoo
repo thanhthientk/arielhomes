@@ -41,18 +41,15 @@
     </div>
 {% endmacro %}
 
-{% macro Select(obj = {label: '', name: '',  value: '', items: [], fieldDisplay: 'name', requied: false}) %}
-    {% if obj.fieldDisplay %}
-        {% set fieldDisplay = obj.fieldDisplay %}
-    {% else %}
-        {% set fieldDisplay = 'name' %}
-    {% endif %}
+{% macro Select(obj = {label: '', name: '',  value: '', items: [], fieldDisplay: 'name', key: 'id', requied: false}) %}
+    {% set fieldDisplay = obj.fieldDisplay if obj.fieldDisplay else 'name' %}
+    {% set key = obj.key if obj.key else 'id' %}
     <div class="form-group">
         {{ Label(obj) }}
-        <select id="{{ obj.name }}" name="{{ obj.name }}" class="form-control">
+        <select id="{{ obj.name }}" name="{{ obj.name }}" class="form-control {{ obj.class }}">
             <option selected value=""> All </option>
             {% for item in obj.items %}
-                <option {{ 'selected' if item.id == obj.value }} value="{{ item.id }}">
+                <option {{ 'selected' if item[key] == obj.value }} value="{{ item[key] }}">
                     {{ item[fieldDisplay] }}
                 </option>
             {% endfor %}
@@ -60,6 +57,21 @@
     </div>
 {% endmacro %}
 
+{#Checkbox - Switch#}
+{% macro Checkbox(obj = {label: '', name: '', value: '', switch: false, checked: false}) %}
+    <div class="form-group">
+        {{ Label(obj) }}
+        <div>
+            <input
+                type="checkbox"
+                name="{{ obj.name }}"
+                class="{{ 'switch' if obj.switch }}"
+                {{ "checked" if obj.checked }}>
+        </div>
+    </div>
+{% endmacro %}
+
+{#CallMediaPopup#}
 {% macro CallMediaPopup(obj = {class: '', action: '', targetId: '', text: ''}) %}
     <a class="{{ obj.class }}"
        type="button"
@@ -69,6 +81,7 @@
        data-targetid="{{ obj.targetId }}">{{ obj.text }}</a>
 {% endmacro %}
 
+{#Editor#}
 {% macro Editor(obj) %}
     <div class="form-group">
         {{ Label(obj) }}
@@ -134,7 +147,7 @@
         <div class="box-body">
             <div class="form-group">
                 {% set items = [{id: 'show', name: 'Hiển thị'}, {id: 'hide', name: 'Ẩn'}] %}
-                {{ Select({label: 'Trạng thái', name: 'status', items: items, value: status}) }}
+                {{ Select({label: 'Trạng thái', name: 'status', items: items, value: status or 'show'}) }}
             </div>
             <div class="text-right">
                 <button class="btn btn-primary">Lưu</button>

@@ -4,12 +4,19 @@
     <tr>
         {% for column in columns %}
             <th width="{{ column.width }}">
-                {% if column.displayType == 'checkbox' %}
+                {% set displayType = column.displayType %}
+                {% if displayType == 'checkbox' %}
                     <input type="checkbox">
-                {% elif column.displayType == 'image-thumb' %}
+                {% elif displayType == 'image-thumb' %}
                     <span></span>
-                {% elif column.displayType == 'edit-button' %}
+                {% elif displayType == 'edit-button' %}
                     <span></span>
+                {% elif displayType == 'language' %}
+                    <div class="text-center flags">
+                        {% for language in languages %}
+                            <img src="/admin/dist/flags/{{ language.flag }}.png" alt="{{ language.code }}">
+                        {% endfor %}
+                    </div>
                 {% elif column.headSort == true %}
                     <a href="{{ _global.createSortLink(originalUrl, reqQuery, column.name) }}">
                         {{ column.label }}
@@ -102,6 +109,28 @@
                             <td>
                                 {% set label = column.itemsInfo[item[name]] %}
                                 <span class="label {{ label.class }}">{{ label.text }}</span>
+                            </td>
+                        {% elif type == 'template' %}
+                            <td>
+                                {% set template = column.template %}
+                                {{ template | replace('$END$', item[name]) | safe }}
+                            </td>
+                        {% elif type == 'language' %}
+                            <td class="text-center flags">
+                                {% set dl = item.documentsLanguage %}
+                                {% for language in languages %}
+                                    {% if dl.documents[language.code] !== underfined %}
+                                        {% if dl.documents[language.code] === item.id %}
+                                            <a href="/admin/posts/{{ item.id }}/edit"><i class="fa fa-check"></i></a>
+                                        {% else %}
+                                            <a href="/admin/posts/{{ dl.documents[language.code] }}/edit"><i class="fa fa-pencil"></i></a>
+                                        {% endif %}
+                                    {% else %}
+                                        <a href="/admin/posts/create?dl={{ dl.id }}&language={{ language.code }}">
+                                            <i class="fa fa-plus"></i>
+                                        </a>
+                                    {% endif %}
+                                {% endfor %}
                             </td>
                         {% elif type == 'edit-button' %}
                             <td>

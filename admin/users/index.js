@@ -126,7 +126,7 @@ module.exports = {
         }
     ],
     menu: {
-        icon: 'fa fa-link',
+        icon: 'fa fa-users',
         label: info.label,
         permission: permissions.read,
         position: 4,

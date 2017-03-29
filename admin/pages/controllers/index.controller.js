@@ -96,8 +96,7 @@ module.exports = {
         let paginateParams = generatePaginateParams(
             generateColumns(),
             setPaginateOptions,
-            req.query,
-            {postType: 'page'}
+            req.query
         );
 
         Promise.all([

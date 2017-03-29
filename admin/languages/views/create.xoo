@@ -1,0 +1,28 @@
+{% extends "../../views/layout.xoo" %}
+
+{% block content %}
+    {{ super() }}
+
+    <form method="post" id="main-form">
+        <input type="hidden" name="_csrf" value={{ _csrf }}>
+        {# Form inputs#}
+        <div class="box box-primary">
+            <div class="box-body">
+                {{ Form.Input({label: 'Tên Ngôn ngữ', name: 'name', value: item.name, required: true, placeholder: 'Tiếng Việt...'}) }}
+                {{ Form.Input({label: 'Code', name: 'code', value: item.code, required: true, placeholder: 'vn, en, jp...'}) }}
+                {{ Form.Select({label: 'Flag', class: 'select2 flags', name: 'flag', items: countries, value: item.flag, require: true, placeholder: 'Chọn flag'}) }}
+                {{ Form.Checkbox({label: 'Trạng thái', name: 'status', switch: true, checked: item.status}) }}
+            </div>
+        </div>
+    </form>
+
+{% endblock %}
+
+{% block css %}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.6/select2-bootstrap.min.css" rel="stylesheet" />
+{% endblock %}
+
+{% block js %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+{% endblock %}

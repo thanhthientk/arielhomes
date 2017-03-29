@@ -13,6 +13,8 @@ const schema = new mongoose.Schema({
     tags: [{type: String, ref: 'Taxonomy'}],
     image: String,
     fields: {},
+    language: String,
+    documentsLanguage: {type: String, ref: 'DocumentsLanguage'},
     status: {type: String, default: 'show'},
     createdBy: {type: String, ref: 'User', required: true},
     createdOn: {type: Date, default: Date.now}

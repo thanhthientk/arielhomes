@@ -97,7 +97,7 @@ module.exports = {
         }
     ],
     menu: {
-        icon: 'fa fa-link',
+        icon: 'fa fa-files-o',
         label: info.label,
         permission: permissions.read,
         position: 2,
@@ -124,32 +124,32 @@ module.exports = {
                     controller: ['create']
                 }
             },
-            {
-                label: 'Danh mục',
-                permission: permissions.category.slug,
-                url: `/admin/taxonomies?module=posts&type=category`,
-                activeIf: {
-                    module: 'taxonomies',
-                    controller: 'all',
-                    params: {
-                        reqParam: 'type',
-                        value: 'category'
-                    }
-                }
-            },
-            {
-                label: 'Tag',
-                permission: permissions.tag.slug,
-                url: `/admin/taxonomies?module=posts&type=tag`,
-                activeIf: {
-                    module: 'taxonomies',
-                    controller: ['index', 'create', 'edit'],
-                    params: {
-                        reqParam: 'type',
-                        value: 'tag'
-                    }
-                }
-            }
+            // {
+            //     label: 'Danh mục',
+            //     permission: permissions.category.slug,
+            //     url: `/admin/taxonomies?module=posts&type=category`,
+            //     activeIf: {
+            //         module: 'taxonomies',
+            //         controller: 'all',
+            //         params: {
+            //             reqParam: 'type',
+            //             value: 'category'
+            //         }
+            //     }
+            // },
+            // {
+            //     label: 'Tag',
+            //     permission: permissions.tag.slug,
+            //     url: `/admin/taxonomies?module=posts&type=tag`,
+            //     activeIf: {
+            //         module: 'taxonomies',
+            //         controller: ['index', 'create', 'edit'],
+            //         params: {
+            //             reqParam: 'type',
+            //             value: 'tag'
+            //         }
+            //     }
+            // }
         ]
     },
     taxonomies: {

@@ -1,5 +1,7 @@
 'use strict';
 
+const errorhandler = require('errorhandler');
+
 module.exports = function(app) {
 	/** Error Handler */
 	app.use(function(req, res, next) {
@@ -7,12 +9,13 @@ module.exports = function(app) {
 	    err.status = 404;
         next(err);
 	});
-	if (process.env.ENV == 'development') {
-        app.use((err, req, res, next) => {
-            console.log(err);
-            err.string = err.toString();
-            res.send(err);
-        });
+	if (process.env.ENV === 'development') {
+		app.use(errorhandler());
+        // app.use((err, req, res, next) => {
+        //     console.log(err);
+        //     err.string = err.toString();
+        //     res.send(err);
+        // });
 	}
 	app.use((err, req, res, next) => {
 	    res.status(err.status || 500);

@@ -1,6 +1,7 @@
 "use strict";
 const path = require('path');
 const fs = require('fs');
+const co = require('co');
 
 global.__root = path.join(__dirname, '../..');
 global.__libs = path.join(__root, 'libraries');
@@ -25,4 +26,9 @@ for (let module of ALL_MODULES) {
         _app.model[moduleSlug] = require(path.join(__root, `admin/${module}/models/index.model.js`));
     }
 }
+
+/**
+ * Get Languages
+ */
+_app.languages = ['vn', 'en'];
 global._app = _app;

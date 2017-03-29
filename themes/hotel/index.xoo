@@ -261,6 +261,16 @@
 					</span>
 				</a>
 			</div>
+			<div class="room-boxes col-sm-6 col-md-3">
+				<a href="pages/room-details.html" class="inner-container" data-bg="/hotel/assets/img/luxury-rooms/1.jpg">
+					<span class="ravis-title">
+						<span class="inner-box">
+							<span class="title">Single Room</span>
+							<span class="sub-title">Great choice for small families</span>
+						</span>
+					</span>
+				</a>
+			</div>
 		</section>
 		<!--End of Luxury Room Section-->
 
@@ -278,6 +288,15 @@
 				<!-- Gallery Container -->
 				<div class="gallery-container">
 					<ul class="image-main-box clearfix">
+						<li class="item col-xs-6 col-md-4 pool">
+							<figure>
+								<img src="/hotel/assets/img/gallery/1.jpg" alt="11"/>
+								<a href="assets/img/gallery/1.jpg" class="more-details" data-title="Luxury Furniture">Enlarge</a>
+								<figcaption>
+									<h4>Luxury Furniture</h4>
+								</figcaption>
+							</figure>
+						</li>
 						<li class="item col-xs-6 col-md-4 pool">
 							<figure>
 								<img src="/hotel/assets/img/gallery/2.jpg" alt="11"/>

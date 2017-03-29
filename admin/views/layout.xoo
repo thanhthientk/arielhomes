@@ -20,10 +20,10 @@
     <link rel="stylesheet" href="/admin/dist/css/skins/skin-blue.min.css">
     <link rel="stylesheet" href="/admin/plugins/toastr/toastr.min.css">
     <link rel="stylesheet" href="/admin/plugins/jquery-date-range-picker/dist/daterangepicker.min.css">
-    <link rel="stylesheet" href="/admin/dist/css/custom.css">
-
+    <link rel="stylesheet" href="/admin/plugins/bootstrap-switch/bootstrap-switch.min.css">
     {% block css %}
     {% endblock %}
+    <link rel="stylesheet" href="/admin/dist/css/custom.css">
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -111,6 +111,7 @@
 <script src="/admin/plugins/toastr/toastr.min.js"></script>
 <script src="/admin/plugins/moment/moment.js"></script>
 <script src="/admin/plugins/jquery-date-range-picker/dist/jquery.daterangepicker.min.js"></script>
+<script src="/admin/plugins/bootstrap-switch/bootstrap-switch.min.js"></script>
 
 {% block js %}
 {% endblock %}

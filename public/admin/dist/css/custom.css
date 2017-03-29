@@ -125,3 +125,42 @@ a.img-thumb.selected img{
     width:22px;
     margin-right: 0;
 }
+.select2-container .select2-selection--single .select2-selection__rendered{
+    margin-top: 0 !important;
+}
+.select2-container--bootstrap .select2-selection--single,
+.select2-container--bootstrap.select2-container--focus .select2-selection, .select2-container--bootstrap.select2-container--open .select2-selection{
+    border-radius: 0 !important;
+}
+.select2-container--bootstrap{
+    width: 100% !important;
+}
+
+.translations h3{
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+.translations a{
+    display: block;
+}
+.translations a img{
+    position: relative;
+    top: -1px;
+}
+.translations a span{
+    padding: 0 5px;
+}
+
+th .flags img{
+    margin-right: 20px;
+}
+th .flags img:last-child{
+    margin-right: 0;
+}
+td.flags a{
+    margin-right: 22px;
+}
+td.flags a:last-child {
+    margin-right: 0;
+}

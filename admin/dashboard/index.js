@@ -20,7 +20,7 @@ module.exports = {
         }
     ],
     menu: {
-        icon: 'fa fa-link',
+        icon: 'fa fa-tachometer',
         label: 'Dashboard',
         url: '/admin',
         position: 1,
