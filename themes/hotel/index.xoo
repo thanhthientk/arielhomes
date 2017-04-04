@@ -19,7 +19,7 @@
 		<!-- End of Main Slider -->
 
 		<!--Main Booking form-->
-		<section id="main-availability-form">
+		<section class="main-availability-form" id="main-availability-form">
 			<div class="inner-container container">
 				<div class="l-sec col-md-4">
 					<div class="ravis-title">

@@ -31,11 +31,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="express.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="express.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/configs/express.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="22" column="35" lean-forward="false" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
+            <state relative-caret-position="200">
+              <caret line="17" column="24" lean-forward="true" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -44,18 +44,19 @@
       <file leaf-file-name="template.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/themes/hotel/assets/js/template.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="13" column="11" lean-forward="true" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
+            <state relative-caret-position="260">
+              <caret line="60" column="42" lean-forward="false" selection-start-line="60" selection-start-column="42" selection-end-line="60" selection-end-column="42" />
+              <caret line="61" column="42" lean-forward="false" selection-start-line="61" selection-start-column="42" selection-end-line="61" selection-end-column="42" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="blog-sidebar.xoo" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/themes/hotel/partial/blog-sidebar.xoo">
+      <file leaf-file-name="booking-form.xoo" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/themes/hotel/partial/booking-form.xoo">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="370">
-              <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+            <state relative-caret-position="220">
+              <caret line="38" column="56" lean-forward="false" selection-start-line="38" selection-start-column="56" selection-end-line="38" selection-end-column="56" />
               <folding />
             </state>
           </provider>
@@ -64,18 +65,18 @@
       <file leaf-file-name="index.xoo" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/themes/hotel/index.xoo">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="70" column="103" lean-forward="true" selection-start-line="70" selection-start-column="103" selection-end-line="70" selection-end-column="145" />
+            <state relative-caret-position="232">
+              <caret line="24" column="39" lean-forward="true" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="39" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="header.xoo" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/themes/hotel/partial/header.xoo">
+      <file leaf-file-name="styles-light.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/themes/hotel/assets/css/styles-light.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="244">
-              <caret line="33" column="14" lean-forward="true" selection-start-line="33" selection-start-column="14" selection-end-line="33" selection-end-column="14" />
+            <state relative-caret-position="233">
+              <caret line="11076" column="33" lean-forward="false" selection-start-line="11076" selection-start-column="33" selection-end-line="11076" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -93,13 +94,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>about</find>
-      <find>assets</find>
-      <find>g=&quot;as</find>
-      <find>c=&quot;asse</find>
-      <find>mg=&quot;ass</find>
-      <find>rc=&quot;ass</find>
-      <find>c=&quot;ass</find>
       <find>'</find>
       <find>=&quot;ass</find>
       <find>sta</find>
@@ -123,6 +117,13 @@
       <find>let</find>
       <find>map</find>
       <find>book</find>
+      <find>BookingModal</find>
+      <find>daterang</find>
+      <find>#main-availability-form</find>
+      <find>&quot; id=&quot;</find>
+      <find>main-availability-form</find>
+      <find>daterange</find>
+      <find>start</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -131,7 +132,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/admin/contact/models/index.model.js" />
         <option value="$PROJECT_DIR$/admin/contact/index.js" />
         <option value="$PROJECT_DIR$/admin/languages/index.js" />
         <option value="$PROJECT_DIR$/admin/media/index.js" />
@@ -165,11 +165,9 @@
         <option value="$PROJECT_DIR$/admin/views/partials/main-table.xoo" />
         <option value="$PROJECT_DIR$/themes/hotel/page-contact.xoo" />
         <option value="$PROJECT_DIR$/admin/contacts/views/create.xoo" />
-        <option value="$PROJECT_DIR$/themes/hotel/partial/booking-form.xoo" />
         <option value="$PROJECT_DIR$/themes/hotel/single-room.xoo" />
         <option value="$PROJECT_DIR$/admin/contacts/index.js" />
         <option value="$PROJECT_DIR$/admin/contacts/views/index.xoo" />
-        <option value="$PROJECT_DIR$/themes/hotel/index.xoo" />
         <option value="$PROJECT_DIR$/frontend/routes.js" />
         <option value="$PROJECT_DIR$/configs/env/.env.pro" />
         <option value="$PROJECT_DIR$/admin/users/controllers/index.controller.js" />
@@ -178,10 +176,13 @@
         <option value="$PROJECT_DIR$/configs/email.js" />
         <option value="$PROJECT_DIR$/themes/hotel/assets/css/custom.css" />
         <option value="$PROJECT_DIR$/themes/hotel/layout.xoo" />
-        <option value="$PROJECT_DIR$/themes/hotel/assets/js/template.js" />
-        <option value="$PROJECT_DIR$/configs/express.js" />
         <option value="$PROJECT_DIR$/themes/hotel/partial/blog-sidebar.xoo" />
         <option value="$PROJECT_DIR$/themes/hotel/partial/header.xoo" />
+        <option value="$PROJECT_DIR$/themes/hotel/index.xoo" />
+        <option value="$PROJECT_DIR$/themes/hotel/assets/css/styles-light.css" />
+        <option value="$PROJECT_DIR$/themes/hotel/partial/booking-form.xoo" />
+        <option value="$PROJECT_DIR$/themes/hotel/assets/js/template.js" />
+        <option value="$PROJECT_DIR$/configs/express.js" />
       </list>
     </option>
   </component>
@@ -350,7 +351,7 @@
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
     <property name="js.eslint.eslintPackage" value="" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
-    <property name="SearchEverywhereHistoryKey" value="head&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/partial/header.xoo&#10;index&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/index.xoo&#10;temp&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/assets/js/template.js&#10;cus&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/assets/css/custom.css&#10;layout&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/layout.xoo&#10;single-t&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/single-tour.xoo&#10;ex&#9;FILE&#9;file://D:/Projects/cms/configs/express.js&#10;layo&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/layout.xoo&#10;custom&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/assets/css/custom.css&#10;layou&#9;FILE&#9;file://D:/Projects/cms/admin/views/layout.xoo&#10;heade&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/partial/header.xoo&#10;sing&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/single-room.xoo&#10;single-to&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/single-tour.xoo&#10;boo&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/partial/booking-form.xoo&#10;single&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/single-room.xoo&#10;room&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/page-room.xoo&#10;contac&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/page-contact.xoo&#10;main&#9;FILE&#9;file://D:/Projects/cms/admin/views/partials/main-table.xoo&#10;foot&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/partial/footer.xoo&#10;inde&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/index.xoo&#10;them&#9;FILE&#9;file://D:/Projects/cms/admin/settings/theme-options.js&#10;foo&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/partial/footer.xoo&#10;form&#9;FILE&#9;file://D:/Projects/cms/admin/views/partials/forms.xoo&#10;nun&#9;FILE&#9;file://D:/Projects/cms/configs/nunjucks/nunjucks-global.js&#10;theme&#9;FILE&#9;file://D:/Projects/cms/admin/settings/theme-options.js&#10;forms&#9;FILE&#9;file://D:/Projects/cms/admin/views/partials/forms.xoo&#10;cu&#9;FILE&#9;file://D:/Projects/cms/public/admin/dist/js/custom.js&#10;exp&#9;FILE&#9;file://D:/Projects/cms/configs/express.js&#10;upload&#9;FILE&#9;file://D:/Projects/cms/public/admin/dist/js/upload.js&#10;pagin&#9;FILE&#9;file://D:/Projects/cms/admin/views/partials/pagination.xoo&#10;c&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/assets/css/custom.css&#10;header&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/partial/header.xoo&#10;nu&#9;FILE&#9;file://D:/Projects/cms/configs/nunjucks/nunjucks-global.js&#10;glo&#9;FILE&#9;file://D:/Projects/cms/configs/globals/global-functions.js&#10;fo&#9;FILE&#9;file://D:/Projects/cms/admin/views/partials/forms.xoo&#10;for&#9;FILE&#9;file://D:/Projects/cms/admin/views/partials/forms.xoo&#10;global&#9;FILE&#9;file://D:/Projects/cms/configs/globals/global-functions.js&#10;index.&#9;FILE&#9;file://D:/Projects/cms/admin/languages/actions/index.action.js&#10;pack&#9;FILE&#9;file://D:/Projects/cms/package.json&#10;error&#9;FILE&#9;file://D:/Projects/cms/configs/errors-handler.js&#10;index.ac&#9;FILE&#9;file://D:/Projects/cms/admin/languages/actions/index.action.js&#10;glob&#9;FILE&#9;file://D:/Projects/cms/configs/globals/global-variables.js&#10;slug&#9;FILE&#9;file://D:/Projects/cms/libraries/slug.js&#10;form.xo&#9;FILE&#9;file://D:/Projects/cms/admin/views/partials/forms.xoo&#10;tabl&#9;FILE&#9;file://D:/Projects/cms/admin/views/partials/main-table.xoo&#10;route&#9;FILE&#9;file://D:/Projects/cms/admin/routes.js&#10;env&#9;FILE&#9;file://D:/Projects/cms/configs/env/.env.dev&#10;login&#9;FILE&#9;file://D:/Projects/cms/admin/users/views/login.xoo&#10;bc&#9;FILE&#9;file://D:/Projects/cms/libraries/bcrypt.js&#10;pas&#9;FILE&#9;file://D:/Projects/cms/configs/passport.js" />
+    <property name="SearchEverywhereHistoryKey" value="inde&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/index.xoo&#10;sty&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/assets/css/styles-light.css&#10;boo&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/partial/booking-form.xoo&#10;tem&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/assets/js/template.js&#10;head&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/partial/header.xoo&#10;index&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/index.xoo&#10;temp&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/assets/js/template.js&#10;cus&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/assets/css/custom.css&#10;layout&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/layout.xoo&#10;single-t&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/single-tour.xoo&#10;ex&#9;FILE&#9;file://D:/Projects/cms/configs/express.js&#10;layo&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/layout.xoo&#10;custom&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/assets/css/custom.css&#10;layou&#9;FILE&#9;file://D:/Projects/cms/admin/views/layout.xoo&#10;heade&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/partial/header.xoo&#10;sing&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/single-room.xoo&#10;single-to&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/single-tour.xoo&#10;single&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/single-room.xoo&#10;room&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/page-room.xoo&#10;contac&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/page-contact.xoo&#10;main&#9;FILE&#9;file://D:/Projects/cms/admin/views/partials/main-table.xoo&#10;foot&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/partial/footer.xoo&#10;them&#9;FILE&#9;file://D:/Projects/cms/admin/settings/theme-options.js&#10;foo&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/partial/footer.xoo&#10;form&#9;FILE&#9;file://D:/Projects/cms/admin/views/partials/forms.xoo&#10;nun&#9;FILE&#9;file://D:/Projects/cms/configs/nunjucks/nunjucks-global.js&#10;theme&#9;FILE&#9;file://D:/Projects/cms/admin/settings/theme-options.js&#10;forms&#9;FILE&#9;file://D:/Projects/cms/admin/views/partials/forms.xoo&#10;cu&#9;FILE&#9;file://D:/Projects/cms/public/admin/dist/js/custom.js&#10;exp&#9;FILE&#9;file://D:/Projects/cms/configs/express.js&#10;upload&#9;FILE&#9;file://D:/Projects/cms/public/admin/dist/js/upload.js&#10;pagin&#9;FILE&#9;file://D:/Projects/cms/admin/views/partials/pagination.xoo&#10;c&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/assets/css/custom.css&#10;header&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/partial/header.xoo&#10;nu&#9;FILE&#9;file://D:/Projects/cms/configs/nunjucks/nunjucks-global.js&#10;glo&#9;FILE&#9;file://D:/Projects/cms/configs/globals/global-functions.js&#10;fo&#9;FILE&#9;file://D:/Projects/cms/admin/views/partials/forms.xoo&#10;for&#9;FILE&#9;file://D:/Projects/cms/admin/views/partials/forms.xoo&#10;global&#9;FILE&#9;file://D:/Projects/cms/configs/globals/global-functions.js&#10;index.&#9;FILE&#9;file://D:/Projects/cms/admin/languages/actions/index.action.js&#10;pack&#9;FILE&#9;file://D:/Projects/cms/package.json&#10;error&#9;FILE&#9;file://D:/Projects/cms/configs/errors-handler.js&#10;index.ac&#9;FILE&#9;file://D:/Projects/cms/admin/languages/actions/index.action.js&#10;glob&#9;FILE&#9;file://D:/Projects/cms/configs/globals/global-variables.js&#10;slug&#9;FILE&#9;file://D:/Projects/cms/libraries/slug.js&#10;form.xo&#9;FILE&#9;file://D:/Projects/cms/admin/views/partials/forms.xoo&#10;tabl&#9;FILE&#9;file://D:/Projects/cms/admin/views/partials/main-table.xoo&#10;route&#9;FILE&#9;file://D:/Projects/cms/admin/routes.js&#10;env&#9;FILE&#9;file://D:/Projects/cms/configs/env/.env.dev&#10;login&#9;FILE&#9;file://D:/Projects/cms/admin/users/views/login.xoo" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
   <component name="RecentsManager">
@@ -524,12 +525,12 @@
       <workItem from="1491184032244" duration="26567000" />
       <workItem from="1491225083879" duration="5698000" />
       <workItem from="1491268630807" duration="1038000" />
-      <workItem from="1491270782024" duration="23642000" />
+      <workItem from="1491270782024" duration="24943000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="522128000" />
+    <option name="totallyTimeSpent" value="523429000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -544,14 +545,14 @@
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1420205" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1420205" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32882884" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2057057" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" x="101" y="138" width="1163" height="492" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2057057" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" x="101" y="138" width="1163" height="492" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -562,6 +563,25 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32882884" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2057057" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" x="101" y="138" width="1163" height="492" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1420205" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="processedProjectFiles" value="true" />
@@ -583,14 +603,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/themes/hotel/page-blog.xoo">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="30" column="67" lean-forward="false" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="86" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin/posts/models/index.model.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
@@ -840,14 +852,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/themes/hotel/partial/booking-form.xoo">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="17" column="20" lean-forward="true" selection-start-line="17" selection-start-column="20" selection-end-line="18" selection-end-column="74" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin/contacts/views/create.xoo">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1003,22 +1007,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/configs/express.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="22" column="35" lean-forward="false" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/themes/hotel/assets/js/template.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="13" column="11" lean-forward="true" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/themes/hotel/partial/blog-sidebar.xoo">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="370">
@@ -1027,18 +1015,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/themes/hotel/index.xoo">
+    <entry file="file://$PROJECT_DIR$/themes/hotel/partial/header.xoo">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="70" column="103" lean-forward="true" selection-start-line="70" selection-start-column="103" selection-end-line="70" selection-end-column="145" />
+        <state relative-caret-position="344">
+          <caret line="38" column="10" lean-forward="true" selection-start-line="38" selection-start-column="10" selection-end-line="38" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/themes/hotel/partial/header.xoo">
+    <entry file="file://$PROJECT_DIR$/themes/hotel/index.xoo">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="33" column="14" lean-forward="true" selection-start-line="33" selection-start-column="14" selection-end-line="33" selection-end-column="14" />
+        <state relative-caret-position="232">
+          <caret line="24" column="39" lean-forward="true" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/hotel/assets/css/styles-light.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="11076" column="33" lean-forward="false" selection-start-line="11076" selection-start-column="33" selection-end-line="11076" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/hotel/partial/booking-form.xoo">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="38" column="56" lean-forward="false" selection-start-line="38" selection-start-column="56" selection-end-line="38" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/hotel/assets/js/template.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="60" column="42" lean-forward="false" selection-start-line="60" selection-start-column="42" selection-end-line="60" selection-end-column="42" />
+          <caret line="61" column="42" lean-forward="false" selection-start-line="61" selection-start-column="42" selection-end-line="61" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configs/express.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="17" column="24" lean-forward="true" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
           <folding />
         </state>
       </provider>

@@ -7,14 +7,14 @@
                     <h4 class="modal-title" id="BookingModal">{{ Options['tr_booking'][LANG] }}</h4>
                 </div>
                 <style type="text/css">
-                    .modal-body#main-availability-form form{
+                    .modal-body.main-availability-form form{
                         margin-top: 0;
                     }
-                    .modal-body#main-availability-form .booking-fields{
+                    .modal-body.main-availability-form .booking-fields{
                         margin-bottom: 20px;
                     }
                 </style>
-                <div class="modal-body" id="main-availability-form">
+                <div class="modal-body main-availability-form">
                     <input type="hidden" name="type" value="booking">
                     <input type="hidden" name="_csrf" value="{{ _csrf }}">
                     <div class="row" style="margin-bottom: 0">
@@ -30,12 +30,12 @@
                         <div class="input-daterange">
                             <div class="booking-fields col-md-6">
                                 <input placeholder="{{ Options['tr_checkin'][LANG] }}" class="datepicker-fields check-in" type="text"
-                                       name="_field_start" required/>
+                                       name="start" required/>
                                 <i class="fa fa-calendar"></i>
                             </div>
                             <div class="booking-fields col-md-6">
                                 <input placeholder="{{ Options['tr_checkout'][LANG] }}" class="datepicker-fields check-out" type="text"
-                                       name="_field_end" required/>
+                                       name="end" required/>
                                 <i class="fa fa-calendar"></i>
                             </div>
                         </div>

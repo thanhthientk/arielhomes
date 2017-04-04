@@ -10,15 +10,17 @@ jQuery(document).ready(function () {
 		var data = {};
 		$(this).find('input, select, textarea').map(function () {
 			var fieldName = $(this).attr('name');
+			if (fieldName === 'start' || fieldName === 'end')
+                fieldName = "_field_" +fieldName;
             data[fieldName] = $(this).val();
         });
 
 		$('.spinner').removeClass('hidden');
+        BookingModal.modal('hide');
 
 		$.post('/contact/api/create',
 			data,
 			function (result, status) {
-                BookingModal.modal('hide');
                 if (result.status === 'error' || status === 'error') {
                 	$('.spinner').addClass('hidden');
                     swal({
@@ -52,16 +54,14 @@ jQuery(document).ready(function () {
             adult = button.data('adult'),
             child = button.data('child'),
 			showRooms = button.data('rooms');
-        console.log(showRooms);
 
         if (showRooms === false)
             BookingModal.find('.booking-fields.rooms').remove();
 
-        BookingPopupForm.find('input[name=_field_start]').val(dateStart);
-        BookingPopupForm.find('input[name=_field_end]').val(dateEnd);
+        BookingPopupForm.find('input[name=start]').val(dateStart);
+        BookingPopupForm.find('input[name=end]').val(dateEnd);
         BookingPopupForm.find('select[name=_field_adult]').val(adult);
         BookingPopupForm.find('select[name=_field_child]').val(child);
-
     });
 
     //close-rooms
@@ -129,7 +129,7 @@ jQuery(document).ready(function () {
 
 
 	// Booking datepicker
-	jQuery.fn.datepicker && jQuery("#main-availability-form, #room-booking-form, #room-information-form").find('.input-daterange').datepicker({
+	jQuery.fn.datepicker && jQuery("#main-availability-form, #room-booking-form, #room-information-form, #BookingPopupForm").find('.input-daterange').datepicker({
 		format:    "dd/mm/yyyy",
 		autoclose: true
 	});

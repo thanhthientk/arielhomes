@@ -11048,48 +11048,48 @@ input[type="text"]:disabled, input[type="email"]:disabled, input[type="password"
 /**
  * Main Check Availability Form Styles
  */
-#main-availability-form {
+.main-availability-form {
   background: rgba(255, 255, 255, 0.85); }
   @media (max-width: 992px) {
-    #main-availability-form {
+    .main-availability-form {
       padding: 30px 0 60px; } }
-  #main-availability-form input, #main-availability-form select, #main-availability-form .select2-container {
+  .main-availability-form input, .main-availability-form select, .main-availability-form .select2-container {
     width: 100%; }
-  #main-availability-form i {
+  .main-availability-form i {
     color: #d2bd7f; }
-  #main-availability-form form {
+  .main-availability-form form {
     margin-top: 60px; }
-  #main-availability-form .row {
+  .main-availability-form .row {
     margin-bottom: 30px; }
     @media (max-width: 992px) {
-      #main-availability-form .row {
+      .main-availability-form .row {
         margin-bottom: 0; } }
-  #main-availability-form .booking-fields {
+  .main-availability-form .booking-fields {
     position: relative; }
     @media (max-width: 992px) {
-      #main-availability-form .booking-fields {
+      .main-availability-form .booking-fields {
         margin-bottom: 30px; } }
-    #main-availability-form .booking-fields > i {
+    .main-availability-form .booking-fields > i {
       position: absolute;
       right: 30px;
       top: 15px; }
-  #main-availability-form .ravis-btn span {
-    padding: 37px 15px; }
+  .main-availability-form .ravis-btn span {
+    padding: 37px 15px !important; }
   @media (max-width: 992px) {
-    #main-availability-form .ravis-btn {
+    .main-availability-form .ravis-btn {
       width: 100%; }
-      #main-availability-form .ravis-btn span {
+      .main-availability-form .ravis-btn span {
         padding: 15px; } }
 
 .slider-available-sec {
   position: relative; }
-  .slider-available-sec #main-availability-form {
+  .slider-available-sec .main-availability-form {
     position: absolute;
     left: 0;
     bottom: 0;
     width: 100%; }
     @media (max-width: 992px) {
-      .slider-available-sec #main-availability-form {
+      .slider-available-sec .main-availability-form {
         position: relative; } }
 
 /**
