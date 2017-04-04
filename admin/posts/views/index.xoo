@@ -1,6 +1,11 @@
 {% extends "../../views/layout.xoo" %}
 
 {% block content %}
+    <section class="content-header">
+        <h1>
+            {{ moduleInfo.label }}
+        </h1>
+    </section>
     <div class="toolbar">
         <a href="/admin/{{ moduleInfo.slug }}" class="btn btn-info">
             <i class="fa fa-refresh"></i>

@@ -1,5 +1,5 @@
 <header class="main-header">
-    <a href="index2.html" class="logo">
+    <a href="/" class="logo" target="_blank">
         <!-- logo for regular state and mobile devices -->
         <span class="logo-lg">XOO<b>CMS</b></span>
     </a>

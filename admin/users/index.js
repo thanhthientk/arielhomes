@@ -129,7 +129,7 @@ module.exports = {
         icon: 'fa fa-users',
         label: info.label,
         permission: permissions.read,
-        position: 4,
+        position: 70,
         activeIf: {
             module: [info.slug, 'roles'],
             controller: ['index', 'create', 'edit']

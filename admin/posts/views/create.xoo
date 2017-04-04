@@ -45,85 +45,24 @@
             </div>
             {#right#}
             <div class="col-md-3 col-xs-12">
-                <div class="box box-default">
-                    <div class="box-body">
-                        <div class="form-group">
-                            <label for="language">Ngôn ngữ</label>
-                            {#Show Box Select Languages#}
-                            {#Create From Post#}
-                            {% if createPostTranslate %}
-                                <input type="hidden" name="language" value="{{ languageOfThisItem.code }}">
-                                <div class="form-control">
-                                    <img src="/admin/dist/flags/{{ languageOfThisItem.flag }}.png" alt="">
-                                    {{ languageOfThisItem.name }}
-                                </div>
-                            {% elif controller === 'create' or countItemsWasTranslate === 1 %}
-                                <select name="language" id="language" class="form-control select2 flags">
-                                    {% for language in languages %}
-                                        <option value="{{ language.code }}" data-flag="{{ language.flag }}" {{ 'selected' if item.language === language.code}}>
-                                            {{ language.name }}
-                                        </option>
-                                    {% endfor %}
-                                </select>
-                            {#Disabled Box Select Languages#}
-                            {% elif controller === 'edit' %}
-                                <div class="form-control">
-                                    <img src="/admin/dist/flags/{{ languageOfThisItem.flag }}.png" alt="">
-                                    {{ languageOfThisItem.name }}
-                                </div>
-                            {% endif %}
-                        </div>
-                        {% if controller === 'edit' or createPostTranslate %}
-                            <div class="translations">
-                                <h3>Dịch</h3>
-                                {% for item in ItemsWasTranslate %}
-                                    <a href="/admin/posts/{{ item.id }}/edit" target="_blank">
-                                        <img src="/admin/dist/flags/{{ _global.getFlag(languages, item.language) }}.png" alt="{{ item.language }}">
-                                        <span>{{ item.name }}</span>
-                                        <i class="fa fa-pencil"></i>
-                                    </a>
-                                {% endfor %}
+                {#language box#}
+                {% include './../../views/partials/language-box.xoo' %}
 
-                                {% for language in LanguagesWillTranslate %}
-                                    <a href="/admin/posts/create?dl={{ item.documentsLanguage.id }}&language={{ language.code }}">
-                                        <img src="/admin/dist/flags/{{ language.flag }}.png" alt="{{ language.name }}">
-                                        <span></span>
-                                        <i class="fa fa-plus"></i>
-                                    </a>
-                                {% endfor %}
-                            </div>
-                        {% endif %}
-                    </div>
-                </div>
                 {#Status#}
                 {{ Form.BoxPostStatus(item.status) }}
 
                 {#categories#}
-                {#{{ Form.TaxonomiesBox({#}
-                    {#label: 'Danh mục bài viết',#}
-                    {#inputName: 'categories',#}
-                    {#taxonomyModule: 'posts',#}
-                    {#taxonomyType: 'category',#}
-                    {#items: categories,#}
-                    {#selectedItems: item.categories#}
-                {#}) }}#}
+                {{ Form.TaxonomiesBox({
+                    label: 'Danh mục bài viết',
+                    inputName: 'categories',
+                    taxonomyModule: 'posts',
+                    taxonomyType: 'category',
+                    items: categories,
+                    selectedItems: item.categories
+                }) }}
                 {#image#}
-                <div class="box">
-                    <div class="box-body">
-                        <label>Chọn ảnh đại diện</label>
-                        <div id="featureImage">
-                            <input type="hidden" name="image" value="{{ item.image }}">
-                            {% if (item.image) %}
-                                <img src="{{ _global.post_thumbnail(item.image) }}" />
-                            {% endif %}
-                        </div>
-                        <div style="margin-top: 10px;">
-                            {{ Form.CallMediaPopup({text: 'Chọn ảnh', action: 'single', class: 'pointer', targetId: 'featureImage'}) }}
-                            <span class="sperate"> &nbsp; &nbsp; | &nbsp; &nbsp; </span>
-                            <a class="pointer removeSingleImage" data-targetid="featureImage">Xóa</a>
-                        </div>
-                    </div>
-                </div>
+                {{ Form.SingleImageId(item.image) }}
+
             </div>
         </div>
     </form>

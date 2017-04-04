@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js --ignore public/"
+    "start": "nodemon app.js --ignore public/ --ignore themes/hotel/assets/js"
   },
   "keywords": [
     "CMS",

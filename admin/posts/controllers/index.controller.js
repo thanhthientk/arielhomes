@@ -50,11 +50,11 @@ const generateColumns = function (users = [{}], categories = [{}], languageWidth
             itemsInfo: {
                 show: {
                     class: 'bg-green',
-                    text: 'Hien thi'
+                    text: 'Hiển thị'
                 },
                 hide: {
                     class: 'bg-gray',
-                    text: 'An'
+                    text: 'Ẩn'
                 }
             },
             search: {
@@ -103,18 +103,19 @@ module.exports = {
                 {path: 'documentsLanguage'}
             ]
         };
-        let paginateParams = generatePaginateParams( generateColumns(), setPaginateOptions, req.query );
+        let queries= {postType: 'post'};
+        let paginateParams = generatePaginateParams( generateColumns(), setPaginateOptions, req.query, queries );
 
         try {
             let Results = yield Promise.all([
                 _Module.paginate(paginateParams.queries, paginateParams.options),
                 _app.model.user.find().select('fullname').sort({fullname: 'desc'}),
-                _app.model.taxonomy.find({module: 'posts', type: 'category'}).select('name'),
-                _app.model.language.find({status: true}).select('code flag')
+                _app.model.language.find({status: true}).select('code flag'),
+                _app.model.taxonomy.find({module: 'posts', type: 'category'}).select('name')
             ]);
 
-            let languages = Results[3],
-                categories = Results[2],
+            let categories = Results[3],
+                languages = Results[2],
                 users = Results[1],
                 items = Results[0].docs;
             let languageWidth = languages.length * 3.5;
@@ -127,11 +128,10 @@ module.exports = {
     }),
 
     create: co.wrap(function* (req, res, next) {
-        let PromiseAllResults = {};
         try {
             /** Create new post */
             if (!req.query.dl && !req.query.language) {
-                PromiseAllResults = yield Promise.all([
+                let PromiseAllResults = yield Promise.all([
                     _app.model.taxonomy.find({module: 'posts', type: 'category'}),
                     _app.model.language.find({status: true})
                 ]);
@@ -141,7 +141,7 @@ module.exports = {
             }
             /** Create translation from Post */
             let createPostTranslate = true;
-            PromiseAllResults = yield Promise.all([
+            let PromiseAllResults = yield Promise.all([
                 _app.model.taxonomy.find({module: 'posts', type: 'category'}),
                 _app.model.language.find({status: true}),
             ]);
@@ -214,10 +214,9 @@ module.exports = {
     }),
 
     edit: co.wrap(function* (req, res, next) {
-        let PromiseAllResults = {};
         try {
-            PromiseAllResults = yield Promise.all([
-                _Module.findById(req.params.id).populate('documentsLanguage', 'documents'),
+            let PromiseAllResults = yield Promise.all([
+                _Module.findById(req.params.id).populate('documentsLanguage', 'documents').populate('image'),
                 _app.model.taxonomy.find({module: 'posts', type: 'category'}),
                 _app.model.language.find({status: true}).select('code flag name')
             ]);

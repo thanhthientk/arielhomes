@@ -2,6 +2,12 @@
 const Slug = require('slug');
 const co = require('co');
 
+/**
+ *
+ * @param string : input need to generator
+ * @param model : model of module: like post, taxonomy...
+ * @returns {Promise}
+ */
 const generateSlug = function (string, model) {
     if (!string || !model) throw new Error('generateSlug: empty String or model');
 

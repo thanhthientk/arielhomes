@@ -23,7 +23,7 @@ module.exports = {
         icon: 'fa fa-tachometer',
         label: 'Dashboard',
         url: '/admin',
-        position: 1,
+        position: 0,
         activeIf: {
             module: 'dashboard',
             controller: ['index']

@@ -92,10 +92,36 @@ module.exports = {
         label: info.label,
         permission: permissions.read.slug,
         url: `/admin/${info.slug}`,
-        position: 4,
+        position: 60,
         activeIf: {
             module: info.slug,
             controller: ['index', 'create', 'edit']
-        }
+        },
+        child: [
+            {
+                label: 'Hình ảnh',
+                url: `/admin/media?type=image`,
+                activeIf: {
+                    module: info.slug,
+                    controller: ['index', 'create', 'edit'],
+                    params: {
+                        reqParam: 'type',
+                        value: 'image'
+                    }
+                }
+            },
+            {
+                label: 'Gallery',
+                url: `/admin/media?type=gallery`,
+                activeIf: {
+                    module: info.slug,
+                    controller: ['index', 'create', 'edit'],
+                    params: {
+                        reqParam: 'type',
+                        value: 'gallery'
+                    }
+                }
+            }
+        ]
     }
 };

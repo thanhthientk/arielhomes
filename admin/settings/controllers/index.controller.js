@@ -1,9 +1,22 @@
 "use strict";
-/* _Module
- * _datas
- * _data */
 const _info = require('../index').info;
 const Setting = _app.model.setting;
+const co = require('co');
+const themeOptions = require('./../theme-options');
+
+const themOptionsToArrayFields = function () {
+    let allFields = {};
+    Object.keys(themeOptions).map(bigGroupKey => {
+        let bigGroup = themeOptions[bigGroupKey];
+        Object.keys(bigGroup.fieldGroups).map(group => {
+            let fields = bigGroup.fieldGroups[group].fields;
+            Object.keys(fields).map(fieldKey => {
+                allFields[fieldKey] = fields[fieldKey];
+            });
+        })
+    });
+    return allFields;
+};
 
 module.exports = {
 
@@ -28,12 +41,58 @@ module.exports = {
             })
     },
 
-    themeOptions: function (req, res, next) {
-        let themeOptions = require('./../theme-options');
-        res.render('settings/views/theme-option', {pageTitle: 'Tùy chỉnh giao diện', themeOptions});
-    },
-    postThemeOptions: function (req, res, next) {
+    themeOptions: co.wrap(function* (req, res, next) {
+        try {
+            let Results = yield Promise.all([
+                Setting.findById('58df4d0b2e26d9206c620ec4'),
+                _app.model.language.find({status: true}).select('name code'),
+            ]);
+            let Options = Results[0],
+                languages = Results[1];
+            // gallery id
+            Options.data['home_gallery'] = yield _app.model.media.find({ _id: { $in: Options.data['home_gallery'] } }).select('name ext path');
 
-    },
+            res.render('settings/views/theme-option', {
+                pageTitle: 'Tùy chỉnh giao diện',
+                themeOptions,
+                languages,
+                Options
+            });
+        } catch (err) {
+            next(err);
+        }
+    }),
+    postThemeOptions: co.wrap(function* (req, res, next) {
+        try {
+            let languages = yield _app.model.language.find({status: true}).select('code'),
+                allFields = themOptionsToArrayFields(),
+                data = {};
+
+            Object.keys(allFields).map(fieldName => {
+                let field = allFields[fieldName];
+                if (field.multiLang) {
+                    let value = {};
+                    for (let i = 0; i < languages.length; i++) {
+                        let code = languages[i].code;
+                        value[code] = req.body[fieldName+ '_' + code];
+                    }
+                    data[fieldName] = value;
+                }
+                else if (field.type === 'galleryId') {
+                    let idImages = [];
+                    req.body[fieldName].map(id => idImages.push(id));
+                    data[fieldName] = idImages;
+                }
+                else {
+                    data[fieldName] = req.body[fieldName];
+                }
+            });
+
+            yield Setting.findByIdAndUpdate('58df4d0b2e26d9206c620ec4', { data });
+            res.redirect('back');
+        } catch (err) {
+            next(err);
+        }
+    }),
 
 };

@@ -9238,7 +9238,7 @@ button.close {
     -webkit-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
     transition: all 0.3s ease;
-    font-family: "Playfair Display", Arial, Helvetica, sans-serif;
+    font-family: 'Noto Serif', serif;
     color: #d2bd7f; }
     .datepicker thead tr:first-child th:hover {
       background: #d2bd7f;
@@ -10135,22 +10135,22 @@ input:focus, textarea:focus {
     position: absolute; }
   #t-logo .title, #f-logo .title {
     color: #000000;
-    font: 2.5em/1em "Playfair Display", Arial, Helvetica, sans-serif;
+    font: 2.5em/1em 'Noto Serif', serif;
     left: 0;
     bottom: 45px; }
   #t-logo .desc, #f-logo .desc {
     color: #d2bd7f;
-    font: 1.5em/1em "Great Vibes", Arial, Helvetica, sans-serif;
+    font: 1.5em/1em 'Dancing Script', cursive;
     left: 63px;
     bottom: 75px; }
 
 #f-logo {
   height: 60px; }
   #f-logo .title {
-    font: 1.9em/1em "Playfair Display", Arial, Helvetica, sans-serif;
+    font: 1.9em/1em 'Noto Serif', serif;
     bottom: 20px; }
   #f-logo .desc {
-    font: 1.1em/1em "Great Vibes", Arial, Helvetica, sans-serif;
+    font: 1.1em/1em 'Dancing Script', cursive;
     left: 53px;
     bottom: 42px; }
 
@@ -10195,14 +10195,14 @@ input:focus, textarea:focus {
       border-top: 0; }
     .ravis-title .inner-box .title {
       color: #000000;
-      font: 30px/40px "Playfair Display", Arial, Helvetica, sans-serif; }
+      font: 30px/40px 'Noto Serif', serif; }
     .ravis-title .inner-box .sub-title {
       color: #d2bd7f;
-      font: 30px/40px "Great Vibes", Arial, Helvetica, sans-serif; }
+      font: 30px/40px 'Dancing Script', cursive; }
 
 .ravis-title-t-1 .title {
   color: #000000;
-  font: 30px/80px "Playfair Display", Arial, Helvetica, sans-serif; }
+  font: 30px/80px 'Noto Serif', serif; }
   @media (max-width: 440px) {
     .ravis-title-t-1 .title {
       font-size: 24px; } }
@@ -10225,7 +10225,7 @@ input:focus, textarea:focus {
       bottom: -3px; }
 .ravis-title-t-1 .sub-title {
   color: #d2bd7f;
-  font: 30px/70px "Great Vibes", Arial, Helvetica, sans-serif; }
+  font: 30px/70px 'Dancing Script', cursive; }
   @media (max-width: 767px) {
     .ravis-title-t-1 .sub-title {
       line-height: 30px;
@@ -10238,7 +10238,7 @@ input:focus, textarea:focus {
   text-align: center; }
   .ravis-title-t-2 .title {
     color: #000000;
-    font: 34px/80px "Playfair Display", Arial, Helvetica, sans-serif; }
+    font: 34px/80px 'Noto Serif', serif; }
     .ravis-title-t-2 .title span {
       display: inline-block;
       position: relative;
@@ -10263,10 +10263,10 @@ input:focus, textarea:focus {
         bottom: -3px; }
   .ravis-title-t-2 .sub-title {
     color: #d2bd7f;
-    font: 30px/70px "Great Vibes", Arial, Helvetica, sans-serif; }
+    font: 30px/70px 'Dancing Script', cursive; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Playfair Display", Arial, Helvetica, sans-serif; }
+  font-family: 'Noto Serif', serif; }
 
 .ravis-btn {
   border: 0;
@@ -10275,7 +10275,7 @@ h1, h2, h3, h4, h5, h6 {
   .ravis-btn:hover, .ravis-btn:focus, .ravis-btn:active {
     outline: none; }
   .ravis-btn.btn-type-1 {
-    font-family: "Playfair Display", Arial, Helvetica, sans-serif;
+    font-family: 'Noto Serif', serif;
     color: #000000;
     font-size: 1.2em;
     background: none;
@@ -10563,7 +10563,7 @@ input[type="text"]:disabled, input[type="email"]:disabled, input[type="password"
   margin: 20px 0; }
   .rate-box .title {
     color: #000000;
-    font: 1.3em/2.7em "Playfair Display", Arial, Helvetica, sans-serif; }
+    font: 1.3em/2.7em 'Noto Serif', serif; }
   .rate-box .progress {
     height: 15px;
     background: #FFFFFF;
@@ -10624,7 +10624,7 @@ input[type="text"]:disabled, input[type="email"]:disabled, input[type="password"
       position: relative; }
       #main-header .inner-container .r-sec #main-menu ul li > a {
         color: #000000;
-        font: 1.2em/120px "Playfair Display", Arial, Helvetica, sans-serif;
+        font: 1.2em/120px 'Noto Serif', serif;
         padding: 0 10px;
         -webkit-transition: all 0.3s ease;
         -o-transition: all 0.3s ease;
@@ -10821,7 +10821,7 @@ input[type="text"]:disabled, input[type="email"]:disabled, input[type="password"
       width: 50px;
       height: 50px;
       color: #000000;
-      font-family: "Playfair Display", Arial, Helvetica, sans-serif;
+      font-family: 'Noto Serif', serif;
       -webkit-transition: all 0.3s ease;
       -o-transition: all 0.3s ease;
       transition: all 0.3s ease;
@@ -11034,13 +11034,13 @@ input[type="text"]:disabled, input[type="email"]:disabled, input[type="password"
             font-size: .7em; } }
     #main-slider .slide-caption .up-sec, #main-slider-fullscreen .slide-caption .up-sec {
       color: #d2bd7f;
-      font: 0.9em/1em "Great Vibes", Arial, Helvetica, sans-serif; }
+      font: 0.9em/1em 'Dancing Script', cursive; }
       @media (max-width: 992px) {
         #main-slider .slide-caption .up-sec, #main-slider-fullscreen .slide-caption .up-sec {
           font-size: .6em; } }
     #main-slider .slide-caption .down-sec, #main-slider-fullscreen .slide-caption .down-sec {
       color: #000000;
-      font: 1.4em/1em "Playfair Display", Arial, Helvetica, sans-serif; }
+      font: 1.4em/1em 'Noto Serif', serif; }
       @media (max-width: 992px) {
         #main-slider .slide-caption .down-sec, #main-slider-fullscreen .slide-caption .down-sec {
           font-size: .9em; } }
@@ -11107,7 +11107,7 @@ input[type="text"]:disabled, input[type="email"]:disabled, input[type="password"
     line-height: 30px; }
   #welcome-section .l-sec cite {
     color: #d2bd7f;
-    font: 24px/30px "Great Vibes", Arial, Helvetica, sans-serif; }
+    font: 24px/30px 'Dancing Script', cursive; }
   #welcome-section .r-sec > img {
     margin-top: 78px;
     max-width: 100%;
@@ -11298,7 +11298,7 @@ input[type="text"]:disabled, input[type="email"]:disabled, input[type="password"
       letter-spacing: 5px;
       display: inline-block;
       color: #000000;
-      font: 22px/35px "Playfair Display", Arial, Helvetica, sans-serif;
+      font: 22px/35px 'Noto Serif', serif;
       opacity: 0;
       filter: alpha(opacity=0);
       -webkit-transition: all 0.5s ease;
@@ -11377,7 +11377,7 @@ input[type="text"]:disabled, input[type="email"]:disabled, input[type="password"
       width: 50px;
       height: 50px;
       color: #000000;
-      font-family: "Playfair Display", Arial, Helvetica, sans-serif;
+      font-family: 'Noto Serif', serif;
       -webkit-transition: all 0.3s ease;
       -o-transition: all 0.3s ease;
       transition: all 0.3s ease;
@@ -11511,10 +11511,10 @@ input[type="text"]:disabled, input[type="email"]:disabled, input[type="password"
       padding: 30px 0; }
       #special-offers .package-box .title-box .title {
         color: #000000;
-        font: 30px/40px "Playfair Display", Arial, Helvetica, sans-serif; }
+        font: 30px/40px 'Noto Serif', serif; }
       #special-offers .package-box .title-box .sub-title {
         color: #d2bd7f;
-        font: 30px/40px "Great Vibes", Arial, Helvetica, sans-serif; }
+        font: 30px/40px 'Dancing Script', cursive; }
     #special-offers .package-box .price-box {
       background: #d2bd7f;
       padding: 15px 0; }
@@ -11523,7 +11523,7 @@ input[type="text"]:disabled, input[type="email"]:disabled, input[type="password"
         vertical-align: middle; }
       #special-offers .package-box .price-box .price {
         color: #FFFFFF;
-        font: 30px/40px "Playfair Display", Arial, Helvetica, sans-serif; }
+        font: 30px/40px 'Noto Serif', serif; }
       #special-offers .package-box .price-box .type {
         color: #000000;
         margin-left: 20px;
@@ -11582,7 +11582,7 @@ input[type="text"]:disabled, input[type="email"]:disabled, input[type="password"
           background: #FFFFFF; }
     #main-footer .t-sec .widget-box .widget-content.latest-posts ul li {
       font-size: 14px;
-      padding: 30px 0;
+      padding: 20px 0;
       border-bottom: 1px solid #d2bd7f; }
       #main-footer .t-sec .widget-box .widget-content.latest-posts ul li:first-child {
         padding-top: 0; }
@@ -11740,7 +11740,7 @@ input[type="text"]:disabled, input[type="email"]:disabled, input[type="password"
         .event-container .event-main-box .item figcaption .title-box .title, .event-container .dishes-main-box .item figcaption .title-box .title, .dishes-container .event-main-box .item figcaption .title-box .title, .dishes-container .dishes-main-box .item figcaption .title-box .title {
           margin: 0;
           color: #000000;
-          font: 22px/40px "Playfair Display", Arial, Helvetica, sans-serif;
+          font: 22px/40px 'Noto Serif', serif;
           white-space: nowrap; }
           @media (max-width: 992px) {
             .event-container .event-main-box .item figcaption .title-box .title, .event-container .dishes-main-box .item figcaption .title-box .title, .dishes-container .event-main-box .item figcaption .title-box .title, .dishes-container .dishes-main-box .item figcaption .title-box .title {
@@ -11757,7 +11757,7 @@ input[type="text"]:disabled, input[type="email"]:disabled, input[type="password"
           -o-transition: all 0.5s ease;
           transition: all 0.5s ease;
           color: #d2bd7f;
-          font: 1.6em/30px "Great Vibes", Arial, Helvetica, sans-serif;
+          font: 1.6em/30px 'Dancing Script', cursive;
           margin-top: -10px; }
           @media (max-width: 992px) {
             .event-container .event-main-box .item figcaption .title-box .sub-title, .event-container .dishes-main-box .item figcaption .title-box .sub-title, .dishes-container .event-main-box .item figcaption .title-box .sub-title, .dishes-container .dishes-main-box .item figcaption .title-box .sub-title {
@@ -11782,7 +11782,7 @@ input[type="text"]:disabled, input[type="email"]:disabled, input[type="password"
     .event-container .event-main-box .item:hover figcaption, .event-container .dishes-main-box .item:hover figcaption, .dishes-container .event-main-box .item:hover figcaption, .dishes-container .dishes-main-box .item:hover figcaption {
       background: rgba(255, 255, 255, 0.9); }
       .event-container .event-main-box .item:hover figcaption .title-box, .event-container .dishes-main-box .item:hover figcaption .title-box, .dishes-container .event-main-box .item:hover figcaption .title-box, .dishes-container .dishes-main-box .item:hover figcaption .title-box {
-        height: 75px;
+        height: 40px;
         bottom: 100px;
         background: none; }
         .event-container .event-main-box .item:hover figcaption .title-box .sub-title, .event-container .dishes-main-box .item:hover figcaption .title-box .sub-title, .dishes-container .event-main-box .item:hover figcaption .title-box .sub-title, .dishes-container .dishes-main-box .item:hover figcaption .title-box .sub-title {
@@ -11816,7 +11816,7 @@ input[type="text"]:disabled, input[type="email"]:disabled, input[type="password"
   #event-top-section .event-title-box h1.title {
     margin: 0;
     color: #000000;
-    font: 30px/40px "Playfair Display", Arial, Helvetica, sans-serif;
+    font: 30px/40px 'Noto Serif', serif;
     white-space: nowrap; }
     @media (max-width: 600px) {
       #event-top-section .event-title-box h1.title {
@@ -11825,7 +11825,7 @@ input[type="text"]:disabled, input[type="email"]:disabled, input[type="password"
   #event-top-section .event-title-box .sub-title {
     margin-top: 10px;
     color: #d2bd7f;
-    font: 1.6em/20px "Great Vibes", Arial, Helvetica, sans-serif; }
+    font: 1.6em/20px 'Dancing Script', cursive; }
     @media (max-width: 600px) {
       #event-top-section .event-title-box .sub-title {
         font-size: 1.4em; } }
@@ -11876,7 +11876,7 @@ input[type="text"]:disabled, input[type="email"]:disabled, input[type="password"
       width: 50px;
       height: 50px;
       color: #000000;
-      font-family: "Playfair Display", Arial, Helvetica, sans-serif;
+      font-family: 'Noto Serif', serif;
       -webkit-transition: all 0.3s ease;
       -o-transition: all 0.3s ease;
       transition: all 0.3s ease;
@@ -12015,7 +12015,7 @@ input[type="text"]:disabled, input[type="email"]:disabled, input[type="password"
       .event-desc .booking-form input[type="submit"] {
         background: #d2bd7f;
         color: #FFFFFF;
-        font-family: "Playfair Display", Arial, Helvetica, sans-serif;
+        font-family: 'Noto Serif', serif;
         border: 0; }
     .event-desc .booking-form .select2-container {
       width: 100%; }
@@ -12047,7 +12047,7 @@ input[type="text"]:disabled, input[type="email"]:disabled, input[type="password"
           bottom: -3px; }
         .event-desc .content .date-box .inner-box span {
           color: #d2bd7f;
-          font: 2.2em/1.7em "Great Vibes", Arial, Helvetica, sans-serif;
+          font: 2.2em/1.7em 'Dancing Script', cursive;
           display: inline-block;
           vertical-align: middle;
           margin-left: 20px; }
@@ -12440,7 +12440,7 @@ body.restaurant #welcome-section .r-sec .user-img-box {
       letter-spacing: 5px;
       display: inline-block;
       color: #000000;
-      font: 22px/35px "Playfair Display", Arial, Helvetica, sans-serif;
+      font: 22px/35px 'Noto Serif', serif;
       opacity: 0;
       filter: alpha(opacity=0);
       -webkit-transition: all 0.5s ease;
@@ -12601,7 +12601,7 @@ body.restaurant #welcome-section .r-sec .user-img-box {
       width: 50px;
       height: 50px;
       color: #000000;
-      font-family: "Playfair Display", Arial, Helvetica, sans-serif;
+      font-family: 'Noto Serif', serif;
       -webkit-transition: all 0.3s ease;
       -o-transition: all 0.3s ease;
       transition: all 0.3s ease;
@@ -12686,7 +12686,7 @@ body.restaurant #welcome-section .r-sec .user-img-box {
       letter-spacing: 5px;
       display: inline-block;
       color: #000000;
-      font: 26px/60px "Playfair Display", Arial, Helvetica, sans-serif;
+      font: 26px/60px 'Noto Serif', serif;
       opacity: 0;
       filter: alpha(opacity=0);
       -webkit-transition: all 0.5s ease;
@@ -12772,7 +12772,7 @@ body.restaurant #welcome-section .r-sec .user-img-box {
       margin-bottom: 20px; }
     #guest-book .guest-book-item cite {
       color: #d2bd7f;
-      font: 24px/70px "Great Vibes", Arial, Helvetica, sans-serif; }
+      font: 24px/70px 'Dancing Script', cursive; }
     #guest-book .guest-book-item:hover .inner-box {
       background: #f2f2f2; }
     #guest-book .guest-book-item.guest-book-form-box .ravis-title-t-2 {
@@ -12788,7 +12788,7 @@ body.restaurant #welcome-section .r-sec .user-img-box {
     #guest-book .guest-book-item.guest-book-form-box .guest-book-form input[type="submit"] {
       background: #d2bd7f;
       color: #FFFFFF;
-      font-family: "Playfair Display", Arial, Helvetica, sans-serif;
+      font-family: 'Noto Serif', serif;
       border: 0; }
 
 /**
@@ -12845,7 +12845,7 @@ body.restaurant #welcome-section .r-sec .user-img-box {
           padding: 10px 30px 30px; } }
       #blog-section .post-box .post-b-sec .post-title-box {
         position: relative;
-        font: 1.8em/3em "Playfair Display", Arial, Helvetica, sans-serif;
+        font: 1.8em/3em 'Noto Serif', serif;
         text-align: center; }
         @media (max-width: 992px) {
           #blog-section .post-box .post-b-sec .post-title-box {
@@ -12974,7 +12974,7 @@ body.restaurant #welcome-section .r-sec .user-img-box {
       #blog-section .post-box .post-b-sec .comments-container {
         margin: 30px 0; }
         #blog-section .post-box .post-b-sec .comments-container h3 {
-          font: 2em/2.5em "Playfair Display", Arial, Helvetica, sans-serif;
+          font: 2em/2.5em 'Noto Serif', serif;
           margin: 0 0 60px;
           color: #d2bd7f;
           position: relative; }
@@ -13067,7 +13067,7 @@ body.restaurant #welcome-section .r-sec .user-img-box {
       #blog-section .post-box .post-b-sec .comment-form-container {
         margin-top: 80px; }
         #blog-section .post-box .post-b-sec .comment-form-container h3 {
-          font: 2em/2.5em "Playfair Display", Arial, Helvetica, sans-serif;
+          font: 2em/2.5em 'Noto Serif', serif;
           margin: 0 0 20px;
           color: #000000;
           position: relative; }
@@ -13127,7 +13127,7 @@ body.blog-masonry #blog-section .post-outer-box {
 body.blog-masonry #blog-section .post-box .post-b-sec {
   padding: 20px 30px 30px; }
   body.blog-masonry #blog-section .post-box .post-b-sec .post-title-box {
-    font: 1.5em/1.5em "Playfair Display", Arial, Helvetica, sans-serif;
+    font: 1.5em/1.5em 'Noto Serif', serif;
     padding-bottom: 30px; }
     body.blog-masonry #blog-section .post-box .post-b-sec .post-title-box:before {
       width: 90%; }
@@ -13374,10 +13374,10 @@ body.post-details #blog-section {
         #rooms-section.row-view .room-container .room-box .m-sec .title-box > .title {
           margin: 0;
           color: #000000;
-          font: 24px/45px "Playfair Display", Arial, Helvetica, sans-serif; }
+          font: 24px/45px 'Noto Serif', serif; }
         #rooms-section.row-view .room-container .room-box .m-sec .title-box .price {
           color: #d2bd7f;
-          font: 1.6em/30px "Great Vibes", Arial, Helvetica, sans-serif;
+          font: 1.6em/30px 'Dancing Script', cursive;
           -webkit-transition: all 0.5s ease;
           -o-transition: all 0.5s ease;
           transition: all 0.5s ease; }
@@ -13461,10 +13461,10 @@ body.post-details #blog-section {
         .room-container .room-box > .inner-box .caption > .title {
           margin: 0;
           color: #000000;
-          font: 24px/45px "Playfair Display", Arial, Helvetica, sans-serif; }
+          font: 24px/45px 'Noto Serif', serif; }
         .room-container .room-box > .inner-box .caption .price {
           color: #d2bd7f;
-          font: 1.6em/30px "Great Vibes", Arial, Helvetica, sans-serif;
+          font: 1.6em/30px 'Dancing Script', cursive;
           -webkit-transition: all 0.5s ease;
           -o-transition: all 0.5s ease;
           transition: all 0.5s ease; }
@@ -13799,7 +13799,7 @@ body.post-details #blog-section {
     #room-information-form input[type="submit"] {
       background: #d2bd7f;
       color: #FFFFFF;
-      font-family: "Playfair Display", Arial, Helvetica, sans-serif;
+      font-family: 'Noto Serif', serif;
       border: 0; }
   #room-information-form .select2-container {
     width: 100%; }
@@ -13913,10 +13913,10 @@ body.post-details #blog-section {
     #booking-room-container .room-box .title-box > .title {
       margin: 0;
       color: #000000;
-      font: 24px/45px "Playfair Display", Arial, Helvetica, sans-serif; }
+      font: 24px/45px 'Noto Serif', serif; }
     #booking-room-container .room-box .title-box .price {
       color: #d2bd7f;
-      font: 1.6em/30px "Great Vibes", Arial, Helvetica, sans-serif;
+      font: 1.6em/30px 'Dancing Script', cursive;
       -webkit-transition: all 0.5s ease;
       -o-transition: all 0.5s ease;
       transition: all 0.5s ease; }
@@ -13982,7 +13982,7 @@ body.post-details #blog-section {
       .price-breakdown-popup table td > div {
         display: inline-block; }
       .price-breakdown-popup table td .title {
-        font: 1.3em/60px "Playfair Display", Arial, Helvetica, sans-serif;
+        font: 1.3em/60px 'Noto Serif', serif;
         color: #000000;
         width: 90px; }
         @media (max-width: 600px) {
@@ -13996,7 +13996,7 @@ body.post-details #blog-section {
             margin: 0 0 20px; } }
       .price-breakdown-popup table td.price {
         color: #d2bd7f;
-        font: 1.8em/2em "Great Vibes", Arial, Helvetica, sans-serif; }
+        font: 1.8em/2em 'Dancing Script', cursive; }
     .price-breakdown-popup table tr:last-child td {
       background: #e6e6e6;
       border-top: 1px solid #d2bd7f; }
@@ -14084,7 +14084,7 @@ body.post-details #blog-section {
           margin: 70px 40px; } }
       #contact-section .t-sec .contact-info .contact-inf-box {
         display: inline-block;
-        font: 1.3em/1em "Playfair Display", Arial, Helvetica, sans-serif;
+        font: 1.3em/1em 'Noto Serif', serif;
         color: #000000;
         max-width: 300px;
         vertical-align: top;
@@ -14182,7 +14182,7 @@ body.post-details #blog-section {
           -webkit-transition: all 0.3s ease;
           -o-transition: all 0.3s ease;
           transition: all 0.3s ease;
-          font-family: "Playfair Display", Arial, Helvetica, sans-serif;
+          font-family: 'Noto Serif', serif;
           padding: 10px 20px;
           font-size: 1.2em; }
           #contact-section .b-sec .contact-form form input[type="submit"]:hover {
@@ -14416,10 +14416,10 @@ body.post-details #blog-section {
           display: block; }
         #restaurant-menus .b-sec .tab-container .tab-box .title {
           color: #000000;
-          font: 26px/30px "Playfair Display", Arial, Helvetica, sans-serif; }
+          font: 26px/30px 'Noto Serif', serif; }
         #restaurant-menus .b-sec .tab-container .tab-box .sub-title {
           color: #d2bd7f;
-          font: 24px/30px "Great Vibes", Arial, Helvetica, sans-serif; }
+          font: 24px/30px 'Dancing Script', cursive; }
         #restaurant-menus .b-sec .tab-container .tab-box.active {
           background: #FFFFFF; }
           #restaurant-menus .b-sec .tab-container .tab-box.active:before, #restaurant-menus .b-sec .tab-container .tab-box.active:after {
@@ -14504,11 +14504,11 @@ body.post-details #blog-section {
             #restaurant-menus .b-sec .tab-content .tab-pane .menu-list ul li .title {
               margin-right: 45px;
               color: #000000;
-              font: 1.1em/40px "Playfair Display", Arial, Helvetica, sans-serif; }
+              font: 1.1em/40px 'Noto Serif', serif; }
             #restaurant-menus .b-sec .tab-content .tab-pane .menu-list ul li .price {
               float: right;
               color: #d2bd7f;
-              font: 1.2em/50px "Great Vibes", Arial, Helvetica, sans-serif; }
+              font: 1.2em/50px 'Dancing Script', cursive; }
 
 /**
  * Gallery Pages Styles
@@ -14757,7 +14757,7 @@ body.room-detials .room-title-box {
   body.room-detials .room-title-box h1.title {
     margin: 0;
     color: #000000;
-    font: 30px/40px "Playfair Display", Arial, Helvetica, sans-serif;
+    font: 30px/40px 'Noto Serif', serif;
     white-space: nowrap; }
     @media (max-width: 600px) {
       body.room-detials .room-title-box h1.title {
@@ -14766,7 +14766,7 @@ body.room-detials .room-title-box {
   body.room-detials .room-title-box .price {
     color: #d2bd7f;
     margin-top: 20px;
-    font: 1.6em/30px "Great Vibes", Arial, Helvetica, sans-serif;
+    font: 1.6em/30px 'Dancing Script', cursive;
     -webkit-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease; }
@@ -14864,7 +14864,7 @@ body.room-detials .room-desc .r-sec {
       body.room-detials .room-desc .r-sec form input[type="submit"] {
         background: #d2bd7f;
         color: #FFFFFF;
-        font-family: "Playfair Display", Arial, Helvetica, sans-serif;
+        font-family: 'Noto Serif', serif;
         border: 0; }
     body.room-detials .room-desc .r-sec form .select2-container {
       width: 100%; }

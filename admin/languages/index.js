@@ -90,7 +90,7 @@ module.exports = {
         icon: 'fa fa-globe',
         label: info.label,
         permission: permissions.read,
-        position: 99,
+        position: 80,
         activeIf: {
             module: info.slug,
             controller: ['index', 'create', 'edit']

@@ -6,8 +6,9 @@ const upload = multer.single('file');
 const path = require('path');
 const Jimp = require('jimp');
 const fs = require('fs');
+const co = require('co');
 
-const generateColumns = function (users = {}) {
+const generateColumns = function (users = {}, type = 'image') {
     return [
         {
             displayType: 'checkbox',
@@ -22,12 +23,18 @@ const generateColumns = function (users = {}) {
         {
             label: 'Name',
             name: 'name',
-            displayType: 'text',
+            displayType: 'title',
             headSort: true,
             width: '47%',
             search: {
                 type: 'text'
-            }
+            },
+            params: [
+                {
+                    name: 'type',
+                    value: type
+                }
+            ]
         },
         {
             label: 'Created by',
@@ -65,9 +72,15 @@ module.exports = {
         let setPaginateOptions = {
             populate: [
                 {path: 'createdBy', select: 'fullname'}
-            ]
+            ],
+            limit: 20
         };
-        let paginateParams = generatePaginateParams(generateColumns(), setPaginateOptions, req.query);
+        let paginateParams = generatePaginateParams(
+            generateColumns(),
+            setPaginateOptions,
+            req.query,
+            {type: req.query.type || 'image'}
+        );
 
         Promise.all([
             _Module.paginate(paginateParams.queries, paginateParams.options),
@@ -77,7 +90,7 @@ module.exports = {
                 let users = results[1];
                 let items = results[0].docs;
                 let paginated = generatePaginateLink(req, results[0]);
-                let columns = generateColumns(users);
+                let columns = generateColumns(users, req.query.type);
                 res.render(_info.views.index, { items, paginated, columns });
             }))
             .catch(err => {
@@ -85,9 +98,14 @@ module.exports = {
             })
     },
 
-    create: function (req, res, next) {
-        res.render(_info.views.create);
-    },
+    create: co.wrap(function* (req, res, next) {
+        try {
+            let languages = yield _app.model.language.find({status: true});
+            res.render(_info.views.create, { languages });
+        } catch (err) {
+            next(err);
+        }
+    }),
 
     store: function(req, res, next) {
         let response = {};
@@ -104,13 +122,14 @@ module.exports = {
                 res.json(response);
             } else {
                 let {name, ext} = path.parse(req.file.filename);
-                let newfile = new _Module({
+                let newFile = new _Module({
                     name,
                     ext,
                     path: name,
-                    createdBy: req.user.id
+                    createdBy: req.user.id,
+                    type: req.query.type || 'image'
                 });
-                newfile.save()
+                newFile.save()
                     .then((file) => {
                         response.file = file;
                         return Jimp.read(`./public/uploads/${name}${ext}`)
@@ -118,6 +137,7 @@ module.exports = {
                     .then((image) => {
                         image.cover(150, 150)
                             .write(`./public/uploads/${name}-150x150${ext}`);
+
                         response.status = 1;
                         response.message = 'Đã tải lên thành công';
                         res.json(response);
@@ -132,15 +152,20 @@ module.exports = {
         })
     },
 
-    edit: function(req, res, next) {
-        _Module.findById(req.params.id)
-            .then(item => {
-                res.render(_info.views.create, { item });
-            })
-            .catch(err => {
-                next(err);
-            })
-    },
+    edit: co.wrap(function* (req, res, next) {
+        try {
+            let Results = yield Promise.all([
+                _Module.findById(req.params.id),
+                _app.model.language.find({status: true})
+            ]);
+            let item = Results[0],
+                languages = Results[1];
+            res.render(_info.views.create, { item, languages });
+        }
+        catch (err) {
+            next(err);
+        }
+    }),
 
     update: function(req, res, next) {
         req.checkBody('name', `Vui lòng nhập tên ${_info.label}`).notEmpty();
@@ -149,7 +174,7 @@ module.exports = {
             req.flash('errors', errors);
             return res.redirect('back');
         }
-
+        req.body.fields = generateBodyFields(req);
         delete req.body.createdBy;
         _Module.findByIdAndUpdate(req.params.id, cleanObj(req.body))
             .then(() => {
@@ -193,8 +218,9 @@ module.exports = {
     },
 
     apiGetAll: function (req, res, next) {
+        let type = req.query.type || 'image';
         _app.model.media
-            .paginate({}, {
+            .paginate({type}, {
                 page: req.query.page,
                 limit: 32,
                 sort: {createdOn: 'desc'}

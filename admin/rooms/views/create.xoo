@@ -1,0 +1,90 @@
+{% extends "../../views/layout.xoo" %}
+
+{% block content %}
+    {% include "../../views/partials/module-header.xoo" %}
+
+    <form method="post" id="main-form">
+        <input type="hidden" name="_csrf" value={{ _csrf }}>
+        <input type="hidden" name="itemId" value="{{ item.id }}">
+        <input type="hidden" name="postType" value="room">
+        {# Form inputs#}
+        <div class="row">
+            {#left#}
+            <div class="col-md-9 col-xs-12">
+                <div class="box">
+                    <div class="box-body">
+                        {{ Form.Input({label: 'Tiêu đề', name: 'name', value: item.name, required: true, placeholder: 'Double Room'}) }}
+                        {{ Form.Editor({label: 'Nội dung', name: 'content', value: item.content}) }}
+                        {{ Form.Textarea({label: 'Miêu tả ngắn', name: 'description', value: item.description}) }}
+                        {#Fields#}
+                        {% if controller !== 'create' %}
+                            {{ Form.Alias('posts', item.slug) }}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="box box-solid">
+                    <div class="box-body">
+                        {{ Form.Input({label: 'Slogan', name: '_field_slogan', groupClass: 'form-group-sm thin-label', value: item.fields['slogan'], placeholder: 'Suitable for families'}) }}
+                        {{ Form.Input({label: 'Giá hiện tại', name: '_field_price', groupClass: 'form-group-sm thin-label', value: item.fields['price'], placeholder: '$350'}) }}
+                        {{ Form.Input({label: 'Giá cũ', name: '_field_old_price', groupClass: 'form-group-sm thin-label', value: item.fields['old_price'], placeholder: '$500'}) }}
+                        {{ Form.Input({label: 'Breakfast', name: '_field_breakfast', groupClass: 'form-group-sm thin-label', value: item.fields['breakfast'], placeholder: 'Included'}) }}
+                        {{ Form.Input({label: 'Room Size', name: '_field_room_size', groupClass: 'form-group-sm thin-label', value: item.fields['room_size'], placeholder: '20m2'}) }}
+                        {{ Form.Input({label: 'Max People', name: '_field_max_people', groupClass: 'form-group-sm thin-label', value: item.fields['max_people'], placeholder: '3'}) }}
+                        {{ Form.Input({label: 'View', name: '_field_view', groupClass: 'form-group-sm thin-label', value: item.fields['view'], placeholder: 'Sea'}) }}
+                        {{ Form.Input({label: 'Facilities', name: '_field_facilities', groupClass: 'form-group-sm thin-label', value: item.fields['facilities'], placeholder: 'Free Wifi, Free Mini Bar, Room Security'}) }}
+                    </div>
+                </div>
+            </div>
+            {#right#}
+            <div class="col-md-3 col-xs-12">
+                {#language box#}
+                {% include './../../views/partials/language-box.xoo' %}
+                {#status#}
+                <div class="box">
+                    <div class="box-body">
+                        <div class="form-group">
+                            {% set items = [{id: 'show', name: 'Hiển thị'}, {id: 'hide', name: 'Ẩn'}] %}
+                            {{ Form.Select({label: 'Trạng thái', name: 'status', items: items, value: item.status}) }}
+                        </div>
+                        <div class="text-right">
+                            <button class="btn btn-primary">Lưu</button>
+                        </div>
+                    </div>
+                </div>
+                {# gallery #}
+                {{ Form.GalleryId({
+                    label: 'Hình ảnh',
+                    pathName: 'gallery',
+                    targetId: 'post-gallery',
+                    value: item.gallery,
+                    galleryClass: 'small'
+                }) }}
+            </div>
+        </div>
+    </form>
+
+    {#Media Popup#}
+    {% include "../../media/views/media-popup.xoo" %}
+    {#Upload Popup#}
+    {% include "../../media/views/upload-popup.xoo" %}
+
+
+{% endblock %}
+
+{% block css %}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.6/select2-bootstrap.min.css" rel="stylesheet" />
+{% endblock %}
+
+{% block js %}
+    <script src="/admin/plugins/ckeditor/ckeditor.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+        $(function() {
+            $( "ul.sortable" ).sortable({
+                placeholder: "ui-sortable-placeholder"
+            });
+        });
+    </script>
+{% endblock %}

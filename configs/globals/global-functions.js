@@ -104,3 +104,29 @@ global.generatePaginateLink = function (req, result) {
 
     return paginate;
 };
+
+/** Generate Fields Object For Req body */
+global.generateBodyFields = function (req) {
+    let fields = {};
+    Object.keys(req.body).filter(field => {
+        if (field.indexOf('_field_') === 0) {
+            let newField = field.replace('_field_', '');
+            fields[newField] = req.body[field];
+        }
+    });
+    return fields;
+};
+
+/** Generate Gallery From Req.body */
+global.generateGallery = function (gallery = false, caption = []) {
+    if (!gallery) return [];
+
+    let images = [];
+    for (let i = 0; i < gallery.length; i++) {
+        images.push({
+            image: gallery[i],
+            caption: caption[i]
+        })
+    }
+    return images;
+};

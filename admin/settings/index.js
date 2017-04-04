@@ -59,7 +59,7 @@ module.exports = {
             permission: permissions.themeOption.slug,
         },
         {
-            path: `/admin/${info.slug}/general`,
+            path: `/admin/${info.slug}/theme-options`,
             controller: 'postThemeOptions',
             method: 'post',
             authenticate: true,

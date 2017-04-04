@@ -1,0 +1,82 @@
+{% extends "../../views/layout.xoo" %}
+
+{% block content %}
+    {% include "../../views/partials/module-header.xoo" %}
+
+    <form method="post" id="main-form">
+        <input type="hidden" name="_csrf" value={{ _csrf }}>
+        <input type="hidden" name="itemId" value="{{ item.id }}">
+        <input type="hidden" name="postType" value="tour">
+        {# Form inputs#}
+        <div class="row">
+            {#left#}
+            <div class="col-md-9 col-xs-12">
+                <div class="box">
+                    <div class="box-body">
+                        {{ Form.Input({label: 'Tour', name: 'name', value: item.name, required: true, placeholder: 'Tên tour'}) }}
+                        {{ Form.Editor({label: 'Nội dung', name: 'content', value: item.content}) }}
+                        {#Fields#}
+                        {% if controller !== 'create' %}
+                            {{ Form.Alias('posts', item.slug) }}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="box box-solid">
+                    <div class="box-body">
+                        {{ Form.Input({label: 'Giá hiện tại', name: '_field_price', value: item.fields['price'], placeholder: '$350'}) }}
+                    </div>
+                </div>
+            </div>
+            {#right#}
+            <div class="col-md-3 col-xs-12">
+                {#language box#}
+                {% include './../../views/partials/language-box.xoo' %}
+                {#status#}
+                <div class="box">
+                    <div class="box-body">
+                        <div class="form-group">
+                            {% set items = [{id: 'show', name: 'Hiển thị'}, {id: 'hide', name: 'Ẩn'}] %}
+                            {{ Form.Select({label: 'Trạng thái', name: 'status', items: items, value: item.status}) }}
+                        </div>
+                        <div class="text-right">
+                            <button class="btn btn-primary">Lưu</button>
+                        </div>
+                    </div>
+                </div>
+                {# gallery #}
+                {{ Form.GalleryId({
+                    label: 'Hình ảnh',
+                    pathName: 'gallery',
+                    targetId: 'post-gallery',
+                    value: item.gallery,
+                    galleryClass: 'small'
+                }) }}
+            </div>
+        </div>
+    </form>
+
+    {#Media Popup#}
+    {% include "../../media/views/media-popup.xoo" %}
+    {#Upload Popup#}
+    {% include "../../media/views/upload-popup.xoo" %}
+
+
+{% endblock %}
+
+{% block css %}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.6/select2-bootstrap.min.css" rel="stylesheet" />
+{% endblock %}
+
+{% block js %}
+    <script src="/admin/plugins/ckeditor/ckeditor.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+        $(function() {
+            $( "ul.sortable" ).sortable({
+                placeholder: "ui-sortable-placeholder"
+            });
+        });
+    </script>
+{% endblock %}

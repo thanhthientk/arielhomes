@@ -78,7 +78,13 @@
                             <td><input type="checkbox" name="listId" value={{ item.id }}></td>
                         {% elif type == 'image-thumb' %}
                             <td>
-                                <img src="/uploads/{{ item.path }}-150x150{{ item.ext }}" alt="{{ item.name }}" width="50">
+                                {% if item.path and item.ext %}
+                                    <img src="/uploads/{{ item.path }}-150x150{{ item.ext }}" alt="{{ item.name }}" width="50">
+                                {% else %}
+                                    {% if _global.post_thumbnail(item[name]) %}
+                                        <img src="{{ _global.post_thumbnail(item[name]) }}" width="50">
+                                    {% endif %}
+                                {% endif %}
                             </td>
                         {% elif type == 'title' %}
                             {% if column.params %}
@@ -91,6 +97,12 @@
                                     <a class="{{ column.class }}" href="/admin/{{moduleInfo.slug}}/?{{name}}={{item[name].id}}">
                                         {{ _global.accessObjectByString(item, column.access) }}
                                     </a>
+                                {% endif %}
+                            </td>
+                        {% elif type == 'field' %}
+                            <td>
+                                {% if item[name] %}
+                                    {{ _global.accessObjectByString(item, column.access) }}
                                 {% endif %}
                             </td>
                         {% elif type == 'text' %}
@@ -121,12 +133,12 @@
                                 {% for language in languages %}
                                     {% if dl.documents[language.code] !== underfined %}
                                         {% if dl.documents[language.code] === item.id %}
-                                            <a href="/admin/posts/{{ item.id }}/edit"><i class="fa fa-check"></i></a>
+                                            <a href="/admin/{{moduleInfo.slug}}/{{ item.id }}/edit"><i class="fa fa-check"></i></a>
                                         {% else %}
-                                            <a href="/admin/posts/{{ dl.documents[language.code] }}/edit"><i class="fa fa-pencil"></i></a>
+                                            <a href="/admin/{{moduleInfo.slug}}/{{ dl.documents[language.code] }}/edit"><i class="fa fa-pencil"></i></a>
                                         {% endif %}
                                     {% else %}
-                                        <a href="/admin/posts/create?dl={{ dl.id }}&language={{ language.code }}">
+                                        <a href="/admin/{{moduleInfo.slug}}/create?dl={{ dl.id }}&language={{ language.code }}">
                                             <i class="fa fa-plus"></i>
                                         </a>
                                     {% endif %}

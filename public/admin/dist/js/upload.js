@@ -8,19 +8,23 @@ $(window).ready(function(){
     files.on('change', function () {
         $('#upload-form').submit();
     });
+
 });
 
 let tbody = $('.upload-table tbody');
 function doUpload() {
     tbody.removeClass('hidden').empty();
-
+    let fileType = document.getElementById('fileType').value;
     let files = document.getElementById('files').files;
     for (let i = 0; i < files.length; i++) {
-        uploadFile(files[i], i+1);
+        uploadFile(files[i], i+1, fileType);
     }
     return false;
 }
-function uploadFile(file, index) {
+function uploadFile(file, index, fileType) {
+
+    if (!fileType) fileType = 'image';
+
     let fileSize = parseInt(file.size / 1024);
 
     let http = new XMLHttpRequest();
@@ -38,7 +42,7 @@ function uploadFile(file, index) {
         let fileLoaded = event.loaded;
         let fileTotal = event.total;
         let fileProgress = parseInt((fileLoaded / fileTotal) * 100) || 0;
-        if (fileProgress == 100) {
+        if (fileProgress === 100) {
             row.find('.status').text('Processing...');
         } else {
             row.find('.status').text(`${fileProgress}%`);
@@ -49,7 +53,8 @@ function uploadFile(file, index) {
     let data = new FormData();
     data.append('filename', file.name);
     data.append('file', file);
-    http.open('POST', '/admin/media/create', true);
+    data.append('type', 'image');
+    http.open('POST', '/admin/media/create?type=' + fileType, true);
     http.send(data);
 
     http.onreadystatechange = function (event) {

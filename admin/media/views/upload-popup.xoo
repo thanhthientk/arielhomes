@@ -7,6 +7,7 @@
             </div>
             <div class="modal-body" style="padding: 10px;">
                 <form id="upload-form" class="hidden" enctype="multipart/form-data" method="post" action="/admin/media/create" onsubmit="return doUpload()">
+                    <input type="hidden" name="fileType" id="fileType" value="{{ reqQuery.type if reqQuery.type else 'image' }}">
                     <input type="file" name="file" id="files" multiple="multiple" class="btn btn-default hidden"/>
                 </form>
                 <table class="table upload-table">

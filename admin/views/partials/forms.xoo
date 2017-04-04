@@ -13,8 +13,8 @@
     {% endif %}
 {% endmacro %}
 
-{% macro Input(obj = {label: '', name: '', type: '', value: '', requied: false}) %}
-    <div class="form-group">
+{% macro Input(obj = {label: '', name: '', type: '', value: '', requied: false, groupClass: ''}) %}
+    <div class="form-group {{ obj.groupClass }}">
         {{ Label(obj) }}
         <input
             id="{{ obj.name }}"
@@ -77,8 +77,10 @@
        type="button"
        data-toggle="modal"
        data-target="#MediaPopup"
+       data-multi="{{ obj.multi }}"
        data-action="{{ obj.action }}"
-       data-targetid="{{ obj.targetId }}">{{ obj.text }}</a>
+       data-targetid="{{ obj.targetId }}"
+        data-type="{{ obj.type if obj.type else 'image' }}">{{ obj.text }}</a>
 {% endmacro %}
 
 {#Editor#}
@@ -151,6 +153,123 @@
             </div>
             <div class="text-right">
                 <button class="btn btn-primary">Lưu</button>
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
+{#Single Image Box#}
+{% macro SingleImageBox(obj = {label: '', inputName: '', imagePath: '', targetId: ''}) %}
+    <div class="box">
+        <div class="box-body">
+            <label>{{ obj.label }}</label>
+            <div id="{{ obj.targetId }}">
+                <input class="image-path" type="hidden" name="{{ obj.inputName }}" value="{{ obj.imagePath }}">
+                {% if (obj.imagePath) %}
+                    <img src="{{ _global.post_thumbnail(obj.imagePath) }}" />
+                {% endif %}
+            </div>
+            <div style="margin-top: 10px;">
+                {{ CallMediaPopup({text: 'Chọn ảnh', action: 'single', class: 'pointer', targetId: obj.targetId}) }}
+                <span class="sperate"> &nbsp; &nbsp; | &nbsp; &nbsp; </span>
+                <a class="pointer removeSingleImage" data-targetid="featureImage">Xóa</a>
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
+{#Single Image Box#}
+{% macro OptionImageBox(obj = {inputName: '', imagePath: '', targetId: ''}) %}
+    <div id="{{ obj.targetId }}">
+        <input class="image-path" type="hidden" name="{{ obj.inputName }}" value="{{ obj.imagePath }}">
+        {% if (obj.imagePath) %}
+            <img src="{{ _global.post_thumbnail(obj.imagePath) }}" />
+        {% else %}
+            <i class="fa fa-image no-image"></i>
+        {% endif %}
+    </div>
+    <div style="margin-top: 10px;">
+        {{ CallMediaPopup({text: 'Chọn ảnh', action: 'single', class: 'pointer', targetId: obj.targetId}) }}
+        <span class="sperate"> &nbsp; &nbsp; | &nbsp; &nbsp; </span>
+        <a class="pointer removeSingleImage" data-targetid="{{ obj.targetId }}">Xóa</a>
+    </div>
+{% endmacro %}
+
+{#Gallery#}
+{% macro Gallery(obj = {label: '', pathName: '', targetId: '', galleryClass: '', value: [], type: 'image' }) %}
+    <div class="box">
+        <div class="box-body">
+            {% if obj.label %} <label>{{ obj.label }}</label> {% endif %}
+            <ul class="gallery sortable {{ obj.galleryClass }}" id="{{ obj.targetId }}" data-path="{{ obj.pathName }}">
+                {% for image in obj.value %}
+                    <li>
+                        <input type="hidden" name="{{ obj.pathName }}" value="{{ image.image }}">
+                        <img src="{{ _global.post_thumbnail(image.image) }}" alt="{{ image.image }}">
+                        <i class="fa fa-times "></i>
+                    </li>
+                {% endfor %}
+            </ul>
+            <div class="pull-left" style="margin-top: 10px; height: 20px;">
+                {{ CallMediaPopup({
+                    text: 'Chọn ảnh',
+                    action: 'post-gallery',
+                    multi: true,
+                    class: 'pointer',
+                    targetId: obj.targetId,
+                    type: obj.type
+                }) }}
+                <span class="sperate"> &nbsp; &nbsp; | &nbsp; &nbsp; </span>
+                <a class="pointer removeSingleImage" data-targetid="{{ obj.targetId }}">Xóa</a>
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
+{#Gallery#}
+{% macro GalleryId(obj = {label: '', pathName: '', targetId: '', value: [], type: 'image' }) %}
+    <div class="box">
+        <div class="box-body">
+            {% if obj.label %} <label>{{ obj.label }}</label> {% endif %}
+            <ul class="gallery sortable {{ obj.galleryClass }}" id="{{ obj.targetId }}" data-path="{{ obj.pathName }}">
+                {% for image in obj.value %}
+                    <li>
+                        <input type="hidden" name="{{ obj.pathName }}" value="{{ image.id }}">
+                        <img src="/uploads/{{ image.path + '-150x150' +  image.ext }}" alt="{{ image.name }}">
+                        <i class="fa fa-times "></i>
+                    </li>
+                {% endfor %}
+            </ul>
+            <div class="pull-left" style="margin-top: 10px; height: 20px;">
+                {{ CallMediaPopup({
+                    text: 'Chọn ảnh',
+                    action: 'galleryId',
+                    multi: true,
+                    class: 'pointer',
+                    targetId: obj.targetId,
+                    type: obj.type
+                }) }}
+                <span class="sperate"> &nbsp; &nbsp; | &nbsp; &nbsp; </span>
+                <a class="pointer removeSingleImage" data-targetid="{{ obj.targetId }}">Xóa</a>
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
+{#Single Image Id#}
+{% macro SingleImageId(image) %}
+    <div class="box">
+        <div class="box-body">
+            <label>Chọn ảnh đại diện</label>
+            <div id="featureImageId">
+                <input class="image-path" type="hidden" name="image" value="{{ image.id }}">
+                {% if (image.path) %}
+                    <img src="/uploads/{{ image.path + '-150x150' + image.ext }}" />
+                {% endif %}
+            </div>
+            <div style="margin-top: 10px;">
+                {{ CallMediaPopup({text: 'Chọn ảnh', action: 'singleId', class: 'pointer', targetId: 'featureImageId'}) }}
+                <span class="sperate"> &nbsp; &nbsp; | &nbsp; &nbsp; </span>
+                <a class="pointer removeSingleImage" data-targetid="featureImageId">Xóa</a>
             </div>
         </div>
     </div>

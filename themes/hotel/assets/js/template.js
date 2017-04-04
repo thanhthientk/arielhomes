@@ -1,6 +1,75 @@
 "use strict";
 jQuery(document).ready(function () {
 
+	//Ajax Submit Form
+	var ContactForm = $('form.contact-form');
+    var BookingForm = $('form.booking-form'),
+        BookingPopupForm = $('#BookingPopupForm'),
+        BookingModal = $('#Booking');
+	ContactForm.on('submit', function () {
+		var data = {};
+		$(this).find('input, select, textarea').map(function () {
+			var fieldName = $(this).attr('name');
+            data[fieldName] = $(this).val();
+        });
+
+		$.post('/contact/api/create',
+			data,
+			function (result, status) {
+                BookingModal.modal('hide');
+                if (result.status === 'error' || status === 'error') {
+                    swal({
+                        title: 'Error!',
+                        text: 'Hệ thống xảy ra lỗi. Vui lòng thử lại sau!',
+                        type: 'error',
+                        timer: 4000
+                    });
+				} else {
+                    swal({
+                        title: 'Thank You!',
+                        text: result.message,
+                        type: 'success',
+                        timer: 4000
+                    });
+				}
+            }
+		);
+		return false;
+    });
+
+	// Get Form Data - main-availability-form
+    BookingForm.find('input, select').on('change', function () {
+        BookingForm.find('#CallBookingFormBtn').attr('data-' + $(this).attr('name'), $(this).val());
+    });
+    BookingModal.on('show.bs.modal', function (e) {
+		var button = $(e.relatedTarget);
+		var dateStart = button.data('start'),
+            dateEnd = button.data('end'),
+            adult = button.data('adult'),
+            child = button.data('child'),
+			showRooms = button.data('rooms');
+        console.log(showRooms);
+
+        if (showRooms === false)
+            BookingModal.find('.booking-fields.rooms').remove();
+
+        BookingPopupForm.find('input[name=_field_start]').val(dateStart);
+        BookingPopupForm.find('input[name=_field_end]').val(dateEnd);
+        BookingPopupForm.find('select[name=_field_adult]').val(adult);
+        BookingPopupForm.find('select[name=_field_child]').val(child);
+
+    });
+
+    //close-rooms
+	$('button.close-rooms').on('click', function () {
+		if ($(this).find('i').hasClass('fa-angle-double-down'))
+            $(this).find('i').removeClass('fa-angle-double-down').addClass('fa-angle-double-up');
+		else
+            $(this).find('i').removeClass('fa-angle-double-up').addClass('fa-angle-double-down');
+
+		$('.tours-fixed').toggleClass('closed');
+    });
+
 	// Clone the main menu to the mobile menu
 	jQuery('#main-menu').clone().removeClass().appendTo('#mobile-menu-container');
 
@@ -31,7 +100,7 @@ jQuery(document).ready(function () {
 
 	if (jQuery.isFunction(jQuery.fn.select2)) {
 		// Change all the select boxes to select2
-		jQuery("select:not(.disable-select2)").select2({
+		jQuery("form.has-select2 select:not(.disable-select2)").select2({
 			minimumResultsForSearch: 10
 		});
 	}
@@ -57,9 +126,8 @@ jQuery(document).ready(function () {
 
 	// Booking datepicker
 	jQuery.fn.datepicker && jQuery("#main-availability-form, #room-booking-form, #room-information-form").find('.input-daterange').datepicker({
-		format:    "yyyy-mm-dd",
-		autoclose: true,
-		startDate: new Date()
+		format:    "dd/mm/yyyy",
+		autoclose: true
 	});
 
 	var luxuryRooms = jQuery('#luxury-rooms');
@@ -244,64 +312,10 @@ jQuery(document).ready(function () {
 
 	// Google Map
 	function initialize() {
-		var myLatLng   = new google.maps.LatLng(40.6700, -73.9400);
+		var myLatLng   = new google.maps.LatLng(16.0537963, 108.2445119);
 		var mapOptions = {
 			zoom:               15,
 			center:             myLatLng,
-			// This is where you would paste any style found on Snazzy Maps.
-			styles:             [{
-				"featureType": "all",
-				"elementType": "labels.text.fill",
-				"stylers":     [{"saturation": 36}, {"color": "#000000"}, {"lightness": 40}]
-			}, {
-				"featureType": "all",
-				"elementType": "labels.text.stroke",
-				"stylers":     [{"visibility": "on"}, {"color": "#000000"}, {"lightness": 16}]
-			}, {
-				"featureType": "all",
-				"elementType": "labels.icon",
-				"stylers":     [{"visibility": "off"}]
-			}, {
-				"featureType": "administrative",
-				"elementType": "geometry.fill",
-				"stylers":     [{"color": "#000000"}, {"lightness": 20}]
-			}, {
-				"featureType": "administrative",
-				"elementType": "geometry.stroke",
-				"stylers":     [{"color": "#000000"}, {"lightness": 17}, {"weight": 1.2}]
-			}, {
-				"featureType": "landscape",
-				"elementType": "geometry",
-				"stylers":     [{"color": "#000000"}, {"lightness": 20}]
-			}, {
-				"featureType": "poi",
-				"elementType": "geometry",
-				"stylers":     [{"color": "#000000"}, {"lightness": 21}]
-			}, {
-				"featureType": "road.highway",
-				"elementType": "geometry.fill",
-				"stylers":     [{"color": "#000000"}, {"lightness": 17}]
-			}, {
-				"featureType": "road.highway",
-				"elementType": "geometry.stroke",
-				"stylers":     [{"color": "#000000"}, {"lightness": 29}, {"weight": 0.2}]
-			}, {
-				"featureType": "road.arterial",
-				"elementType": "geometry",
-				"stylers":     [{"color": "#000000"}, {"lightness": 18}]
-			}, {
-				"featureType": "road.local",
-				"elementType": "geometry",
-				"stylers":     [{"color": "#000000"}, {"lightness": 16}]
-			}, {
-				"featureType": "transit",
-				"elementType": "geometry",
-				"stylers":     [{"color": "#000000"}, {"lightness": 19}]
-			}, {
-				"featureType": "water",
-				"elementType": "geometry",
-				"stylers":     [{"color": "#000000"}, {"lightness": 17}]
-			}],
 			// Extra options
 			scrollwheel:        false,
 			mapTypeControl:     false,

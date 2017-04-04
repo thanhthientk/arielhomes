@@ -136,13 +136,22 @@ module.exports = {
     },
 
     post_thumbnail: function (imagePath, thumbName) {
+        if (!imagePath) return '';
         let image = path.parse(imagePath);
-        return `/uploads/${image.name}-150x150${image.ext}`;
+        if (!thumbName)
+            return `/uploads/${image.name}-150x150${image.ext}`;
+        else if (thumbName === 'medium')
+            return `/uploads/${image.name}-700x520${image.ext}`;
     },
 
     getFlag: function (languages, languageCode) {
         let language = languages.filter(language => language.code === languageCode)[0];
         return language.flag;
+    },
+
+    getField: function (item, filedName) {
+        if (!item || !item.fields || !filedName) return '';
+        return item.fields[filedName];
     }
 
 };

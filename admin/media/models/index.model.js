@@ -7,6 +7,8 @@ const schema = new mongoose.Schema({
     name: {type: String, required: true},
     path: {type: String, required: true},
     ext: {type: String, required: true},
+    type: String,
+    fields: {},
     createdBy: {type: String, ref: 'User', required: true},
     createdOn: {type: Date, default: Date.now}
 });

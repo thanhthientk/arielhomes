@@ -86,8 +86,9 @@ $(window).ready(function(){
      * Media Popup Js
      */
     //Get media
-    function getMedia(page) {
-        $.get('/admin/media/api/all',
+    function getMedia(page, type) {
+        if (!type) type = 'image';
+        $.get('/admin/media/api/all?type=' + type,
             {
                 page: page
             },
@@ -106,34 +107,72 @@ $(window).ready(function(){
         mediaPage = 1,
         totalPages = 1,
         action = '',
+        multi = false,
         targetid = '';
     MediaPopup.on('show.bs.modal', function (event) {
         let button = $(event.relatedTarget);
         action = button.data('action');
+        multi = button.data('multi');
         targetid = button.data('targetid');
-        getMedia(mediaPage)
+        let imageType = button.data('type') || 'image';
+        getMedia(mediaPage, imageType);
     });
     MediaPopup.on('click', 'a.img-thumb', function () {
-        MediaPopup.find('a.img-thumb').removeClass('selected');
-        $(this).addClass('selected');
+        if (multi) {
+            $(this).toggleClass('selected');
+        } else {
+            MediaPopup.find('a.img-thumb').removeClass('selected');
+            $(this).addClass('selected');
+        }
     });
 
     //applyImage
     $('#applyImage').on('click', function () {
-        let imgPath = ModalBody.find('a.img-thumb.selected').data('path'),
-            imgExt = ModalBody.find('a.img-thumb.selected').data('ext'),
-            imgId = ModalBody.find('a.img-thumb.selected').data('id'),
+        let ImageSelected = ModalBody.find('a.img-thumb.selected');
+        let imgPath = ImageSelected.data('path'),
+            imgExt = ImageSelected.data('ext'),
+            imgId = ImageSelected.data('id'),
             imgSize = $('#imgSize').val() || 'full',
-            imgSizeCovert = {full: '', thumb: '-150x150'};
+            imgSizeCovert = {full: '', thumb: '-150x150'},
+            target = $('#' + targetid);
         switch (action) {
             case 'add-img-to-editor':
                 CKEDITOR.instances[targetid].insertHtml(`<img src='/uploads/${imgPath}${imgSizeCovert[imgSize]}${imgExt}' />`);
                 break;
             case 'single':
-                let target = $('#' + targetid);
-                target.find('img').remove();
+                target.find('img, i').remove();
                 target.append(`<img src='/uploads/${imgPath}-150x150${imgExt}' />`);
-                target.find('input[name=image]').val(imgPath+imgExt);
+                target.find('input.image-path').val(imgPath+imgExt);
+                break;
+            case 'singleId':
+                target.find('img, i').remove();
+                target.append(`<img src='/uploads/${imgPath}-150x150${imgExt}' />`);
+                target.find('input.image-path').val(imgId);
+                break;
+            case 'post-gallery':
+                $('.img-thumb.selected').map(function (key, image) {
+                    let path = $(image).data('path'),
+                        ext = $(image).data('ext');
+                    let pathName = target.data('path');
+                    target.append(`<li>
+                                        <input type="hidden" name="${pathName}" value="${path}${ext}" />
+                                        <img src="/uploads/${path}-150x150${ext}" alt="${path}">
+                                        <i class="fa fa-times "></i>
+                                    </li>`)
+                });
+                break;
+            case 'galleryId':
+                $('.img-thumb.selected').map(function (key, image) {
+                    let path = $(image).data('path'),
+                        ext = $(image).data('ext'),
+                        id = $(image).data('id');
+                    let pathName = target.data('path');
+                    target.append(`<li>
+                                        <input type="hidden" name="${pathName}" value="${id}" />
+                                        <img src="/uploads/${path}-150x150${ext}" alt="${path}">
+                                        <i class="fa fa-times "></i>
+                                    </li>`)
+                });
                 break;
         }
         MediaPopup.modal('hide');
@@ -165,6 +204,12 @@ $(window).ready(function(){
         let target = $('#' + targetId);
         target.find('input').val('');
         target.find('img').remove();
+        target.find('li').remove();
+    });
+
+    //remove image in gallery
+    $('ul.gallery').on('click', 'i', function () {
+        $(this).closest('li').remove();
     });
 
     // addNewTaxonomy
@@ -267,6 +312,16 @@ $(window).ready(function(){
     changePasswordModal.on('show.bs.modal', function () {
         $('#changePasswordMessage').addClass('hidden');
         changePasswordModal.find('input').val('');
+    });
+
+    // Active tabs on Url
+    var url = document.location.toString();
+    if (url.match('#')) {
+        $('.nav.nav-pills li a[href="#' + url.split('#')[1] + '"]').tab('show');
+    }
+    $('.nav.nav-pills li a').on('shown.bs.tab', function (e) {
+        window.location.hash = e.target.hash;
     })
+
 
 });

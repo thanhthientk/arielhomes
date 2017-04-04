@@ -2,14 +2,22 @@
 
 {% block content %}
     {#Head#}
-    {% include "./../../views/partials/module-header.xoo" %}
+    <section class="content-header">
+        <h1>
+            {{ 'Hình ảnh' if reqQuery.type === 'image' else 'Gallery' }}
+        </h1>
+    </section>
     {#Toolbar#}
     <div class="toolbar">
-        <a href="/admin/{{ moduleInfo.slug }}" class="btn btn-info">
+        <a href="/admin/{{ moduleInfo.slug }}?type={{ reqQuery.type }}" class="btn btn-info">
             <i class="fa fa-refresh"></i>
             Làm mới
         </a>
-        <button class="btn btn-primary" data-toggle="modal" data-target="#uploadPopup">
+        <button
+                class="btn btn-primary"
+                data-toggle="modal"
+                data-target="#uploadPopup"
+                data-type="{{ reqQuery.type if reqQuery.type else 'image' }}">
             <i class="fa fa-plus"></i>
             Thêm mới
         </button>

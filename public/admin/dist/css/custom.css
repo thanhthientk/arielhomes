@@ -164,3 +164,96 @@ td.flags a{
 td.flags a:last-child {
     margin-right: 0;
 }
+
+.thin-label label{
+    font-size: 13px;
+    font-weight: 400;
+}
+.form-group-sm.thin-label .form-control {
+    font-size: 14px;
+}
+
+.gallery{
+    padding: 0;
+    margin: 0;
+    float: left;
+    width:100%;
+    margin-bottom: 10px;
+}
+.gallery li{
+    float: left;
+    padding:3px;
+    list-style-type: none;
+    position: relative;
+}
+.gallery li:hover{
+    cursor: -webkit-grab;
+}
+.gallery li:active{
+    cursor: -webkit-grabbing;
+}
+.gallery li a{}
+.gallery li img{
+    width:100%;
+}
+.gallery.small li i.fa {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    padding: 3px;
+    z-index: 999;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+}
+
+/*gallery big*/
+.gallery.big li:first-child{
+    width: calc(198% / 6);
+}
+.gallery.big.no-big-thumb li:first-child{
+    width: calc(99% / 6);
+}
+.gallery.big li{
+    width: calc(99% / 6);
+}
+
+/*gallery small*/
+.gallery.small{
+    width: calc(100% + 6px);
+    margin-left: -3px;
+}
+.gallery.small li:first-child{
+    width: calc(198% / 3);
+}
+.gallery.small.no-big-thumb li:first-child{
+    width: calc(99% / 3);
+}
+.gallery.small li{
+    width: calc(99% / 3);
+}
+
+.gallery li input[type=text] {
+    position: absolute;
+    bottom: 3px;
+    width: calc(100% - 6px);
+    padding: 2px 5px;
+}
+
+/**/
+.tab-content.theme-options{}
+.tab-content.theme-options hr:last-child{
+    display: none;
+}
+.tab-content.theme-options hr{
+    margin-bottom: 10px;
+}
+.tab-content.theme-options .form-group{
+    margin-bottom: 5px;
+}
+
+/**/
+.no-image{
+    font-size: 30px;
+    color: #666;
+}
