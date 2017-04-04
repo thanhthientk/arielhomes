@@ -2,6 +2,7 @@
 const _info = require('../index').info;
 const _Module = _app.model[_info.singular_slug];
 const co = require('co');
+const email = require(_join('configs/email'));
 
 const generateColumns = function (type) {
     let columns = [
@@ -188,7 +189,10 @@ module.exports = {
                         break;
                 }
             }
+
+            yield email.sendConfrimForm(contact);
             res.json(response);
+
         } catch (err) {
             res.json(response);
         }

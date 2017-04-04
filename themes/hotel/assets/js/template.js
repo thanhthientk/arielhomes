@@ -13,11 +13,14 @@ jQuery(document).ready(function () {
             data[fieldName] = $(this).val();
         });
 
+		$('.spinner').removeClass('hidden');
+
 		$.post('/contact/api/create',
 			data,
 			function (result, status) {
                 BookingModal.modal('hide');
                 if (result.status === 'error' || status === 'error') {
+                	$('.spinner').addClass('hidden');
                     swal({
                         title: 'Error!',
                         text: 'Hệ thống xảy ra lỗi. Vui lòng thử lại sau!',
@@ -25,6 +28,7 @@ jQuery(document).ready(function () {
                         timer: 4000
                     });
 				} else {
+                	$('.spinner').addClass('hidden');
                     swal({
                         title: 'Thank You!',
                         text: result.message,

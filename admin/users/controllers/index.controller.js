@@ -5,7 +5,7 @@ const recaptcha = require(`${__libs}/recaptcha`);
 const _Module = _app.model.user;
 const _info = require('../index').info;
 const bcrypt = require(_join('libraries/bcrypt'));
-const nodemailer = require('nodemailer');
+const email = require(_join('configs/email'));
 
 const generateColumns = function (users = {}, roles = {}) {
     return [
@@ -358,31 +358,20 @@ module.exports = {
                 return _app.model.user.findByIdAndUpdate(userFound._id, {"token.value": token, "token.expires": expires});
             })
             .then(user => {
-                let link = `http://localhost:3000/admin/forgot-password/confirm?f=${user.id}&s=${token}`;
+                let link = `http://arielhomes.vn/admin/forgot-password/confirm?f=${user.id}&s=${token}`;
                 let html = `<h2>Bạn vừa thực hiện yêu cầu khôi phục mật khẩu</h2>
                             <p>Vui lòng truy cập vào liên kết sau</p>
                             <p><a href="${link}">${link}</a></p>`;
-                let transporter = nodemailer.createTransport({
-                    service: 'gmail',
-                    auth: {
-                        user: 'thanhthientk69@gmail.com',
-                        pass: 'qpqtaptvjkvyruim'
-                    }
-                });
-                let mailOptions = {
-                    from: '<admin@cms.com>',
-                    to: user.email,
-                    subject: 'XooCms - Khôi phục mật khẩu',
-                    html
-                };
-                transporter.sendMail(mailOptions, (error, info) => {
-                    if (error) {
+
+                email.resetPassword(html, user.email)
+                    .then((info) => {
+                        req.flash('success', 'Chúng tôi đã gửi liên kết khôi phục mật khẩu. Vui lòng kiểm tra email của bạn!');
+                        res.redirect('back');
+                    })
+                    .catch(err => {
                         req.flash('errors', {msg: 'Có lỗi xảy ra. Vui lòng thử lại'});
                         return res.redirect('back');
-                    }
-                    req.flash('success', 'Chúng tôi đã gửi liên kết khôi phục mật khẩu. Vui lòng kiểm tra email của bạn!');
-                    res.redirect('back');
-                });
+                    })
             })
             .catch(err => {
                 console.log(err);

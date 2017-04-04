@@ -29,7 +29,7 @@
         <div class="inner-container container">
             <form action="#" class="contact-form booking-form has-select2 clearfix" style="margin-top: 0px;">
                 <input type="hidden" name="type" value="tour">
-                <input type="hidden" name="tour" value="{{ tour.name }}">
+                <input type="hidden" name="_field_tour" value="{{ tour.name }}">
                 <input type="hidden" name="_csrf" value="{{ _csrf }}">
                 <div class="field-row">
                     <input type="text" placeholder="{{ Options['tr_name'][LANG] }}" name="_field_name" required/>
