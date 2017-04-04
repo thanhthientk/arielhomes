@@ -51,11 +51,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="blog-sidebar.xoo" pinned="false" current-in-tab="true">
+      <file leaf-file-name="blog-sidebar.xoo" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/themes/hotel/partial/blog-sidebar.xoo">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="370">
               <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.xoo" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/themes/hotel/index.xoo">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="318">
+              <caret line="70" column="103" lean-forward="true" selection-start-line="70" selection-start-column="103" selection-end-line="70" selection-end-column="145" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="header.xoo" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/themes/hotel/partial/header.xoo">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="244">
+              <caret line="33" column="14" lean-forward="true" selection-start-line="33" selection-start-column="14" selection-end-line="33" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -73,7 +93,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>greate</find>
       <find>about</find>
       <find>assets</find>
       <find>g=&quot;as</find>
@@ -103,6 +122,7 @@
       <find>booking-form</find>
       <find>let</find>
       <find>map</find>
+      <find>book</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -149,7 +169,6 @@
         <option value="$PROJECT_DIR$/themes/hotel/single-room.xoo" />
         <option value="$PROJECT_DIR$/admin/contacts/index.js" />
         <option value="$PROJECT_DIR$/admin/contacts/views/index.xoo" />
-        <option value="$PROJECT_DIR$/themes/hotel/partial/header.xoo" />
         <option value="$PROJECT_DIR$/themes/hotel/index.xoo" />
         <option value="$PROJECT_DIR$/frontend/routes.js" />
         <option value="$PROJECT_DIR$/configs/env/.env.pro" />
@@ -162,6 +181,7 @@
         <option value="$PROJECT_DIR$/themes/hotel/assets/js/template.js" />
         <option value="$PROJECT_DIR$/configs/express.js" />
         <option value="$PROJECT_DIR$/themes/hotel/partial/blog-sidebar.xoo" />
+        <option value="$PROJECT_DIR$/themes/hotel/partial/header.xoo" />
       </list>
     </option>
   </component>
@@ -330,7 +350,7 @@
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
     <property name="js.eslint.eslintPackage" value="" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
-    <property name="SearchEverywhereHistoryKey" value="temp&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/assets/js/template.js&#10;cus&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/assets/css/custom.css&#10;layout&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/layout.xoo&#10;single-t&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/single-tour.xoo&#10;ex&#9;FILE&#9;file://D:/Projects/cms/configs/express.js&#10;layo&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/layout.xoo&#10;custom&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/assets/css/custom.css&#10;layou&#9;FILE&#9;file://D:/Projects/cms/admin/views/layout.xoo&#10;heade&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/partial/header.xoo&#10;sing&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/single-room.xoo&#10;single-to&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/single-tour.xoo&#10;boo&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/partial/booking-form.xoo&#10;single&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/single-room.xoo&#10;room&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/page-room.xoo&#10;contac&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/page-contact.xoo&#10;main&#9;FILE&#9;file://D:/Projects/cms/admin/views/partials/main-table.xoo&#10;index&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/index.xoo&#10;foot&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/partial/footer.xoo&#10;inde&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/index.xoo&#10;them&#9;FILE&#9;file://D:/Projects/cms/admin/settings/theme-options.js&#10;foo&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/partial/footer.xoo&#10;form&#9;FILE&#9;file://D:/Projects/cms/admin/views/partials/forms.xoo&#10;nun&#9;FILE&#9;file://D:/Projects/cms/configs/nunjucks/nunjucks-global.js&#10;theme&#9;FILE&#9;file://D:/Projects/cms/admin/settings/theme-options.js&#10;forms&#9;FILE&#9;file://D:/Projects/cms/admin/views/partials/forms.xoo&#10;cu&#9;FILE&#9;file://D:/Projects/cms/public/admin/dist/js/custom.js&#10;exp&#9;FILE&#9;file://D:/Projects/cms/configs/express.js&#10;upload&#9;FILE&#9;file://D:/Projects/cms/public/admin/dist/js/upload.js&#10;pagin&#9;FILE&#9;file://D:/Projects/cms/admin/views/partials/pagination.xoo&#10;c&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/assets/css/custom.css&#10;header&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/partial/header.xoo&#10;nu&#9;FILE&#9;file://D:/Projects/cms/configs/nunjucks/nunjucks-global.js&#10;glo&#9;FILE&#9;file://D:/Projects/cms/configs/globals/global-functions.js&#10;fo&#9;FILE&#9;file://D:/Projects/cms/admin/views/partials/forms.xoo&#10;for&#9;FILE&#9;file://D:/Projects/cms/admin/views/partials/forms.xoo&#10;global&#9;FILE&#9;file://D:/Projects/cms/configs/globals/global-functions.js&#10;index.&#9;FILE&#9;file://D:/Projects/cms/admin/languages/actions/index.action.js&#10;pack&#9;FILE&#9;file://D:/Projects/cms/package.json&#10;error&#9;FILE&#9;file://D:/Projects/cms/configs/errors-handler.js&#10;index.ac&#9;FILE&#9;file://D:/Projects/cms/admin/languages/actions/index.action.js&#10;glob&#9;FILE&#9;file://D:/Projects/cms/configs/globals/global-variables.js&#10;slug&#9;FILE&#9;file://D:/Projects/cms/libraries/slug.js&#10;form.xo&#9;FILE&#9;file://D:/Projects/cms/admin/views/partials/forms.xoo&#10;tabl&#9;FILE&#9;file://D:/Projects/cms/admin/views/partials/main-table.xoo&#10;route&#9;FILE&#9;file://D:/Projects/cms/admin/routes.js&#10;env&#9;FILE&#9;file://D:/Projects/cms/configs/env/.env.dev&#10;login&#9;FILE&#9;file://D:/Projects/cms/admin/users/views/login.xoo&#10;bc&#9;FILE&#9;file://D:/Projects/cms/libraries/bcrypt.js&#10;pas&#9;FILE&#9;file://D:/Projects/cms/configs/passport.js&#10;globa&#9;FILE&#9;file://D:/Projects/cms/configs/globals/global-functions.js" />
+    <property name="SearchEverywhereHistoryKey" value="head&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/partial/header.xoo&#10;index&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/index.xoo&#10;temp&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/assets/js/template.js&#10;cus&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/assets/css/custom.css&#10;layout&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/layout.xoo&#10;single-t&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/single-tour.xoo&#10;ex&#9;FILE&#9;file://D:/Projects/cms/configs/express.js&#10;layo&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/layout.xoo&#10;custom&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/assets/css/custom.css&#10;layou&#9;FILE&#9;file://D:/Projects/cms/admin/views/layout.xoo&#10;heade&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/partial/header.xoo&#10;sing&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/single-room.xoo&#10;single-to&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/single-tour.xoo&#10;boo&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/partial/booking-form.xoo&#10;single&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/single-room.xoo&#10;room&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/page-room.xoo&#10;contac&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/page-contact.xoo&#10;main&#9;FILE&#9;file://D:/Projects/cms/admin/views/partials/main-table.xoo&#10;foot&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/partial/footer.xoo&#10;inde&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/index.xoo&#10;them&#9;FILE&#9;file://D:/Projects/cms/admin/settings/theme-options.js&#10;foo&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/partial/footer.xoo&#10;form&#9;FILE&#9;file://D:/Projects/cms/admin/views/partials/forms.xoo&#10;nun&#9;FILE&#9;file://D:/Projects/cms/configs/nunjucks/nunjucks-global.js&#10;theme&#9;FILE&#9;file://D:/Projects/cms/admin/settings/theme-options.js&#10;forms&#9;FILE&#9;file://D:/Projects/cms/admin/views/partials/forms.xoo&#10;cu&#9;FILE&#9;file://D:/Projects/cms/public/admin/dist/js/custom.js&#10;exp&#9;FILE&#9;file://D:/Projects/cms/configs/express.js&#10;upload&#9;FILE&#9;file://D:/Projects/cms/public/admin/dist/js/upload.js&#10;pagin&#9;FILE&#9;file://D:/Projects/cms/admin/views/partials/pagination.xoo&#10;c&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/assets/css/custom.css&#10;header&#9;FILE&#9;file://D:/Projects/cms/themes/hotel/partial/header.xoo&#10;nu&#9;FILE&#9;file://D:/Projects/cms/configs/nunjucks/nunjucks-global.js&#10;glo&#9;FILE&#9;file://D:/Projects/cms/configs/globals/global-functions.js&#10;fo&#9;FILE&#9;file://D:/Projects/cms/admin/views/partials/forms.xoo&#10;for&#9;FILE&#9;file://D:/Projects/cms/admin/views/partials/forms.xoo&#10;global&#9;FILE&#9;file://D:/Projects/cms/configs/globals/global-functions.js&#10;index.&#9;FILE&#9;file://D:/Projects/cms/admin/languages/actions/index.action.js&#10;pack&#9;FILE&#9;file://D:/Projects/cms/package.json&#10;error&#9;FILE&#9;file://D:/Projects/cms/configs/errors-handler.js&#10;index.ac&#9;FILE&#9;file://D:/Projects/cms/admin/languages/actions/index.action.js&#10;glob&#9;FILE&#9;file://D:/Projects/cms/configs/globals/global-variables.js&#10;slug&#9;FILE&#9;file://D:/Projects/cms/libraries/slug.js&#10;form.xo&#9;FILE&#9;file://D:/Projects/cms/admin/views/partials/forms.xoo&#10;tabl&#9;FILE&#9;file://D:/Projects/cms/admin/views/partials/main-table.xoo&#10;route&#9;FILE&#9;file://D:/Projects/cms/admin/routes.js&#10;env&#9;FILE&#9;file://D:/Projects/cms/configs/env/.env.dev&#10;login&#9;FILE&#9;file://D:/Projects/cms/admin/users/views/login.xoo&#10;bc&#9;FILE&#9;file://D:/Projects/cms/libraries/bcrypt.js&#10;pas&#9;FILE&#9;file://D:/Projects/cms/configs/passport.js" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
   <component name="RecentsManager">
@@ -504,12 +524,12 @@
       <workItem from="1491184032244" duration="26567000" />
       <workItem from="1491225083879" duration="5698000" />
       <workItem from="1491268630807" duration="1038000" />
-      <workItem from="1491270782024" duration="23481000" />
+      <workItem from="1491270782024" duration="23642000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="521967000" />
+    <option name="totallyTimeSpent" value="522128000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -867,26 +887,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/themes/hotel/partial/header.xoo">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="40" column="9" lean-forward="true" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/frontend/routes.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="62" column="55" lean-forward="false" selection-start-line="62" selection-start-column="55" selection-end-line="62" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/themes/hotel/index.xoo">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="147" column="27" lean-forward="false" selection-start-line="147" selection-start-column="27" selection-end-line="147" selection-end-column="27" />
           <folding />
         </state>
       </provider>
@@ -1019,6 +1023,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="370">
           <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/hotel/index.xoo">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="70" column="103" lean-forward="true" selection-start-line="70" selection-start-column="103" selection-end-line="70" selection-end-column="145" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/hotel/partial/header.xoo">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="33" column="14" lean-forward="true" selection-start-line="33" selection-start-column="14" selection-end-line="33" selection-end-column="14" />
           <folding />
         </state>
       </provider>
