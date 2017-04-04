@@ -22,22 +22,4 @@
             <input type="submit" class="search-submit" value="Search">
         </form>
     </div>
-
-    <!-- Tag Cloud Widget -->
-    <div class="widget widget_tag_cloud">
-        <h3 class="side-title"><span>Tags</span></h3>
-        <div class="tagcloud">
-            <a href="#">Articles</a>
-            <a href="#">Bars</a>
-            <a href="#">Beach</a>
-            <a href="#">Drinks</a>
-            <a href="#">Food</a>
-            <a href="#">Foods</a>
-            <a href="#">Jacuzzi</a>
-            <a href="#">Love</a>
-            <a href="#">Restaurants</a>
-            <a href="#">Sauna</a>
-            <a href="#">Spa</a>
-        </div>
-    </div>
 </aside>
