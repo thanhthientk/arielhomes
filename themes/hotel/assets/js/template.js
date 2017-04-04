@@ -129,10 +129,15 @@ jQuery(document).ready(function () {
 
 
 	// Booking datepicker
-	jQuery.fn.datepicker && jQuery("#main-availability-form, #room-booking-form, #room-information-form, #BookingPopupForm").find('.input-daterange').datepicker({
+	jQuery.fn.datepicker && jQuery("#main-availability-form, #room-booking-form, #room-information-form").find('.input-daterange').datepicker({
 		format:    "dd/mm/yyyy",
 		autoclose: true
 	});
+
+    $("#BookingPopupForm").find('.input-daterange').datepicker({
+        format:    "dd/mm/yyyy",
+        autoclose: true
+    });
 
 	var luxuryRooms = jQuery('#luxury-rooms');
 	if (luxuryRooms.length > 0) {
