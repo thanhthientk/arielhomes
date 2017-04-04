@@ -31,53 +31,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.xoo" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/themes/hotel/index.xoo">
+      <file leaf-file-name="express.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/configs/express.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="147" column="27" lean-forward="false" selection-start-line="147" selection-start-column="27" selection-end-line="147" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="layout.xoo" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/themes/hotel/layout.xoo">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="41" column="62" lean-forward="false" selection-start-line="41" selection-start-column="62" selection-end-line="41" selection-end-column="62" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="routes.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frontend/routes.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="62" column="55" lean-forward="true" selection-start-line="62" selection-start-column="55" selection-end-line="62" selection-end-column="55" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="template.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/themes/hotel/assets/js/template.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="69" column="45" lean-forward="false" selection-start-line="69" selection-start-column="39" selection-end-line="69" selection-end-column="45" />
-              <folding>
-                <element signature="e#288#1174#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="custom.css" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/themes/hotel/assets/css/custom.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="45" column="16" lean-forward="true" selection-start-line="45" selection-start-column="16" selection-end-line="45" selection-end-column="16" />
+            <state relative-caret-position="260">
+              <caret line="19" column="24" lean-forward="true" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -133,8 +91,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/admin/tours/index.js" />
-        <option value="$PROJECT_DIR$/admin/events/index.js" />
         <option value="$PROJECT_DIR$/admin/services/index.js" />
         <option value="$PROJECT_DIR$/frontend/posts/routes.js" />
         <option value="$PROJECT_DIR$/themes/hotel/assets/css/styles-light.css" />
@@ -184,6 +140,8 @@
         <option value="$PROJECT_DIR$/themes/hotel/layout.xoo" />
         <option value="$PROJECT_DIR$/frontend/routes.js" />
         <option value="$PROJECT_DIR$/themes/hotel/assets/css/custom.css" />
+        <option value="$PROJECT_DIR$/configs/env/.env.pro" />
+        <option value="$PROJECT_DIR$/configs/express.js" />
       </list>
     </option>
   </component>
@@ -291,7 +249,7 @@
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="frontend">
+            <PATH_ELEMENT USER_OBJECT="configs">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
@@ -486,12 +444,12 @@
       <workItem from="1491184032244" duration="26567000" />
       <workItem from="1491225083879" duration="5698000" />
       <workItem from="1491268630807" duration="1038000" />
-      <workItem from="1491270782024" duration="18273000" />
+      <workItem from="1491270782024" duration="18490000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="516759000" />
+    <option name="totallyTimeSpent" value="516976000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -545,34 +503,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/frontend/index/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="21" lean-forward="false" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/settings/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="71" column="19" lean-forward="true" selection-start-line="71" selection-start-column="19" selection-end-line="71" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/slides/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="85" column="20" lean-forward="false" selection-start-line="85" selection-start-column="20" selection-end-line="85" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/users/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="131" column="20" lean-forward="false" selection-start-line="131" selection-start-column="20" selection-end-line="131" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin/languages/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
@@ -949,18 +879,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/themes/hotel/index.xoo">
+    <entry file="file://$PROJECT_DIR$/themes/hotel/assets/css/custom.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="147" column="27" lean-forward="false" selection-start-line="147" selection-start-column="27" selection-end-line="147" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/themes/hotel/layout.xoo">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="41" column="62" lean-forward="false" selection-start-line="41" selection-start-column="62" selection-end-line="41" selection-end-column="62" />
+        <state relative-caret-position="188">
+          <caret line="45" column="16" lean-forward="false" selection-start-line="45" selection-start-column="16" selection-end-line="45" selection-end-column="16" />
           <folding />
         </state>
       </provider>
@@ -978,15 +900,55 @@
     <entry file="file://$PROJECT_DIR$/frontend/routes.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
-          <caret line="62" column="55" lean-forward="true" selection-start-line="62" selection-start-column="55" selection-end-line="62" selection-end-column="55" />
+          <caret line="62" column="55" lean-forward="false" selection-start-line="62" selection-start-column="55" selection-end-line="62" selection-end-column="55" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/themes/hotel/assets/css/custom.css">
+    <entry file="file://$PROJECT_DIR$/themes/hotel/layout.xoo">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="45" column="16" lean-forward="true" selection-start-line="45" selection-start-column="16" selection-end-line="45" selection-end-column="16" />
+        <state relative-caret-position="220">
+          <caret line="41" column="62" lean-forward="false" selection-start-line="41" selection-start-column="62" selection-end-line="41" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/hotel/index.xoo">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="147" column="27" lean-forward="false" selection-start-line="147" selection-start-column="27" selection-end-line="147" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configs/env/.env.pro">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" column="22" lean-forward="false" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configs/env/.env.dev">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" column="19" lean-forward="false" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configs/express.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="19" column="24" lean-forward="true" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
           <folding />
         </state>
       </provider>
