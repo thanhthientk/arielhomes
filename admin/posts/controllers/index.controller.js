@@ -129,25 +129,18 @@ module.exports = {
 
     create: co.wrap(function* (req, res, next) {
         try {
+            let PromiseAllResults = yield Promise.all([
+                _app.model.taxonomy.find({module: 'posts', type: 'category'}),
+                _app.model.language.find({status: true})
+            ]);
+            let categories = PromiseAllResults[0],
+                languages = PromiseAllResults[1];
             /** Create new post */
             if (!req.query.dl && !req.query.language) {
-                let PromiseAllResults = yield Promise.all([
-                    _app.model.taxonomy.find({module: 'posts', type: 'category'}),
-                    _app.model.language.find({status: true})
-                ]);
-                let categories = PromiseAllResults[0],
-                    languages = PromiseAllResults[1];
                 return res.render(_info.views.create, { categories, languages });
             }
             /** Create translation from Post */
             let createPostTranslate = true;
-            let PromiseAllResults = yield Promise.all([
-                _app.model.taxonomy.find({module: 'posts', type: 'category'}),
-                _app.model.language.find({status: true}),
-            ]);
-            let languages = PromiseAllResults[1],
-                categories = PromiseAllResults[0];
-
             // Get Language Info Of This Item
             let languageOfThisItem = languages.filter(function (language) {
                 return req.query.language === language.code;
@@ -187,20 +180,19 @@ module.exports = {
         }
 
         req.body.createdBy = req.user._id.toString();
-        let item, dl;
 
         try {
             req.body.slug = yield Slug.generateSlug(req.body.name, 'post');
             let _module = new _Module(cleanObj(req.body));
 
-            item = yield _module.save();
+            let item = yield _module.save();
 
             let dlId;
             if (req.query.dl && req.query.language) {
                 dlId = req.query.dl;
                 yield DL.insert(dlId, item.id, req.query.language)
             } else {
-                dl = yield DL.create('post', item.id, item.language);
+                let dl = yield DL.create('post', item.id, item.language);
                 dlId = dl.id;
             }
 
@@ -224,7 +216,6 @@ module.exports = {
             let item = PromiseAllResults[0],
                 categories = PromiseAllResults[1],
                 languages = PromiseAllResults[2];
-
             // Get Language Info Of This Item
             let languageOfThisItem = languages.filter(function (language) {
                 return item.language === language.code;

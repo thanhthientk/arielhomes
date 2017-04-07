@@ -5,14 +5,9 @@ const PostRoles = require('../posts/index').permissions;
  * getTaxonomyInfo - Return module name, taxonomy type...
  */
 const getTaxonomyInfo = function (req, res, next) {
-    let taxonomyModule = req.query.module,
-        taxonomyType = req.query.type,
+    let taxonomyModule = req.query.module || 'posts',
+        taxonomyType = req.query.type || 'category',
         postType = req.query['post_type'];
-
-    if (!taxonomyModule || !taxonomyType){
-        console.log('Wrong module && type', taxonomyModule, taxonomyType);
-        return res.redirect('back');
-    }
 
     let taxonomyInfo;
     if (postType)

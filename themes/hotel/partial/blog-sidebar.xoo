@@ -1,14 +1,11 @@
 <aside id="sidebar" class="col-md-4">
     <!-- Archive Widget -->
     <div class="widget widget_archive">
-        <h3 class="side-title">Archives <span>List</span></h3>
+        <h3 class="side-title">{{ Options['tr_categories'][LANG] }}</h3>
         <ul>
-            <li><a href="#">January 2050</a>&nbsp;(1)</li>
-            <li><a href="#">March 2015</a>&nbsp;(4)</li>
-            <li><a href="#">March 2013</a>&nbsp;(7)</li>
-            <li><a href="#">January 2013</a>&nbsp;(14)</li>
-            <li><a href="#">December 2012</a>&nbsp;(12)</li>
-            <li><a href="#">November 2012</a>&nbsp;(2)</li>
+            {% for category in categories %}
+                <li><a href="/{{ LANG }}/blog/category/{{ category.slug }}">{{ category.name }}</a>&nbsp;</li>
+            {% endfor %}
         </ul>
     </div>
 

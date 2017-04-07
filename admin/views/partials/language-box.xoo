@@ -2,7 +2,6 @@
     <div class="box-body">
         <div class="form-group">
             <label for="language">Ngôn ngữ</label>
-            {#Show Box Select Languages#}
             {#Create From Post#}
             {% if createPostTranslate %}
                 <input type="hidden" name="language" value="{{ languageOfThisItem.code }}">

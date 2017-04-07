@@ -36,9 +36,11 @@ module.exports = {
     /**
      * Unset Or Remove DL
      */
-    unset: co.wrap(function* (itemId) {
+    unset: co.wrap(function* (itemId, model) {
+        if (model === undefined) model = 'post';
+        console.log(model);
         try {
-            let item = yield _app.model.post.findById(itemId);
+            let item = yield _app.model[model].findById(itemId);
             let $unset = {};
                 $unset[`documents.${item.language}`] = '';
             return DL.findByIdAndUpdate(item.documentsLanguage, { $unset });

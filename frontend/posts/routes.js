@@ -20,6 +20,11 @@ module.exports = [
         controller: 'blogDetail',
         method: 'get'
     },
+    {
+        path: '/blog/category/:slug',
+        controller: 'blogCategory',
+        method: 'get'
+    },
 
     {
         path: '/tours/',

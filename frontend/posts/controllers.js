@@ -7,13 +7,19 @@ const co = require('co');
  * @param limit
  * @param select
  * @param page
+ * @param categoryId
+ * @param search
  */
-const paginatePost = function (postType, limit, select, page) {
-    return _app.model.post.paginate({
+const paginatePost = function (postType, limit, select, page, categoryId, search) {
+    let queries = {
         postType,
         language: LANG,
         status: 'show'
-    }, {
+    };
+    if (categoryId) queries.categories = categoryId;
+    if (search) queries.name = new RegExp(search, 'i');
+
+    return _app.model.post.paginate( queries, {
         select,
         limit,
         populate: [{path: 'image'}, {path: 'gallery', select: 'path ext'}],
@@ -59,14 +65,17 @@ module.exports = {
     //blog
     blog: co.wrap(function* (req, res, next) {
         let Results = yield Promise.all([
-            paginatePost('post', 2, 'name slug image description', req.query.page)
+            paginatePost('post', 2, 'name slug image description', req.query.page, '', req.query.s),
+            _app.model.taxonomy.find({module: 'posts', type: 'category', language: LANG}).select('slug name')
         ]);
         let posts = Results[0].docs,
-            paginated = generatePaginateLink(req, Results[0]);
+            paginated = generatePaginateLink(req, Results[0]),
+            categories = Results[1];
 
         res.theme('page-blog', {
             posts,
             paginated,
+            categories,
             pageTitle: {en: 'Blog', vn: 'Blog'},
             pageType: 'blog',
         });
@@ -82,6 +91,29 @@ module.exports = {
             pageTitle: {en: post.name, vn: post.name},
             pageType: 'blog',
         });
+    }),
+    blogCategory: co.wrap(function* (req, res, next) {
+        try {
+            let category = yield _app.model.taxonomy.findOne({slug: req.params.slug});
+
+            let Results = yield Promise.all([
+                paginatePost('post', 2, 'name slug image description', req.query.page, category.id),
+                _app.model.taxonomy.find({module: 'posts', type: 'category', language: LANG}).select('slug name')
+            ]);
+            let posts = Results[0].docs,
+                paginated = generatePaginateLink(req, Results[0]),
+                categories = Results[1];
+
+            res.theme('page-blog', {
+                posts,
+                paginated,
+                categories,
+                pageTitle: {en: 'Blog', vn: 'Blog'},
+                pageType: 'blog',
+            });
+        } catch (err){
+            next(err);
+        }
     }),
 
     //tour

@@ -10,6 +10,8 @@ const schema = new mongoose.Schema({
     postType: String,
     module: String,
     type: String,
+    language: String,
+    documentsLanguage: {type: String, ref: 'DocumentsLanguage'},
     createdBy: {type: String, ref: 'User', required: true},
     createdOn: {type: Date, default: Date.now}
 });

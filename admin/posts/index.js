@@ -124,19 +124,19 @@ module.exports = {
                     controller: ['create']
                 }
             },
-            // {
-            //     label: 'Danh mục',
-            //     permission: permissions.category.slug,
-            //     url: `/admin/taxonomies?module=posts&type=category`,
-            //     activeIf: {
-            //         module: 'taxonomies',
-            //         controller: 'all',
-            //         params: {
-            //             reqParam: 'type',
-            //             value: 'category'
-            //         }
-            //     }
-            // },
+            {
+                label: 'Danh mục',
+                permission: permissions.category.slug,
+                url: `/admin/taxonomies?module=posts&type=category`,
+                activeIf: {
+                    module: 'taxonomies',
+                    controller: 'all',
+                    params: {
+                        reqParam: 'type',
+                        value: 'category'
+                    }
+                }
+            },
             // {
             //     label: 'Tag',
             //     permission: permissions.tag.slug,

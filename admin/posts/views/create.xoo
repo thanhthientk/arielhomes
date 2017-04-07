@@ -52,14 +52,21 @@
                 {{ Form.BoxPostStatus(item.status) }}
 
                 {#categories#}
-                {{ Form.TaxonomiesBox({
-                    label: 'Danh mục bài viết',
-                    inputName: 'categories',
-                    taxonomyModule: 'posts',
-                    taxonomyType: 'category',
-                    items: categories,
-                    selectedItems: item.categories
-                }) }}
+                {% for language, cats in categories | groupby('language') %}
+                    {% set class = 'hidden' if languageOfThisItem.code !== language %}
+                    <div class="categories-box language-{{ language }} {{ class }}">
+                        {{ Form.TaxonomiesBox({
+                            label: 'Danh mục',
+                            inputName: 'categories',
+                            taxonomyModule: 'posts',
+                            taxonomyType: 'category',
+                            items: cats,
+                            selectedItems: item.categories,
+                            canCreateNewItem: flase
+                        }) }}
+                    </div>
+                {% endfor %}
+
                 {#image#}
                 {{ Form.SingleImageId(item.image) }}
 

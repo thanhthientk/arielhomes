@@ -402,6 +402,16 @@ module.exports = {
                         type: 'text',
                         multiLang: true
                     },
+                    tr_no_post: {
+                        name: 'No Post',
+                        type: 'text',
+                        multiLang: true
+                    },
+                    tr_categories: {
+                        name: 'Category',
+                        type: 'text',
+                        multiLang: true
+                    },
                 }
             },
             room: {

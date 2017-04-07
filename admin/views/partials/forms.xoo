@@ -120,16 +120,17 @@
         <div class="box-body">
             {{ CheckboxGroup(obj) }}
 
-            <a role="button" data-toggle="collapse" href="#{{ obj.inputName }}Collapse" aria-expanded="false" aria-controls="{{ obj.inputName }}Collapse">
-                + thêm danh mục mới
-            </a>
-
-            <div class="collapse" id="{{ obj.inputName }}Collapse">
-                <div class="form-group form-group-sm mb0 mt5">
-                    <input type="text" class="form-control" name="newTaxonomy" id="newTaxonomy" placeholder="Tên danh mục" autocomplete="off">
-                    <button class="btnAddNewTaxonomy btn btn-default btn-sm mt5" type="button">thêm mới</button>
+            {% if obj.canCreateNewItem %}
+                <a role="button" data-toggle="collapse" href="#{{ obj.inputName }}Collapse" aria-expanded="false" aria-controls="{{ obj.inputName }}Collapse">
+                    + thêm danh mục mới
+                </a>
+                <div class="collapse" id="{{ obj.inputName }}Collapse">
+                    <div class="form-group form-group-sm mb0 mt5">
+                        <input type="text" class="form-control" name="newTaxonomy" id="newTaxonomy" placeholder="Tên danh mục" autocomplete="off">
+                        <button class="btnAddNewTaxonomy btn btn-default btn-sm mt5" type="button">thêm mới</button>
+                    </div>
                 </div>
-            </div>
+            {% endif %}
         </div>
     </div>
 {% endmacro %}

@@ -131,14 +131,15 @@
                             <td class="text-center flags">
                                 {% set dl = item.documentsLanguage %}
                                 {% for language in languages %}
+                                    {% set taxonomy = '&module=' + reqQuery.module + '&type=' + reqQuery.type if (reqQuery.module and reqQuery.type) %}
                                     {% if dl.documents[language.code] !== underfined %}
                                         {% if dl.documents[language.code] === item.id %}
-                                            <a href="/admin/{{moduleInfo.slug}}/{{ item.id }}/edit"><i class="fa fa-check"></i></a>
+                                            <a href="/admin/{{moduleInfo.slug}}/{{ item.id }}/edit{{ '?' + taxonomy }}"><i class="fa fa-check"></i></a>
                                         {% else %}
-                                            <a href="/admin/{{moduleInfo.slug}}/{{ dl.documents[language.code] }}/edit"><i class="fa fa-pencil"></i></a>
+                                            <a href="/admin/{{moduleInfo.slug}}/{{ dl.documents[language.code] }}/edit{{ '?' + taxonomy }}"><i class="fa fa-pencil"></i></a>
                                         {% endif %}
                                     {% else %}
-                                        <a href="/admin/{{moduleInfo.slug}}/create?dl={{ dl.id }}&language={{ language.code }}">
+                                        <a href="/admin/{{moduleInfo.slug}}/create?dl={{ dl.id }}&language={{ language.code }}{{ taxonomy }}">
                                             <i class="fa fa-plus"></i>
                                         </a>
                                     {% endif %}

@@ -321,7 +321,15 @@ $(window).ready(function(){
     }
     $('.nav.nav-pills li a').on('shown.bs.tab', function (e) {
         window.location.hash = e.target.hash;
-    })
+    });
 
+    //Show Categories Box When Change Select Language Box
+    $('#language').on('change', function () {
+        var language = $(this).val();
+        $('.categories-box').addClass('hidden');
+        $('.categories-box.language-' + language).removeClass('hidden');
+    });
+    $('#language').trigger('change');
 
 });
+
