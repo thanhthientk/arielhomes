@@ -80,7 +80,11 @@ module.exports = {
                 }
                 else if (field.type === 'galleryId') {
                     let idImages = [];
-                    req.body[fieldName].map(id => idImages.push(id));
+                    if (Array.isArray(req.body[fieldName])) {
+                        req.body[fieldName].map(id => idImages.push(id));
+                    } else {
+                        idImages.push(req.body[fieldName]);
+                    }
                     data[fieldName] = idImages;
                 }
                 else {
