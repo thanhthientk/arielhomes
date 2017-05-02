@@ -19,7 +19,7 @@ module.exports = function(app) {
 	}
 	app.use((err, req, res, next) => {
 	    res.status(err.status || 500);
-	    res.render('admin/views/error/error', {
+	    res.render('admin/views/errors/error', {
 	        message: err.message,
 	        error: {}
 	    });

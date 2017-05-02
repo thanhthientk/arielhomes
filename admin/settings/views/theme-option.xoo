@@ -42,11 +42,11 @@
                 {% for tabId, tab in themeOptions %}
                     <div role="tabpanel" class="tab-pane fade in {{ "active" if first }}" id="{{ tabId }}">
                         {% for groupId, group in tab.fieldGroups %}
-                            <div class="box collapsed-box" data-groupid="{{ groupId }}">
+                            <div class="box" data-groupid="{{ groupId }}">
                                 <div class="box-header with-border">
                                     <p class="box-title">{{ group.title }}</p>
                                     <div class="box-tools">
-                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                                     </div>
                                 </div>
                                 <div class="box-body">

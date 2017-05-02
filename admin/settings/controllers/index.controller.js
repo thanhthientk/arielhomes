@@ -91,6 +91,7 @@ module.exports = {
             yield Setting.findByIdAndUpdate('58df4d0b2e26d9206c620ec4', { data });
             res.redirect('back');
         } catch (err) {
+            console.log(err);
             next(err);
         }
     }),
