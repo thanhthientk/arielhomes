@@ -7,12 +7,14 @@
             {% for slide in slides %}
 				<div class="items">
 					<div class="img-container" data-bg-img="/uploads/{{ slide.image }}"></div>
-					<div class="slide-caption">
-						<div class="inner-container clearfix">
-							<div class="up-sec">{{ slide.fields['title_' + LANG] }}</div>
-							<div class="down-sec">{{ slide.fields['desc_' + LANG] }}</div>
+                    {% if slide.fields['title_' + LANG] %}
+						<div class="slide-caption">
+							<div class="inner-container clearfix">
+								<div class="up-sec">{{ slide.fields['title_' + LANG] }}</div>
+								<div class="down-sec">{{ slide.fields['desc_' + LANG] }}</div>
+							</div>
 						</div>
-					</div>
+                    {% endif %}
 				</div>
             {% endfor %}
 		</section>

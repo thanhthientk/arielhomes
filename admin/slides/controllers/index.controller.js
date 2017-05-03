@@ -155,7 +155,7 @@ module.exports = {
 
         delete req.body.createdBy;
 
-        _Module.findByIdAndUpdate(req.params.id, cleanObj(req.body))
+        _Module.findByIdAndUpdate(req.params.id, req.body)
             .then(() => {
                 req.flash('success', 'Cập nhật thành công!');
                 res.redirect('back');
