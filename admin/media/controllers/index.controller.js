@@ -112,9 +112,9 @@ module.exports = {
         upload(req, res, (err) => {
             if (err || !req.file) {
                 response.status = 0;
-                if (err.code == 'LIMIT_FILE_SIZE') {
+                if (err.code === 'LIMIT_FILE_SIZE') {
                     response.message = 'File quá lớn!'
-                } else if (err.message == 'NOT_ALLOW_EXTENSION') {
+                } else if (err.message === 'NOT_ALLOW_EXTENSION') {
                     response.message = 'Định dạng không được cho phép!'
                 } else {
                     response.message = 'Có lỗi xảy ra!'
@@ -135,8 +135,7 @@ module.exports = {
                         return Jimp.read(`./public/uploads/${name}${ext}`)
                     })
                     .then((image) => {
-                        image.cover(150, 150)
-                            .write(`./public/uploads/${name}-150x150${ext}`);
+                        image.cover(150, 150).write(`./public/uploads/${name}-150x150${ext}`);
 
                         response.status = 1;
                         response.message = 'Đã tải lên thành công';
