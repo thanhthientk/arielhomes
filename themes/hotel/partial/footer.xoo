@@ -45,7 +45,7 @@
                 <div class="widget-content contact">
                     <ul class="contact-info">
                         <li><i class="fa fa-home"></i>{{ Options['footer_address'][LANG] }}</li>
-                        <li><i class="fa fa-phone"></i>{{ Options['footer_phone'] }}</li>
+                        <li style="line-height: 1.5"><i class="fa fa-phone"></i>{{ Options['footer_phone'] | safe }}</li>
                         <li><i class="fa fa-envelope"></i>{{ Options['footer_email'] }}</li>
                     </ul>
                 </div>

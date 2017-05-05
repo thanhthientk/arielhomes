@@ -6,7 +6,7 @@
         <section id="room-slider">
             {% for image in room.gallery %}
                 <div class="items">
-                    <div class="img-container" data-bg-img="/uploads/{{ room.gallery[0].path + room.gallery[0].ext }}"></div>
+                    <div class="img-container" data-bg-img="/uploads/{{ image.path + image.ext }}"></div>
                 </div>
             {% endfor %}
         </section>
