@@ -116,8 +116,7 @@ module.exports = {
 
         req.body.fields = generateBodyFields(req);
         req.body.createdBy = req.user._id.toString();
-
-        delete req.body.slug;
+        req.body.slug = Date.now();
 
         let _module = new _Module(cleanObj(req.body));
         _module.save()
@@ -156,7 +155,7 @@ module.exports = {
         req.body.fields = generateBodyFields(req);
 
         delete req.body.createdBy;
-        delete req.body.slug;
+        req.body.slug = Date.now();
 
         _Module.findByIdAndUpdate(req.params.id, req.body)
             .then(() => {
