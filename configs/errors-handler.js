@@ -9,19 +9,18 @@ module.exports = function(app) {
 	    err.status = 404;
         next(err);
 	});
-	if (process.env.ENV === 'development') {
-		app.use(errorhandler());
-        // app.use((err, req, res, next) => {
-        //     console.log(err);
-        //     err.string = err.toString();
-        //     res.send(err);
-        // });
-	}
-	app.use((err, req, res, next) => {
-	    res.status(err.status || 500);
-	    res.render('admin/views/errors/error', {
-	        message: err.message,
-	        error: {}
-	    });
-	});
+	app.use(errorhandler());
+	// if (process.env.ENV === 'development') {
+	// 	app.use(errorhandler());
+ //        // app.use((err, req, res, next) => {
+ //        //     console.log(err);
+ //        //     err.string = err.toString();
+ //        //     res.send(err);
+ //        // });
+	// }
+	// app.use((err, req, res, next) => {
+	// 	console.log(err);
+	//     res.status(err.status || 500);
+	//     res.send('<h2>Vui lòng thử lại</h1>');
+	// });
 };
