@@ -3,6 +3,11 @@
 {% block content %}
 	<div class="slider-available-sec">
 		<!-- Main Slider -->
+		<style>
+			#main-slider .img-container:before, #main-slider-fullscreen .img-container:before{
+				display: none;
+			}
+		</style>
 		<section id="main-slider">
             {% for slide in slides %}
 				<div class="items">

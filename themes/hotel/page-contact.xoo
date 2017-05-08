@@ -1,19 +1,23 @@
 {% extends './layout.xoo' %}
 
 {% block content %}
+    <style>
+        #breadcrumb-section:before{
+            display: none;
+        }
+    </style>
     <!--Breadcrumb Section-->
-    <section id="breadcrumb-section" data-bg-img="/hotel/assets/img/breadcrumb.jpg">
+    <section id="breadcrumb-section" data-bg-img="/hotel/assets/img/contact-bg.jpg">
         <div class="inner-container container">
             <div class="ravis-title">
                 <div class="inner-box">
                     <div class="title">Contact Us</div>
-                    <div class="sub-title">Some description about your hotel</div>
                 </div>
             </div>
 
             <div class="breadcrumb">
                 <ul class="list-inline">
-                    <li><a href="../index-2.html">Home</a></li>
+                    <li><a href="/">Home</a></li>
                     <li class="current"><a href="#">Contact Us</a></li>
                 </ul>
             </div>
@@ -46,7 +50,7 @@
                         </div>
                     </form>
                 </div>
-                <div id="google-map" class="col-md-6" data-marker="/hotel/assets/img/marker.png"></div>
+                <div id="google-map" class="col-md-6"></div>
             </div>
         </div>
     </section>
