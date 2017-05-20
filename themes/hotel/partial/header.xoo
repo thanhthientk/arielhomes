@@ -6,7 +6,7 @@
             </a>
         </div>
         <div class="r-sec col-xs-4 col-sm-6 col-md-9">
-            <nav id="main-menu">
+            <nav id="main-menu" style="margin-left: -50px;">
                 <ul class="list-inline">
                     {% if LANG === 'vn' %}
                         <li class="{{ 'active' if pageType === 'home' }}"><a href="/">Trang chủ</a></li>
