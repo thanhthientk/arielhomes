@@ -15,7 +15,7 @@
                         <li class="{{ 'active' if pageType === 'tour' }}"><a href="/{{ LANG }}/tours">Tour</a></li>
                         <li class="{{ 'active' if pageType === 'service' }}"><a href="/{{ LANG }}/services">Dịch vụ</a></li>
                         <li class="{{ 'active' if pageType === 'gallery' }}"><a href="/{{ LANG }}/gallery">Hình ảnh</a></li>
-                        <li class="{{ 'active' if pageType === 'blog' }}"><a href="/{{ LANG }}/blog">Blog</a></li>
+                        <li class="{{ 'active' if pageType === 'blog' }}"><a href="/{{ LANG }}/blog">Khuyến mãi</a></li>
                         <li class="{{ 'active' if pageType === 'contact' }}"><a href="/{{ LANG }}/contact">Liên hệ</a></li>
                     {% elif LANG === 'en' %}
                         <li class="{{ 'active' if pageType === 'home' }}"><a href="/">Home</a></li>
@@ -24,7 +24,7 @@
                         <li class="{{ 'active' if pageType === 'tour' }}"><a href="/{{ LANG }}/tours">Tours</a></li>
                         <li class="{{ 'active' if pageType === 'service' }}"><a href="/{{ LANG }}/services">Services</a></li>
                         <li class="{{ 'active' if pageType === 'gallery' }}"><a href="/{{ LANG }}/gallery">Gallery</a></li>
-                        <li class="{{ 'active' if pageType === 'blog' }}"><a href="/{{ LANG }}/blog">Blog</a></li>
+                        <li class="{{ 'active' if pageType === 'blog' }}"><a href="/{{ LANG }}/blog">Promotion</a></li>
                         <li class="{{ 'active' if pageType === 'contact' }}"><a href="/{{ LANG }}/contact">Contact</a></li>
                     {% endif %}
                 </ul>
