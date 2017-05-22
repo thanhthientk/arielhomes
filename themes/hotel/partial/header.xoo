@@ -13,7 +13,7 @@
                         <li class="{{ 'active' if pageType === 'about' }}"><a href="/{{ LANG }}/about">Giới thiệu</a></li>
                         <li class="{{ 'active' if pageType === 'room' }}"><a href="/{{ LANG }}/rooms">Phòng</a></li>
                         <li class="{{ 'active' if pageType === 'tour' }}"><a href="/{{ LANG }}/tours">Tour</a></li>
-                        <li class="{{ 'active' if pageType === 'service' }}"><a href="/{{ LANG }}/services">Dịch vụ</a></li>
+                        <!-- <li class="{{ 'active' if pageType === 'service' }}"><a href="/{{ LANG }}/services">Dịch vụ</a></li> -->
                         <li class="{{ 'active' if pageType === 'gallery' }}"><a href="/{{ LANG }}/gallery">Hình ảnh</a></li>
                         <li class="{{ 'active' if pageType === 'blog' }}"><a href="/{{ LANG }}/blog">Khuyến mãi</a></li>
                         <li class="{{ 'active' if pageType === 'contact' }}"><a href="/{{ LANG }}/contact">Liên hệ</a></li>
@@ -22,7 +22,7 @@
                         <li class="{{ 'active' if pageType === 'about' }}"><a href="/{{ LANG }}/about">About Us</a></li>
                         <li class="{{ 'active' if pageType === 'room' }}"><a href="/{{ LANG }}/rooms">Rooms</a></li>
                         <li class="{{ 'active' if pageType === 'tour' }}"><a href="/{{ LANG }}/tours">Tours</a></li>
-                        <li class="{{ 'active' if pageType === 'service' }}"><a href="/{{ LANG }}/services">Services</a></li>
+                        <!-- <li class="{{ 'active' if pageType === 'service' }}"><a href="/{{ LANG }}/services">Services</a></li> -->
                         <li class="{{ 'active' if pageType === 'gallery' }}"><a href="/{{ LANG }}/gallery">Gallery</a></li>
                         <li class="{{ 'active' if pageType === 'blog' }}"><a href="/{{ LANG }}/blog">Promotion</a></li>
                         <li class="{{ 'active' if pageType === 'contact' }}"><a href="/{{ LANG }}/contact">Contact</a></li>
