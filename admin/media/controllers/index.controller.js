@@ -4,7 +4,7 @@ const _Module = _app.model[_info.singular_slug];
 const multer = require(_join('configs/upload.js'));
 const upload = multer.single('file');
 const path = require('path');
-const Jimp = require('jimp');
+const sharp = require('sharp');
 const fs = require('fs');
 const co = require('co');
 
@@ -110,17 +110,18 @@ module.exports = {
     store: function(req, res, next) {
         let response = {};
         upload(req, res, (err) => {
-            if (err || !req.file) {
-                response.status = 0;
-                if (err.code === 'LIMIT_FILE_SIZE') {
-                    response.message = 'File quá lớn!'
-                } else if (err.message === 'NOT_ALLOW_EXTENSION') {
-                    response.message = 'Định dạng không được cho phép!'
-                } else {
-                    response.message = 'Có lỗi xảy ra!'
+            co(function* () {
+                if (err || !req.file) {
+                    response.status = 0;
+                    if (err.code === 'LIMIT_FILE_SIZE')
+                        response.message = 'File quá lớn!';
+                    else if (err.message === 'NOT_ALLOW_EXTENSION')
+                        response.message = 'Định dạng không được cho phép!';
+                    else
+                        response.message = 'Có lỗi xảy ra!';
+                    return res.json(response);
                 }
-                res.json(response);
-            } else {
+                // Everything ok - Let Save file in Database and Crop some size of image
                 let {name, ext} = path.parse(req.file.filename);
                 let newFile = new _Module({
                     name,
@@ -129,25 +130,27 @@ module.exports = {
                     createdBy: req.user.id,
                     type: req.query.type || 'image'
                 });
-                newFile.save()
-                    .then((file) => {
-                        response.file = file;
-                        return Jimp.read(`./public/uploads/${name}${ext}`)
-                    })
-                    .then((image) => {
-                        image.cover(150, 150).write(`./public/uploads/${name}-150x150${ext}`);
 
-                        response.status = 1;
-                        response.message = 'Đã tải lên thành công';
-                        res.json(response);
-                    })
-                    .catch(err => {
-                        console.log('File: ', name, err);
-                        response.status = 0;
-                        response.message = 'Có lỗi xảy ra!';
-                        res.json(response);
-                    })
-            }
+                try{
+                    let inputSrc = sharp(`./public/uploads/${name}${ext}`);
+                    let async = yield Promise.all([
+                        newFile.save(),
+                        inputSrc.clone().resize(1600, 900).toFile(`./public/uploads/${name}${ext}`),
+                        inputSrc.clone().resize(150, 150).toFile(`./public/uploads/${name}-150x150${ext}`),
+                    ]);
+
+                    response.file = async[0];
+
+                    response.status = 1;
+                    response.message = 'Đã tải lên thành công';
+                    res.json(response);
+                } catch (err) {
+                    console.log('File: ', name, err);
+                    response.status = 0;
+                    response.message = 'Có lỗi xảy ra!';
+                    res.json(response);
+                }
+            });
         })
     },
 

@@ -4,7 +4,8 @@ const path = require('path');
 
 // Helper for upload file process
 const allowExtension = [
-    '.jpg', '.jpeg', '.gif', '.png', '.bmp'
+    '.jpg', '.jpeg', '.gif', '.png', '.bmp',
+    '.JPG', '.JPEG', '.GIF', '.PNG', '.BMP'
 ];
 // Multer Configuration
 const storage = multer.diskStorage({
