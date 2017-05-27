@@ -135,7 +135,6 @@ module.exports = {
                     let inputSrc = sharp(`./public/uploads/${name}${ext}`);
                     let async = yield Promise.all([
                         newFile.save(),
-                        inputSrc.clone().resize(1600, 900).toFile(`./public/uploads/${name}${ext}`),
                         inputSrc.clone().resize(150, 150).toFile(`./public/uploads/${name}-150x150${ext}`),
                     ]);
 
@@ -145,7 +144,7 @@ module.exports = {
                     response.message = 'Đã tải lên thành công';
                     res.json(response);
                 } catch (err) {
-                    console.log('File: ', name, err);
+                    console.log('File: ', err);
                     response.status = 0;
                     response.message = 'Có lỗi xảy ra!';
                     res.json(response);

@@ -18,7 +18,7 @@ const storage = multer.diskStorage({
     }
 });
 const limits = {
-    fileSize: 5*1024*1024
+    fileSize: 10*1024*1024
 };
 const fileFilter = function (req, file, cb) {
     let extension = path.parse(file.originalname).ext;
