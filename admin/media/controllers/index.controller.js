@@ -119,6 +119,7 @@ module.exports = {
                         response.message = 'Định dạng không được cho phép!';
                     else
                         response.message = 'Có lỗi xảy ra!';
+                    console.log(response);
                     return res.json(response);
                 }
                 // Everything ok - Let Save file in Database and Crop some size of image
