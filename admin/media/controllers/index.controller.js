@@ -110,18 +110,17 @@ module.exports = {
     store: function(req, res, next) {
         let response = {};
         upload(req, res, (err) => {
+            if (err || !req.file) {
+                response.status = 0;
+                if (err.code === 'LIMIT_FILE_SIZE')
+                    response.message = 'File quá lớn!';
+                else if (err.message === 'NOT_ALLOW_EXTENSION')
+                    response.message = 'Định dạng không được cho phép!';
+                else
+                    response.message = 'Có lỗi xảy ra!';
+                return res.json(response);
+            }
             co(function* () {
-                if (err || !req.file) {
-                    response.status = 0;
-                    if (err.code === 'LIMIT_FILE_SIZE')
-                        response.message = 'File quá lớn!';
-                    else if (err.message === 'NOT_ALLOW_EXTENSION')
-                        response.message = 'Định dạng không được cho phép!';
-                    else
-                        response.message = 'Có lỗi xảy ra!';
-                    console.log(response);
-                    return res.json(response);
-                }
                 // Everything ok - Let Save file in Database and Crop some size of image
                 let {name, ext} = path.parse(req.file.filename);
                 let newFile = new _Module({
