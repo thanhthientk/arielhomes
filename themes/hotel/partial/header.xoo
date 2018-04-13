@@ -37,5 +37,6 @@
             <a href="/en"><img src="/hotel/assets/img/us.png" alt=""> EN </a>
         </div>
     </div>
+<style>#mobile-menu-container #main-menu{ margin-left: 0 !important;}</style>
     <div id="mobile-menu-container"></div>
 </header>
